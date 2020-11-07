@@ -293,3 +293,25 @@ form {
 .post .post-link {
     margin-top: 24px;
 }
+
+.mc-item {
+    margin: 15px 0;
+    min-height: 365px;
+}
+.learning-path {
+    min-height: 230px !important;
+}
+.map-container{
+	overflow:hidden;
+	padding-bottom:56.25%;
+	position:relative;
+	height:0;
+	}
+	.map-container iframe{
+	left:0;
+	top:0;
+	height:100%;
+	width:100%;
+	position:absolute;
+	}
+  

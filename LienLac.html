@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Liên lạc</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round">
+    <link rel="stylesheet" href="./assets/bootstrap-4.5.3-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="./assets/OwlCarousel2-2.3.4/dist/assets/owl.carousel.min.css" />
+    <link rel="stylesheet" href="./assets/OwlCarousel2-2.3.4/dist/assets/owl.theme.default.min.css" />
+    <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-xl navbar-dark bg-dark">
+        <a href="#" class="navbar-brand"><i class="fa fa-cube"></i>Class<b>Room</b></a>
+        <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <!-- Collection of nav links, forms, and other content for toggling -->
+        <div id="navbarCollapse" class="collapse navbar-collapse justify-content-start">
+            <form class="navbar-form form-inline">
+                <div class="input-group search-box">
+                    <input type="text" id="search" class="form-control" placeholder="Search here...">
+                    <span class="input-group-addon"><i class="material-icons">&#xE8B6;</i></span>
+                </div>
+            </form>
+            <div class="navbar-nav ml-auto">
+                <a href="./TrangChu.html" class="nav-item nav-link"><i class="fa fa-home"></i><span>Trang chủ</span></a>
+                <a href="./Gioi thieu.html" class="nav-item nav-link"><i class="fa fa-gears"></i><span>Giới
+                        thiệu</span></a>
+                <a href="./khoahoc.html" class="nav-item nav-link"><i class="fa fa-book"></i><span>Khoá học</span></a>
+                <a href="./GiangVien.html" class="nav-item nav-link"><i class="fa fa-users"></i><span>Giảng
+                        viên</span></a>
+                <a href="./LoTrinh.html" class="nav-item nav-link"><i class="fa fa-car"></i><span>Lộ trình</span></a>
+                <a href="./LienLac.html" class="nav-item navg-link active"><i class="fa fa-envelope"></i><span>Liên
+                        lạc</span></a>
+                <a href="./HuongDan.html" class="nav-item nav-link"><i class="fa fa-bell"></i><span>Hướng dẫn</span></a>
+                <div class="nav-item dropdown">
+                    <a href="#" data-toggle="dropdown" class="nav-item nav-link dropdown-toggle user-action"><img
+                            src="./img/hinh1.jpg" class="avatar" alt="Avatar"> LongPham <b class="caret"></b></a>
+                    <div class="dropdown-menu">
+                        <a href="./DangNhap.html" class="dropdown-item"><i class="fa fa-user-o"></i> Đăng nhập</a>
+                        <div class="divider dropdown-divider"></div>
+                        <a href="#" class="dropdown-item"><i class="material-icons">&#xE8AC;</i> Logout</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <section class="content">
+        <div class="container">
+            <ul class="breadcrumb">
+                <li>
+                    <a href="./TrangChu.html" title="Trang chủ"><i class="fa fa-home"></i></a>
+                </li>
+                <li>
+                    <a href="./LienLac.html" title="Hướng dẫn khoá học">&nbsp; Bản đồ</a>
+                </li>
+            </ul>
+            <div class="row">
+                <div class="col-lg-5 mb-4">
+                     <!--Form with header-->
+                    <div class="card">
+
+                        <div class="card-body">
+                        <!--Header-->
+                        <div class="form-header blue accent-1" style="background-color:#82b1ff; height: 80px;">
+                            <h3 style="line-height: 80px; text-align: center;"><i class="fa fa-envelope"></i> Viết thư gửi:</h3>
+                        </div>
+
+                        <p style="text-align: center;">Chào người dùng, hãy gửi phản phản hồi cho chung tôi</p>
+                        <br>
+
+                        <!--Body-->
+                        <div class="md-form">
+                            <i class="fa fa-user prefix grey-text"></i>
+                            <input type="text" id="form-name" class="form-control">
+                            <label for="form-name">Tên</label>
+                        </div>
+
+                        <div class="md-form">
+                            <i class="fa fa-envelope prefix grey-text"></i>
+                            <input type="text" id="form-email" class="form-control">
+                            <label for="form-email">Email</label>
+                        </div>
+
+                        <div class="md-form">
+                            <i class="fa fa-tag prefix grey-text"></i>
+                            <input type="text" id="form-Subject" class="form-control">
+                            <label for="form-Subject">Môn học</label>
+                        </div>
+
+                        <div class="md-form">
+                            <i class="fa fa-pencil"></i>
+                            <textarea id="form-text" class="form-control md-textarea" rows="3"></textarea>
+                            <label for="form-text">Nội dung</label>
+                        </div>
+
+                        <div class="text-center mt-4">
+                            <button class="btn btn-primary">Submit</button>
+                        </div>
+
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col-lg-7">
+                    <!--The div element for the map -->
+                    <div id="map-container-google-1" class="z-depth-1-half map-container" style="height: 500px">
+                        <iframe src="https://maps.google.com/maps?q=manhatan&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0"
+                          style="border:0" allowfullscreen></iframe>
+                      </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ------footer---------- -->
+    <footer class="text-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3 col-lg-4 col-xl-3">
+                    <h5>About</h5>
+                    <hr class="bg-white mb-2 mt-0 d-inline-block mx-auto w-25">
+                    <p class="mb-0">
+                        Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression.
+                    </p>
+                </div>
+      
+                <div class="col-md-2 col-lg-2 col-xl-2 mx-auto">
+                    <h5>Informations</h5>
+                    <hr class="bg-white mb-2 mt-0 d-inline-block mx-auto w-25">
+                    <ul class="list-unstyled">
+                        <li><a href="">Link 1</a></li>
+                        <li><a href="">Link 2</a></li>
+                        <li><a href="">Link 3</a></li>
+                        <li><a href="">Link 4</a></li>
+                    </ul>
+                </div>
+      
+                <div class="col-md-3 col-lg-2 col-xl-2 mx-auto">
+                    <h5>Others links</h5>
+                    <hr class="bg-white mb-2 mt-0 d-inline-block mx-auto w-25">
+                    <ul class="list-unstyled">
+                        <li><a href="">Link 1</a></li>
+                        <li><a href="">Link 2</a></li>
+                        <li><a href="">Link 3</a></li>
+                        <li><a href="">Link 4</a></li>
+                    </ul>
+                </div>
+      
+                <div class="col-md-4 col-lg-3 col-xl-3">
+                    <h5>Contact</h5>
+                    <hr class="bg-white mb-2 mt-0 d-inline-block mx-auto w-25">
+                    <ul class="list-unstyled">
+                        <li><i class="fa fa-home mr-2"></i> My company</li>
+                        <li><i class="fa fa-envelope mr-2"></i> email@example.com</li>
+                        <li><i class="fa fa-phone mr-2"></i> + 33 12 14 15 16</li>
+                        <li><i class="fa fa-print mr-2"></i> + 33 12 14 15 16</li>
+                    </ul>
+                </div>
+                <div class="col-12 copyright mt-3">
+                    <p class="float-left">
+                        <a href="#">Back to top</a>
+                    </p>
+                    <p class="text-right text-muted">created with <i class="fa fa-heart"></i> by <a href="https://t-php.fr/43-theme-ecommerce-bootstrap-4.html"><i>t-php</i></a> | <span>v. 1.0</span></p>
+                </div>
+            </div>
+        </div>
+        </footer>
+</body>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"
+    integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+<script src="./assets/OwlCarousel2-2.3.4/dist/owl.carousel.min.js"></script>
+<script src="./assets/OwlCarousel2-2.3.4/dist/owl.carousel.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+<script src="./assets/bootstrap-4.5.3-dist/js/bootstrap.min.js"></script>
+<!-- <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap&libraries=&v=weekly"
+    defer></script> -->
+<script src="./app.js"></script>
+
+</html>
