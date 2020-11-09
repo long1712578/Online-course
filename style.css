@@ -426,7 +426,7 @@ form {
 		margin-bottom: 0;
 	}
 	.producttab .tabsslider .nav-tabs li a {
-		font-size: 16px;
+		font-size: 17px;
 		font-weight: 600;
 		text-transform: uppercase;
 		border-radius: 0px;
@@ -450,6 +450,9 @@ form {
 		margin: 0;
 		border: solid 1px #e3e1e1;
 		margin-top: -1px;
+		overflow: scroll;
+		height: 300px;
+		/* Fix-long */
 	}
 	.card-signin {
 		border: 0;
@@ -486,4 +489,58 @@ form {
 	.container.row.col-sm-9.card.card-body.form-signin.form-label-group input{
 		height: auto;
 		border-radius: 2rem;
+	}
+	.item{
+		margin-left: 50px;
+	}
+	
+	.item:hover{
+		/* border-bottom: 3px solid springgreen; */
+		-ms-transform: scale(1.1,1.1); 
+		transform: scale(1.1,1.1);
+	}
+	.content-item h4 a{
+		color: #333;
+		font-size: 18px;
+		text-align: center;
+	}
+	.tit-section {
+		border-radius: 5px 5px 0 0;
+		line-height: 1.5em;
+		background-color: #11538c;
+		padding: 12px 18px;
+		margin: 0;
+	}
+	.section-list li .count {
+		position: absolute;
+		width: 46px;
+		height: auto;
+		background-color: #ddd;
+		text-align: center;
+		transition: all 0.3s ease 0s;
+		justify-content: center;
+		display: flex;
+		align-content: center;
+		z-index: 2;
+	}
+	.section-list li .count span {
+		margin: 50% 50%;
+		line-height: 38px;
+	}
+	.section-list li .list-body {
+		position: relative;
+		padding: 16px 130px 16px 50px;
+	}
+	.section-list li .list-body p a {
+		text-decoration: none;
+		color: #262626;
+	}
+	.section-list li:hover{
+		background-color: #926dde;
+	}
+	.section-list {
+		border-bottom: 1px solid #D4D4D4;
+		margin: 0;
+		list-style: none;
+		padding: 0;
 	}
