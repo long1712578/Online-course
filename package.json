@@ -1,0 +1,24 @@
+{
+  "name": "online-course",
+  "version": "1.0.0",
+  "description": "Trang web nhóm gồm 3 thành viên: Duy Vu - Hoang Huy - Đình Long",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/long1712578/Online-course.git"
+  },
+  "author": "Long-huy-VuDuy",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/long1712578/Online-course/issues"
+  },
+  "homepage": "https://github.com/long1712578/Online-course#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "express-handlebars": "^5.2.0"
+  }
+}
