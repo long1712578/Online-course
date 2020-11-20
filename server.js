@@ -1,6 +1,7 @@
 const port = 3000;
 const express = require('express');
 const express_handlebars = require('express-handlebars');
+const http_errors = require('http-errors')
 
 const app=express();
 
@@ -20,9 +21,7 @@ app.get("/contact",function(req,res){
     res.render('users/contact');
 });
 //Khoahoc
-app.get("/courses",function(req,res){
-    res.render('users/courses');
-});
+app.use('/',require('./Routes/courses.route'));
 //Chi tiet khoa hoc
 app.get("/coursesDetail",function(req,res){
     res.render('users/coursesDetail');
@@ -54,6 +53,25 @@ app.get("/signIn",function(req,res){
 //Dang ki
 app.get("/signUp",function(req,res){
     res.render('account/signUp');
+});
+app.use((req, res, next) => {
+    next(http_errors(404));
+})
+
+app.use((err, req, res, next) => {
+    let status = err.status || 500;
+    let errorCode = 'error';
+    if (status === 404)
+        errorCode = '404';
+    if (status === 500)
+        errorCode = '500';
+    let errorMsg = err.message;
+    res.render('Error/404', {
+        layout: false,
+        errorCode,
+        errorMsg,
+        error: err
+    });
 });
 
 app.listen(port, function(req, res) {

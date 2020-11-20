@@ -58,20 +58,21 @@
         <!-- -content product -->
         <div class="content">
           <div class="row">
+            {{#each courses}}
             <div class="col-sm-6 col-md-4">
               <div class="mc-item mc-item-2">
                 <div class="image-heading">
-                  <a href="#" title="Xay dung khoa hoc"><img style="max-height: 180px;" title="Xay dung lo trinh"
-                      src="../../img/angular.png" alt="Xay dung khoa hoc"></a>
+                  <a href="#" title="{{name}}"><img style="max-height: 180px;" title="{{name}}"
+                      src="../../img/{{this.image}}" alt="Xay dung khoa hoc"></a>
                 </div>
                 <div class="meta-categories">
-                  <a href="#" title="Hoc lap trinh web">Hoc lap trinh web</a>
+                  <a href="#" title="Hoc lap trinh web">{{name}}</a>
                 </div>
                 <div class="content-item">
                   <div class="image-author">
                     <a href="#" title="Giảng viên: Phạm Đình Long">...</a>
                   </div>
-                  <h4><a href="#" title="Xây duywngj trang web asp.net">Xây dựng trang web với asp.net core</a></h4>
+                  <h4><a href="#" title="Xây duywngj trang web asp.net">Xây dựng trang {{name}}</a></h4>
                   <div class="name-author">
                     <span>Bởi
                       <a href="#" title="Giảng viên: Phạm Đình Long">Phạm Đình Long</a>
@@ -80,287 +81,19 @@
                 </div>
                 <div class="ft-item">
                   <div class="rating">
+                    
                     <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star"></span>
-                    <span class="fa fa-star"></span>
                   </div>
                   <div class="view-info">
                     <i class="fa fa-users" aria-hidden="true"></i>16
                   </div>
                   <div class="price">
-                    <span>1.6000.000 đ</span>
+                    <span>{{price}}</span>
                   </div>
                 </div>
               </div>
             </div>
-    
-            <div class="col-sm-6 col-md-4">
-              <div class="mc-item mc-item-2">
-                <div class="image-heading">
-                  <a href="#" title="Xay dung khoa hoc"><img style="max-height: 180px;" title="Xay dung lo trinh"
-                      src="../../img/angular.png" alt="Xay dung khoa hoc"></a>
-                </div>
-                <div class="meta-categories">
-                  <a href="#" title="Hoc lap trinh web">Hoc lap trinh web</a>
-                </div>
-                <div class="content-item">
-                  <div class="image-author">
-                    <a href="#" title="Giảng viên: Phạm Đình Long">...</a>
-                  </div>
-                  <h4><a href="#" title="Xây duywngj trang web asp.net">Xây dựng trang web với asp.net core</a></h4>
-                  <div class="name-author">
-                    <span>Bởi
-                      <a href="#" title="Giảng viên: Phạm Đình Long">Phạm Đình Long</a>
-                    </span>
-                  </div>
-                </div>
-                <div class="ft-item">
-                  <div class="rating">
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star"></span>
-                    <span class="fa fa-star"></span>
-                  </div>
-                  <div class="view-info">
-                    <i class="fa fa-users" aria-hidden="true"></i>16
-                  </div>
-                  <div class="price">
-                    <span>1.6000.000 đ</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-    
-            <div class="col-sm-6 col-md-4">
-              <div class="mc-item mc-item-2">
-                <div class="image-heading">
-                  <a href="#" title="Xay dung khoa hoc"><img style="max-height: 180px;" title="Xay dung lo trinh"
-                      src="../../img/angular.png" alt="Xay dung khoa hoc"></a>
-                </div>
-                <div class="meta-categories">
-                  <a href="#" title="Hoc lap trinh web">Hoc lap trinh web</a>
-                </div>
-                <div class="content-item">
-                  <div class="image-author">
-                    <a href="#" title="Giảng viên: Phạm Đình Long">...</a>
-                  </div>
-                  <h4><a href="#" title="Xây duywngj trang web asp.net">Xây dựng trang web với asp.net core</a></h4>
-                  <div class="name-author">
-                    <span>Bởi
-                      <a href="#" title="Giảng viên: Phạm Đình Long">Phạm Đình Long</a>
-                    </span>
-                  </div>
-                </div>
-                <div class="ft-item">
-                  <div class="rating">
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star"></span>
-                    <span class="fa fa-star"></span>
-                  </div>
-                  <div class="view-info">
-                    <i class="fa fa-users" aria-hidden="true"></i>16
-                  </div>
-                  <div class="price">
-                    <span>1.6000.000 đ</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-    
-            <div class="col-sm-6 col-md-4">
-              <div class="mc-item mc-item-2">
-                <div class="image-heading">
-                  <a href="#" title="Xay dung khoa hoc"><img style="max-height: 180px;" title="Xay dung lo trinh"
-                      src="../../img/angular.png" alt="Xay dung khoa hoc"></a>
-                </div>
-                <div class="meta-categories">
-                  <a href="#" title="Hoc lap trinh web">Hoc lap trinh web</a>
-                </div>
-                <div class="content-item">
-                  <div class="image-author">
-                    <a href="#" title="Giảng viên: Phạm Đình Long">...</a>
-                  </div>
-                  <h4><a href="#" title="Xây duywngj trang web asp.net">Xây dựng trang web với asp.net core</a></h4>
-                  <div class="name-author">
-                    <span>Bởi
-                      <a href="#" title="Giảng viên: Phạm Đình Long">Phạm Đình Long</a>
-                    </span>
-                  </div>
-                </div>
-                <div class="ft-item">
-                  <div class="rating">
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star"></span>
-                    <span class="fa fa-star"></span>
-                  </div>
-                  <div class="view-info">
-                    <i class="fa fa-users" aria-hidden="true"></i>16
-                  </div>
-                  <div class="price">
-                    <span>1.6000.000 đ</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-    
-            <div class="col-sm-6 col-md-4">
-              <div class="mc-item mc-item-2">
-                <div class="image-heading">
-                  <a href="#" title="Xay dung khoa hoc"><img style="max-height: 180px;" title="Xay dung lo trinh"
-                      src="../../img/angular.png" alt="Xay dung khoa hoc"></a>
-                </div>
-                <div class="meta-categories">
-                  <a href="#" title="Hoc lap trinh web">Hoc lap trinh web</a>
-                </div>
-                <div class="content-item">
-                  <div class="image-author">
-                    <a href="#" title="Giảng viên: Phạm Đình Long">...</a>
-                  </div>
-                  <h4><a href="#" title="Xây duywngj trang web asp.net">Xây dựng trang web với asp.net core</a></h4>
-                  <div class="name-author">
-                    <span>Bởi
-                      <a href="#" title="Giảng viên: Phạm Đình Long">Phạm Đình Long</a>
-                    </span>
-                  </div>
-                </div>
-                <div class="ft-item">
-                  <div class="rating">
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star"></span>
-                    <span class="fa fa-star"></span>
-                  </div>
-                  <div class="view-info">
-                    <i class="fa fa-users" aria-hidden="true"></i>16
-                  </div>
-                  <div class="price">
-                    <span>1.6000.000 đ</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-    
-            <div class="col-sm-6 col-md-4">
-              <div class="mc-item mc-item-2">
-                <div class="image-heading">
-                  <a href="#" title="Xay dung khoa hoc"><img style="max-height: 180px;" title="Xay dung lo trinh"
-                      src="../../img/angular.png" alt="Xay dung khoa hoc"></a>
-                </div>
-                <div class="meta-categories">
-                  <a href="#" title="Hoc lap trinh web">Hoc lap trinh web</a>
-                </div>
-                <div class="content-item">
-                  <div class="image-author">
-                    <a href="#" title="Giảng viên: Phạm Đình Long">...</a>
-                  </div>
-                  <h4><a href="#" title="Xây duywngj trang web asp.net">Xây dựng trang web với asp.net core</a></h4>
-                  <div class="name-author">
-                    <span>Bởi
-                      <a href="#" title="Giảng viên: Phạm Đình Long">Phạm Đình Long</a>
-                    </span>
-                  </div>
-                </div>
-                <div class="ft-item">
-                  <div class="rating">
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star"></span>
-                    <span class="fa fa-star"></span>
-                  </div>
-                  <div class="view-info">
-                    <i class="fa fa-users" aria-hidden="true"></i>16
-                  </div>
-                  <div class="price">
-                    <span>1.6000.000 đ</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-    
-            <div class="col-sm-6 col-md-4">
-              <div class="mc-item mc-item-2">
-                <div class="image-heading">
-                  <a href="#" title="Xay dung khoa hoc"><img style="max-height: 180px;" title="Xay dung lo trinh"
-                      src="../../img/angular.png" alt="Xay dung khoa hoc"></a>
-                </div>
-                <div class="meta-categories">
-                  <a href="#" title="Hoc lap trinh web">Hoc lap trinh web</a>
-                </div>
-                <div class="content-item">
-                  <div class="image-author">
-                    <a href="#" title="Giảng viên: Phạm Đình Long">...</a>
-                  </div>
-                  <h4><a href="#" title="Xây duywngj trang web asp.net">Xây dựng trang web với asp.net core</a></h4>
-                  <div class="name-author">
-                    <span>Bởi
-                      <a href="#" title="Giảng viên: Phạm Đình Long">Phạm Đình Long</a>
-                    </span>
-                  </div>
-                </div>
-                <div class="ft-item">
-                  <div class="rating">
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star"></span>
-                    <span class="fa fa-star"></span>
-                  </div>
-                  <div class="view-info">
-                    <i class="fa fa-users" aria-hidden="true"></i>16
-                  </div>
-                  <div class="price">
-                    <span>1.6000.000 đ</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-    
-            <div class="col-sm-6 col-md-4">
-              <div class="mc-item mc-item-2">
-                <div class="image-heading">
-                  <a href="#" title="Xay dung khoa hoc"><img style="max-height: 180px;" title="Xay dung lo trinh"
-                      src="../../img/angular.png" alt="Xay dung khoa hoc"></a>
-                </div>
-                <div class="meta-categories">
-                  <a href="#" title="Hoc lap trinh web">Hoc lap trinh web</a>
-                </div>
-                <div class="content-item">
-                  <div class="image-author">
-                    <a href="#" title="Giảng viên: Phạm Đình Long">...</a>
-                  </div>
-                  <h4><a href="#" title="Xây duywngj trang web asp.net">Xây dựng trang web với asp.net core</a></h4>
-                  <div class="name-author">
-                    <span>Bởi
-                      <a href="#" title="Giảng viên: Phạm Đình Long">Phạm Đình Long</a>
-                    </span>
-                  </div>
-                </div>
-                <div class="ft-item">
-                  <div class="rating">
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star"></span>
-                    <span class="fa fa-star"></span>
-                  </div>
-                  <div class="view-info">
-                    <i class="fa fa-users" aria-hidden="true"></i>16
-                  </div>
-                  <div class="price">
-                    <span>1.6000.000 đ</span>
-                  </div>
-                </div>
-              </div>
-            </div>
+            {{/each}}
           </div>
         </div>
       </div>
