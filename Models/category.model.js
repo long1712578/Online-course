@@ -1,11 +1,11 @@
 const mysql =require('mysql');
 const db=require('../utils/db');
-const tbTeacher='user';
+const tbCategory='category';
 
 
 module.exports={
-    getTeacherAll: async()=>{
-        const sql = `SELECT * FROM ${tbTeacher}`;
+    getCategoryAll: async()=>{
+        const sql = `SELECT * FROM ${tbCategory}`;
         const rows = await db.load(sql);
         return rows;
     },

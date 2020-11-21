@@ -30,10 +30,9 @@
               <span>Nhóm liên quan</span>
             </h3>
             <ul class="list-group">
-              <li class="list-group-item"><a href="#" title="Lập trình web">Lập trình web</a></li>
-              <li class="list-group-item"><a href="#" title="Lập trình cơ bản">Lập trình cơ bản</a></li>
-              <li class="list-group-item"><a href="#" title="Lập trình di động">Lập trình di động</a></li>
-              <li class="list-group-item"><a href="#" title="Khoá học bộ trợ">Khoá học bổ trợ</a></li>
+              {{#each category}}
+              <li class="list-group-item"><a href="#" title="Lập trình web">{{name}}</a></li>
+              {{/each}}
             </ul>
           </div>
         </aside>
@@ -81,7 +80,7 @@
                 </div>
                 <div class="ft-item">
                   <div class="rating">
-                    
+
                     <span class="fa fa-star checked"></span>
                   </div>
                   <div class="view-info">
@@ -96,8 +95,33 @@
             {{/each}}
           </div>
         </div>
+        {{!-- Pading product --}}
+        
+        <div class="row d-flex justify-content-center">
+          <nav aria-label="Page navigation example">
+            <ul class="pagination">
+              <li class="page-item  {{#if previous.isDisabled}}disabled{{/if}}">
+                <a class="page-link" href="/buyer/{{previous.CatID}}/{{previous.pageNumber}}" aria-label="Previous">
+                  <span aria-hidden="true">&laquo;</span>
+                </a>
+              </li>
+              {{#each pagination}}
+              <li class="page-item {{#if this.isActive}}active{{/if}}"><a class="page-link"
+                  href="/buyer/{{this.CatID}}/{{this.pageNumber}}">{{this.pageNumber}}</a>
+              </li>
+              {{/each}}
+              <li class="page-item {{#if next.isDisabled}}disabled{{/if}}">
+                <a class="page-link" href="/buyer/{{next.CatID}}/{{next.pageNumber}}" aria-label="Next">
+                  <span aria-hidden="true">&raquo;</span>
+                </a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+
       </div>
     </div>
   </div>
 </section>
+
 {{> footer}}

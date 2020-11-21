@@ -47,6 +47,31 @@
                             </div>
                             {{/each}}
                         </div>
+
+                        {{!-- Pading product --}}
+        
+        <div class="row d-flex justify-content-center">
+          <nav aria-label="Page navigation example">
+            <ul class="pagination">
+              <li class="page-item  {{#if previous.isDisabled}}disabled{{/if}}">
+                <a class="page-link" href="/buyer/{{previous.CatID}}/{{previous.pageNumber}}" aria-label="Previous">
+                  <span aria-hidden="true">&laquo;</span>
+                </a>
+              </li>
+              {{#each pagination}}
+              <li class="page-item {{#if this.isActive}}active{{/if}}"><a class="page-link"
+                  href="/buyer/{{this.CatID}}/{{this.pageNumber}}">{{this.pageNumber}}</a>
+              </li>
+              {{/each}}
+              <li class="page-item {{#if next.isDisabled}}disabled{{/if}}">
+                <a class="page-link" href="/buyer/{{next.CatID}}/{{next.pageNumber}}" aria-label="Next">
+                  <span aria-hidden="true">&raquo;</span>
+                </a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+
                     </div>
                 </div>
             </div>
