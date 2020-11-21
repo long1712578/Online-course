@@ -39,7 +39,7 @@ app.get("/help",function(req,res){
     res.render('users/help');
 });
 //Giao vien
-app.use('/',require('./Routes/teacher.route'));
+app.use('/teacher',require('./Routes/teacher.route'));
 //Dang nhap
 app.get("/signIn",function(req,res){
     res.render('account/signIn');
