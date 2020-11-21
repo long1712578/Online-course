@@ -13,9 +13,7 @@ app.set('view engine', '.hbs');
 app.use(express.static(__dirname + '/public'));
 app.use("/", express.static(__dirname + '/public'));
 //Trang chu
-app.get("/home",function(req,res){
-    res.render('users/home');
-});
+app.use('/',require('./Routes/home.route'));
 //Lien lac
 app.get("/contact",function(req,res){
     res.render('users/contact');
@@ -31,9 +29,7 @@ app.get("/coursesDetailAngular",function(req,res){
     res.render('users/coursesDetailAngular');
 });
 //Lo trinh
-app.get("/coursesRoute",function(req,res){
-    res.render('users/coursesRoute');
-});
+app.use('/',require('./Routes/routeCourse.route'));
 //Gioi thieu
 app.get("/document",function(req,res){
     res.render('users/document');
@@ -43,9 +39,7 @@ app.get("/help",function(req,res){
     res.render('users/help');
 });
 //Giao vien
-app.get("/teacher",function(req,res){
-    res.render('users/teacher');
-});
+app.use('/',require('./Routes/teacher.route'));
 //Dang nhap
 app.get("/signIn",function(req,res){
     res.render('account/signIn');

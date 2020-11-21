@@ -88,110 +88,56 @@ noi dung chinh -->
         <h3 class="modtitle">
           <span>Lộ trình học tập</span>
         </h3>
-        <a href="#" title="Tất cả các lộ trình học tập" class="all-course mc-btn btn-style-1">Xem tất cả</a>
+        <a href="/coursesRoute" title="Tất cả các lộ trình học tập" class="all-course mc-btn btn-style-1">Xem tất cả</a>
         <div class="module-body">
           <div class="owl-carousel owl-theme" style="display: block; opacity: 1;">
             <!-- <div class="owl-wrapper-outer">
             <div class="owl-wrapper" style="width: 5508px;left: 0px;display: block;"> -->
             <!-- angular -->
+            {{#each route}}
             <div class="item" style="width: auto;">
               <div class="learning-path mc-item mc-item-1">
                 <div class="image-heading">
-                  <a href="#" title="Lo trinh hoc angular"><img style="max-height: 180px;" title="lo trinh hoc angular"
-                      src="../../img/angular.png" alt="Lo trinh hoc angular"></a>
+                  <a href="#" title="{{name}}"><img style="max-height: 180px;" title="{{name}}"
+                      src="../../img/{{image}}" alt="Lo trinh hoc angular"></a>
 
                 </div>
                 <div class="content-item">
-                  <h4 href="#" title="Lo trinh hoc angular">Lo trinh hoc angular</h4>
+                  <h4 href="#" title="{{name}}">{{name}}</h4>
                 </div>
               </div>
             </div>
-            <!-- java -->
-            <div class="item" style="width: auto;">
-              <div class="learning-path mc-item mc-item-1">
-                <div class="image-heading">
-                  <a href="#" title="Lo trinh hoc Java"><img style="max-height: 180px;" title="lo trinh hoc Java"
-                      src="../../img/java.png" alt="Lo trinh hoc java"></a>
-
-                </div>
-                <div class="content-item">
-                  <h4 href="#" title="Lo trinh hoc java">Lo trinh hoc java</h4>
-                </div>
-              </div>
-            </div>
-            <!-- Nodejs -->
-            <div class="item" style="width: auto;">
-              <div class="learning-path mc-item mc-item-1">
-                <div class="image-heading">
-                  <a href="#" title="Lo trinh hoc nodejs"><img style="max-height: 180px;" title="lo trinh hoc nodejs"
-                      src="../../img/nodejs.png" alt="Lo trinh hoc Nodejs"></a>
-
-                </div>
-                <div class="content-item">
-                  <h4 href="#" title="Lo trinh hoc Nodejs">Lo trinh hoc Nodejs</h4>
-                </div>
-              </div>
-            </div>
-
-
-            <!-- csharp -->
-            <div class="item" style="width: auto;">
-              <div class="learning-path mc-item mc-item-1">
-                <div class="image-heading">
-                  <a href="#" title="Lo trinh hoc C#"><img style="max-height: 180px;" title="lo trinh hoc git"
-                      src="../../img/Csharp.png" alt="Lo trinh hoc C#"></a>
-
-                </div>
-                <div class="content-item">
-                  <h4 href="#" title="Lo trinh hoc Git">Lo trinh hoc C#</h4>
-                </div>
-              </div>
-            </div>
-
-            <div class="item" style="width: auto;">
-              <div class="learning-path mc-item mc-item-1">
-                <div class="image-heading">
-                  <a href="#" title="Lo trinh hoc C#"><img style="max-height: 180px;" title="lo trinh hoc git"
-                      src="../../img/nodejs.png" alt="Lo trinh hoc C#"></a>
-
-                </div>
-                <div class="content-item">
-                  <h4 href="#" title="Lo trinh hoc Git">Lo trinh hoc C#</h4>
-                </div>
-              </div>
-            </div>
-
-            <!-- </div>
-          </div> -->
+            {{/each}}
           </div>
         </div>
       </div>
     </div>
   </section>
-
+{{!-- khoa hoc tieu bieu --}}
   <section id="mc-section-4" class="mc-section-3 section">
     <div class="container">
       <div class="module so-deals">
         <h3 class="modtitle">
           <span>Khoa học tiêu biểu</span>
         </h3>
-        <a href="#" title="Tất cả các lộ trình học tập" class="all-course mc-btn btn-style-1">Xem tất cả</a>
+        <a href="/courses" title="Tất cả các lộ trình học tập" class="all-course mc-btn btn-style-1">Xem tất cả</a>
         <div class="module-body">
           <div class="owl-carousel owl-theme" style="display: block; opacity: 1;">
+            {{#each courses}}
             <div class="item" style="width: auto;">
               <div class="mc-item mc-item-1">
                 <div class="image-heading">
-                  <a href="#" title="Xay dung khoa hoc"><img style="max-height: 180px;" title="Xay dung lo trinh"
-                      src="../../img/angular.png" alt="Xay dung khoa hoc"></a>
+                  <a href="#" title="{{name}}"><img style="max-height: 180px;" title="{{name}}"
+                      src="../../img/{{image}}" alt="Xay dung khoa hoc"></a>
                 </div>
                 <div class="meta-categories">
-                  <a href="#" title="Hoc lap trinh web">Hoc lap trinh web</a>
+                  <a href="#" title="{{name}}">{{name}}</a>
                 </div>
                 <div class="content-item">
                   <div class="image-author">
                     <a href="#" title="Giảng viên: Phạm Đình Long">...</a>
                   </div>
-                  <h4><a href="#" title="Xây duywngj trang web asp.net">Xây dựng trang web với asp.net core</a></h4>
+                  <h4><a href="#" title="{{name}}">{{name}}</a></h4>
                   <div class="name-author">
                     <span>Bởi
                       <a href="#" title="Giảng viên: Phạm Đình Long">Phạm Đình Long</a>
@@ -210,168 +156,12 @@ noi dung chinh -->
                     <i class="fa fa-users" aria-hidden="true"></i>16
                   </div>
                   <div class="price">
-                    <span>1.6000.000 đ</span>
+                    <span>{{price}} $</span>
                   </div>
                 </div>
               </div>
             </div>
-            <!-- java -->
-            <div class="item" style="width: auto;">
-              <div class="mc-item mc-item-1">
-                <div class="image-heading">
-                  <a href="#" title="Xay dung khoa hoc"><img style="width: 100%;" title="Xay dung lo trinh"
-                      src="../../img/java.png" alt="Xay dung khoa hoc"></a>
-                </div>
-                <div class="meta-categories">
-                  <a href="#" title="Hoc lap trinh web">Hoc lap trinh web</a>
-                </div>
-                <div class="content-item">
-                  <div class="image-author">
-                    <a href="#" title="Giảng viên: Phạm Đình Long">...</a>
-                  </div>
-                  <h4><a href="#" title="Xây duywngj trang web asp.net">Xây dựng trang web với asp.net core</a></h4>
-                  <div class="name-author">
-                    <span>Bởi
-                      <a href="#" title="Giảng viên: Phạm Đình Long">Phạm Đình Long</a>
-                    </span>
-                  </div>
-                </div>
-                <div class="ft-item">
-                  <div class="rating">
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star"></span>
-                    <span class="fa fa-star"></span>
-                  </div>
-                  <div class="view-info">
-                    <i class="fa fa-users" aria-hidden="true"></i>16
-                  </div>
-                  <div class="price">
-                    <span>1.6000.000 đ</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <!-- Nodejs -->
-            <div class="item" style="width: auto;">
-              <div class="mc-item mc-item-1">
-                <div class="image-heading">
-                  <a href="#" title="Xay dung khoa hoc"><img style="max-height: 180px;" title="Xay dung lo trinh"
-                      src="../../img/nodejs.png" alt="Xay dung khoa hoc"></a>
-                </div>
-                <div class="meta-categories">
-                  <a href="#" title="Hoc lap trinh web">Hoc lap trinh web</a>
-                </div>
-                <div class="content-item">
-                  <div class="image-author">
-                    <a href="#" title="Giảng viên: Phạm Đình Long">...</a>
-                  </div>
-                  <h4><a href="#" title="Xây duywngj trang web asp.net">Xây dựng trang web với asp.net core</a></h4>
-                  <div class="name-author">
-                    <span>Bởi
-                      <a href="#" title="Giảng viên: Phạm Đình Long">Phạm Đình Long</a>
-                    </span>
-                  </div>
-                </div>
-                <div class="ft-item">
-                  <div class="rating">
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star"></span>
-                    <span class="fa fa-star"></span>
-                  </div>
-                  <div class="view-info">
-                    <i class="fa fa-users" aria-hidden="true"></i>16
-                  </div>
-                  <div class="price">
-                    <span>1.6000.000 đ</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-
-            <!-- csharp -->
-            <div class="item" style="width: auto;">
-              <div class="mc-item mc-item-1">
-                <div class="image-heading">
-                  <a href="#" title="Xay dung khoa hoc"><img style="max-height: 180px;" title="Xay dung lo trinh"
-                      src="../../img/git.png" alt="Xay dung khoa hoc"></a>
-                </div>
-                <div class="meta-categories">
-                  <a href="#" title="Hoc lap trinh web">Hoc lap trinh web</a>
-                </div>
-                <div class="content-item">
-                  <div class="image-author">
-                    <a href="#" title="Giảng viên: Phạm Đình Long">...</a>
-                  </div>
-                  <h4><a href="#" title="Xây duywngj trang web asp.net">Xây dựng trang web với asp.net core</a></h4>
-                  <div class="name-author">
-                    <span>Bởi
-                      <a href="#" title="Giảng viên: Phạm Đình Long">Phạm Đình Long</a>
-                    </span>
-                  </div>
-                </div>
-                <div class="ft-item">
-                  <div class="rating">
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star"></span>
-                    <span class="fa fa-star"></span>
-                  </div>
-                  <div class="view-info">
-                    <i class="fa fa-users" aria-hidden="true"></i>16
-                  </div>
-                  <div class="price">
-                    <span>1.6000.000 đ</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="item" style="width: auto;">
-              <div class="mc-item mc-item-1">
-                <div class="image-heading">
-                  <a href="#" title="Xay dung khoa hoc"><img style="max-height: 180px;" title="Xay dung lo trinh"
-                      src="../../img/angular.png" alt="Xay dung khoa hoc"></a>
-                </div>
-                <div class="meta-categories">
-                  <a href="#" title="Hoc lap trinh web">Hoc lap trinh web</a>
-                </div>
-                <div class="content-item">
-                  <div class="image-author">
-                    <a href="#" title="Giảng viên: Phạm Đình Long">...</a>
-                  </div>
-                  <h4><a href="#" title="Xây duywngj trang web asp.net">Xây dựng trang web với asp.net core</a></h4>
-                  <div class="name-author">
-                    <span>Bởi
-                      <a href="#" title="Giảng viên: Phạm Đình Long">Phạm Đình Long</a>
-                    </span>
-                  </div>
-                </div>
-                <div class="ft-item">
-                  <div class="rating">
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star"></span>
-                    <span class="fa fa-star"></span>
-                  </div>
-                  <div class="view-info">
-                    <i class="fa fa-users" aria-hidden="true"></i>16
-                  </div>
-                  <div class="price">
-                    <span>1.6000.000 đ</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!-- </div>
-          </div> -->
+            {{/each}}
           </div>
         </div>
       </div>

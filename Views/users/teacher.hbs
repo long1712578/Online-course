@@ -31,89 +31,28 @@
                 </div>
                 <div class="col-md-9">
                     <div class="blog-list-content">
+                        {{#each teacher}}
                         <div class="post">
                             <div class="post-media">
                                 <div class="image-thumb">
-                                    <img src="../../img/king.jpg"  style="max-width: 100%;" title="Pham Dinh Long" alt="phamdinhlong">
+                                    <img src="../../img/{{image}}"  style="max-width: 100%;" title="{{name}}" alt="{{name}}">
                                 </div>
                             </div>
                             <div class="post-body">
                                 <div class="post-title">
                                     <h3 class="md">
-                                        <a href="#" title="Phạm Đình Long">Phạm Đình Long</a>
+                                        <a href="#" title="{{name}}">{{name}}</a>
                                     </h3>
                                 </div>
                                 <div class="post-content">
-                                    <p>Senior .net</p>
+                                    <p>{{level}}</p>
                                 </div>
                                 <div class="post-link">
                                     <a href="#" title="Phạm Đình Long"><i class="fa fa-play-circle-o"></i> Xem thêm</a>
                                 </div>
                             </div>
                         </div>
-
-                        <div class="post">
-                            <div class="post-media">
-                                <div class="image-thumb">
-                                    <img src="../../img/king.jpg"  style="max-width: 100%;" title="Pham Dinh Long" alt="phamdinhlong">
-                                </div>
-                            </div>
-                            <div class="post-body">
-                                <div class="post-title">
-                                    <h3 class="md">
-                                        <a href="#" title="Phạm Đình Long">Phạm Đình Long</a>
-                                    </h3>
-                                </div>
-                                <div class="post-content">
-                                    <p>Senior .net</p>
-                                </div>
-                                <div class="post-link">
-                                    <a href="#" title="Phạm Đình Long"><i class="fa fa-play-circle-o"></i> Xem thêm</a>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="post">
-                            <div class="post-media">
-                                <div class="image-thumb">
-                                    <img src="../../img/king.jpg"  style="max-width: 100%;" title="Pham Dinh Long" alt="phamdinhlong">
-                                </div>
-                            </div>
-                            <div class="post-body">
-                                <div class="post-title">
-                                    <h3 class="md">
-                                        <a href="#" title="Phạm Đình Long">Phạm Đình Long</a>
-                                    </h3>
-                                </div>
-                                <div class="post-content">
-                                    <p>Senior .net</p>
-                                </div>
-                                <div class="post-link">
-                                    <a href="#" title="Phạm Đình Long"><i class="fa fa-play-circle-o"></i> Xem thêm</a>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="post">
-                            <div class="post-media">
-                                <div class="image-thumb">
-                                    <img src="../../img/king.jpg"  style="max-width: 100%;" title="Pham Dinh Long" alt="phamdinhlong">
-                                </div>
-                            </div>
-                            <div class="post-body">
-                                <div class="post-title">
-                                    <h3 class="md">
-                                        <a href="#" title="Phạm Đình Long">Phạm Đình Long</a>
-                                    </h3>
-                                </div>
-                                <div class="post-content">
-                                    <p>Senior .net</p>
-                                </div>
-                                <div class="post-link">
-                                    <a href="#" title="Phạm Đình Long"><i class="fa fa-play-circle-o"></i> Xem thêm</a>
-                                </div>
-                            </div>
-                        </div>
+                        {{/each}}
                     </div>
                 </div>
             </div>
