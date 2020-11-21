@@ -48,6 +48,33 @@ app.get("/signIn",function(req,res){
 app.get("/signUp",function(req,res){
     res.render('account/signUp');
 });
+//admin
+//Dang ki
+app.get("/admin/index",function(req,res){
+    res.render('admin/index',{
+        layout:"main_admin",
+    });
+});
+app.get("/admin/course",function(req,res){
+    res.render('admin/course',{
+        layout:"main_admin",
+    });
+});
+app.get("/admin/user",function(req,res){
+    res.render('admin/user',{
+        layout:"main_admin",
+    });
+});
+app.get("/admin/chart",function(req,res){
+    res.render('admin/chart',{
+        layout:"main_admin",
+    });
+});
+// app.get("/admin/charts",function(req,res){
+//     res.render('admin/charts',{
+//         layout:"main_admin",
+//     });
+// });
 app.use((req, res, next) => {
     next(http_errors(404));
 })
