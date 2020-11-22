@@ -11,31 +11,30 @@ app.engine('.hbs',express_handlebars({
 app.set('view engine', '.hbs');
 
 app.use(express.static(__dirname + '/public'));
-app.use("/", express.static(__dirname + '/public'));
+app.use('/', express.static(__dirname + '/public'));
+app.get('/',(req,res)=>{
+    res.redirect('/user/home')
+});
 //Trang chu
-app.use('/',require('./Routes/home.route'));
+app.use('/user',require('./Routes/home.route'));
 //Lien lac
-app.get("/contact",function(req,res){
+app.get("/user/contact",function(req,res){
     res.render('users/contact');
 });
 //Khoahoc
-app.use('/',require('./Routes/courses.route'));
-//Chi tiet khoa hoc
-app.get("/coursesDetail",function(req,res){
-    res.render('users/coursesDetail');
-});
-//Chi tiet khoa hoc angular
+app.use('/user',require('./Routes/courses.route'));
+//Khoa hoc chi tiet angular
 app.get("/coursesDetailAngular",function(req,res){
     res.render('users/coursesDetailAngular');
 });
 //Lo trinh
-app.use('/',require('./Routes/routeCourse.route'));
+app.use('/user',require('./Routes/routeCourse.route'));
 //Gioi thieu
-app.get("/document",function(req,res){
+app.get("/user/document",function(req,res){
     res.render('users/document');
 });
 //Huong dan
-app.get("/help",function(req,res){
+app.get("/user/help",function(req,res){
     res.render('users/help');
 });
 //Giao vien
