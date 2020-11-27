@@ -3,6 +3,14 @@ const modelCourses=require('../Models/courses.model');
 const modelCategory=require('../Models/category.model');
 const router=express.Router();
 
+router.get('/courses/:id', async(req,res)=>{
+    const id= parseInt(req.params.id);
+    const courseDetail=await modelCourses.getCoursesById(id);
+    res.render('users/coursesDetail',{
+        courseDetail:courseDetail,
+    });
+});
+
 router.get('/courses', async(req,res)=>{
     const rows1=await modelCategory.getCategoryAll();
 
@@ -27,6 +35,12 @@ router.get('/courses', async(req,res)=>{
         navs: navs,
         // empty:rows.length===0
     });
-})
-//router.get('/rourses/detail/:id')
+});
+// router.get('/courses/detail/:id', async(req,res)=>{
+//     const id= parseInt(req.params.id);
+//     const courseDetail=await modelCourses.getCoursesById(id);
+//     res.render('users/coursesDetail',{
+//         courseDetail:courseDetail,
+//     });
+// });
 module.exports=router;

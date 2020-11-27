@@ -2,16 +2,25 @@ const port = 3000;
 const express = require('express');
 const express_handlebars = require('express-handlebars');
 const http_errors = require('http-errors')
+//const express_session = require('express-session');
 
 const app=express();
 
 app.engine('.hbs',express_handlebars({
-    extname: '.hbs'
+    extname: '.hbs',
+    helpers:{
+        section:function(name, options){
+            if(!this._sections){this._sections = {}};
+            this._sections[name] = options.fn(this);
+            return null;
+        }
+    },
 }));
 app.set('view engine', '.hbs');
 
-app.use(express.static(__dirname + '/public'));
-app.use('/', express.static(__dirname + '/public'));
+//app.use(express.static(__dirname + '/public'));
+app.use('/public', express.static(__dirname + '/public'));
+
 app.get('/',(req,res)=>{
     res.redirect('/user/home')
 });
@@ -27,7 +36,7 @@ app.use('/user',require('./Routes/courses.route'));
 app.get("/coursesDetailAngular",function(req,res){
     res.render('users/coursesDetailAngular');
 });
-//Lo trinh
+//Lo trinh cua user
 app.use('/user',require('./Routes/routeCourse.route'));
 //Gioi thieu
 app.get("/user/document",function(req,res){

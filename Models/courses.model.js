@@ -20,4 +20,9 @@ module.exports={
             rourses: rows,
         };
     },
+    getCoursesById: async(id)=>{
+        const sql=`SELECT *FROM ${tbCourse} WHERE id=${id}`;
+        const rows=await db.load(sql);
+        return rows;
+    },
 }
