@@ -1,13 +1,18 @@
 const express=require('express');
 const modelCourses=require('../Models/courses.model');
 const modelCategory=require('../Models/category.model');
+const modelVideo=require('../Models/video.model');
+const { getVideoDeatilAll } = require('../Models/video.model');
 const router=express.Router();
 
 router.get('/courses/:id', async(req,res)=>{
     const id= parseInt(req.params.id);
-    const courseDetail=await modelCourses.getCoursesById(id);
+    const video=parseInt(req.query.video) || 1;
+    const courseDetail=await getVideoDeatilAll(id,video);
+    const coursesList=await modelVideo.getVideoDeatilList(id);
     res.render('users/coursesDetail',{
-        courseDetail:courseDetail,
+        Detail:courseDetail,
+        List: coursesList,
     });
 });
 
@@ -36,11 +41,4 @@ router.get('/courses', async(req,res)=>{
         // empty:rows.length===0
     });
 });
-// router.get('/courses/detail/:id', async(req,res)=>{
-//     const id= parseInt(req.params.id);
-//     const courseDetail=await modelCourses.getCoursesById(id);
-//     res.render('users/coursesDetail',{
-//         courseDetail:courseDetail,
-//     });
-// });
 module.exports=router;

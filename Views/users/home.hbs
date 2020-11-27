@@ -88,7 +88,7 @@ noi dung chinh -->
         <h3 class="modtitle">
           <span>Lộ trình học tập</span>
         </h3>
-        <a href="/coursesRoute" title="Tất cả các lộ trình học tập" class="all-course mc-btn btn-style-1">Xem tất cả</a>
+        <a href="/user/coursesRoute" title="Tất cả các lộ trình học tập" class="all-course mc-btn btn-style-1">Xem tất cả</a>
         <div class="module-body">
           <div class="owl-carousel owl-theme" style="display: block; opacity: 1;">
             <!-- <div class="owl-wrapper-outer">
@@ -120,18 +120,18 @@ noi dung chinh -->
         <h3 class="modtitle">
           <span>Khoa học tiêu biểu</span>
         </h3>
-        <a href="/courses" title="Tất cả các lộ trình học tập" class="all-course mc-btn btn-style-1">Xem tất cả</a>
+        <a href="/user/courses" title="Tất cả các lộ trình học tập" class="all-course mc-btn btn-style-1">Xem tất cả</a>
         <div class="module-body">
           <div class="owl-carousel owl-theme" style="display: block; opacity: 1;">
             {{#each courses}}
             <div class="item" style="width: auto;">
               <div class="mc-item mc-item-1">
                 <div class="image-heading">
-                  <a href="#" title="{{name}}"><img style="max-height: 180px;" title="{{name}}"
+                  <a href="/user/courses/{{id}}" title="{{name}}"><img style="max-height: 180px;" title="{{name}}"
                       src="../../public/img/{{image}}" alt="Xay dung khoa hoc"></a>
                 </div>
                 <div class="meta-categories">
-                  <a href="#" title="{{name}}">{{name}}</a>
+                  <a href="/user/courses/{{id}}" title="{{name}}">{{name}}</a>
                 </div>
                 <div class="content-item">
                   <div class="image-author">

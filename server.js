@@ -38,10 +38,13 @@ app.get("/coursesDetailAngular",function(req,res){
 });
 //Lo trinh cua user
 app.use('/user',require('./Routes/routeCourse.route'));
+//Giao vien view user
+app.use('/user',require('./Routes/tearcher.user.router'));
 //Gioi thieu
 app.get("/user/document",function(req,res){
     res.render('users/document');
 });
+
 //Huong dan
 app.get("/user/help",function(req,res){
     res.render('users/help');

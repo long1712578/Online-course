@@ -5,7 +5,7 @@ const tbTeacher='user';
 
 module.exports={
     getTeacherAll: async()=>{
-        const sql = `SELECT * FROM ${tbTeacher}`;
+        const sql = `SELECT * FROM ${tbTeacher} WHERE type=2`;
         const rows = await db.load(sql);
         return rows;
     },
