@@ -1,5 +1,6 @@
 const mysql =require('mysql');
 const db=require('../utils/db');
+const tbRoute='route';
 const tbCourse='course';
 const pageSize=6;
 
@@ -25,4 +26,11 @@ module.exports={
         const rows=await db.load(sql);
         return rows;
     },
+    getCoursesByRouteId: async(idRoute)=>{
+        const sql=`select *
+        from (SELECT c.* FROM ${tbCourse} c inner join
+             ${tbRoute} r on r.id=c.idroute) kq where kq.idRoute=${idRoute} `;
+        const rows=await db.load(sql);
+        return rows;
+    }
 }
