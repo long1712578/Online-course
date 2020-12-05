@@ -1,6 +1,6 @@
 body {
 	background: #eeeeee;
-	font-family: 'Varela Round', sans-serif;
+	font-family: 'Roboto',sans-serif;
 }
 .navbar {
 	color: #fff;
@@ -549,4 +549,7 @@ form {
 	}
 .list-group-item.color{
 	background-color: #926dde !important;
+}
+#cart-badge{
+	top:-45px;
 }

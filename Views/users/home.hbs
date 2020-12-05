@@ -1,43 +1,43 @@
-
-  <!-- navbar header-->
-  {{> header}}
-  <!--header Couse -->
+<!-- navbar header-->
+{{> header}}
+<!--header Couse -->
 <div class="container">
   <div class="row py-2">
-      <div class="col-md-3">
-        <section style="margin-left: 20px;" class="mb-4">
-          <!-- <div class="card-header bg-primary text-white text-uppercase"></div> -->
-          <h6 class="font-weight-bold mb-3"><i class="fa fa-money"></i> Giá </h6>
-    
-          <div class="form-check pl-0 mb-3">
-            <input type="radio" class="form-check-input" id="under25" name="materialExampleRadios">
-            <label class="form-check-label small text-uppercase card-link-secondary" for="under25">Dưới 1.000.000 đ</label>
-          </div>
-          <div class="form-check pl-0 mb-3">
-            <input type="radio" class="form-check-input" id="2550" name="materialExampleRadios">
-            <label class="form-check-label small text-uppercase card-link-secondary" for="2550">1.000.000 đ - 1.500.000 đ</label>
-          </div>
-          <div class="form-check pl-0 mb-3">
-            <input type="radio" class="form-check-input" id="50100" name="materialExampleRadios">
-            <label class="form-check-label small text-uppercase card-link-secondary" for="50100">1.500.000 đ - 2.500.000 đ</label>
-          </div>
-          <div class="form-check pl-0 mb-3">
-            <input type="radio" class="form-check-input" id="100200" name="materialExampleRadios">
-            <label class="form-check-label small text-uppercase card-link-secondary" for="100200">Trên 2.500.000 đ</label>
-          </div>
-        </section>
-        <!-- Section: Price -->
-        <div class="card-header bg-primary text-white text-uppercase">
-          <i class="fa fa-list"></i> Danh mục</div>
-        <ul class="list-group category_block">
-          <li class="list-group-item"><a href="category.html">Khoá học</a></li>
-          <li class="list-group-item"><a href="category.html">Giảng viên</a></li>
-          <li class="list-group-item"><a href="category.html">Lộ trinh</a></li>
-          <li class="list-group-item"><a href="category.html">Liên lạc</a></li>
-          <li class="list-group-item"><a href="category.html">Hướng dẫn</a></li>
-        </ul>
-      </div>
-  <!-- </div> -->
+    <div class="col-md-3">
+      <section style="margin-left: 20px;" class="mb-4">
+        <!-- <div class="card-header bg-primary text-white text-uppercase"></div> -->
+        <h6 class="font-weight-bold mb-3"><i class="fa fa-money"></i> Giá </h6>
+
+        <div class="form-check pl-0 mb-3">
+          <input type="radio" class="form-check-input" id="under25" name="materialExampleRadios">
+          <label class="form-check-label small text-uppercase card-link-secondary" for="under25">Dưới 1.000.000
+            đ</label>
+        </div>
+        <div class="form-check pl-0 mb-3">
+          <input type="radio" class="form-check-input" id="2550" name="materialExampleRadios">
+          <label class="form-check-label small text-uppercase card-link-secondary" for="2550">1.000.000 đ - 1.500.000
+            đ</label>
+        </div>
+        <div class="form-check pl-0 mb-3">
+          <input type="radio" class="form-check-input" id="50100" name="materialExampleRadios">
+          <label class="form-check-label small text-uppercase card-link-secondary" for="50100">1.500.000 đ - 2.500.000
+            đ</label>
+        </div>
+        <div class="form-check pl-0 mb-3">
+          <input type="radio" class="form-check-input" id="100200" name="materialExampleRadios">
+          <label class="form-check-label small text-uppercase card-link-secondary" for="100200">Trên 2.500.000 đ</label>
+        </div>
+      </section>
+      <!-- Section: Price -->
+      <div class="card-header bg-primary text-white text-uppercase">
+        <i class="fa fa-list"></i> Danh mục</div>
+        {{#each this.category}}
+      <ul class="list-group category_block">
+        <li class="list-group-item"><a href="/user/courses?category={{id}}">{{name}}</a></li>
+      </ul>
+      {{/each }}
+    </div>
+    <!-- </div> -->
     <div class="col-md-9">
       <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
         <ol class="carousel-indicators">
@@ -79,93 +79,202 @@
       </div>
     </div>
   </div>
+</div>
+{{!-- 3-4 Khoa hoc noi bac trong tuan --}}
+<section id="mc-section-4" class="mc-section-3 section">
+  <div class="container">
+    <div class="module so-deals">
+      <h3 class="modtitle">
+        <span>Khoa học nổi bậc trong tuần</span>
+      </h3>
+      <a href="/user/courses" title="Tất cả các lộ trình học tập" class="all-course mc-btn btn-style-1">Xem tất cả</a>
+      <div class="module-body">
+        <div class="owl-carousel owl-theme" style="display: block; opacity: 1;">
+          {{#each courses}}
+          <div class="item" style="width: auto;">
+            <div class="mc-item mc-item-1">
+              <div class="image-heading">
+                <a href="/user/courses/{{id}}" title="{{name}}"><img style="max-height: 180px;" title="{{name}}"
+                    src="../../public/img/{{image}}" alt="Xay dung khoa hoc"></a>
+              </div>
+              <div class="meta-categories">
+                <a href="/user/courses/{{id}}" title="{{name}}">{{name}}</a>
+              </div>
+              <div class="content-item">
+                <div class="image-author">
+                  <a href="#" title="Giảng viên: Phạm Đình Long">...</a>
+                </div>
+                <h4><a href="#" title="{{name}}">{{name}}</a></h4>
+                <div class="name-author">
+                  <span>Bởi
+                    <a href="#" title="Giảng viên: Phạm Đình Long">Phạm Đình Long</a>
+                  </span>
+                </div>
+              </div>
+              <div class="ft-item">
+                <div class="rating">
+                  <span class="fa fa-star checked"></span>
+                  <span class="fa fa-star checked"></span>
+                  <span class="fa fa-star checked"></span>
+                  <span class="fa fa-star"></span>
+                  <span class="fa fa-star"></span>
+                </div>
+                <div class="view-info">
+                  <i class="fa fa-users" aria-hidden="true"></i>{{view}}
+                </div>
+                <div class="price">
+                  <span>{{price}} $</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          {{/each}}
+        </div>
+      </div>
+    </div>
   </div>
-  <!-- 
-noi dung chinh -->
-  <section id="mc-section-4" class="mc-section-3 section">
-    <div class="container">
-      <div class="module so-deals">
-        <h3 class="modtitle">
-          <span>Lộ trình học tập</span>
-        </h3>
-        <a href="/user/coursesRoute" title="Tất cả các lộ trình học tập" class="all-course mc-btn btn-style-1">Xem tất cả</a>
-        <div class="module-body">
-          <div class="owl-carousel owl-theme" style="display: block; opacity: 1;">
-            <!-- <div class="owl-wrapper-outer">
+</section>
+<!-- 
+Khoa hoc duoc xem nhieu nhat -->
+<section id="mc-section-4" class="mc-section-3 section">
+  <div class="container">
+    <div class="module so-deals">
+      <h3 class="modtitle">
+        <span>Khoa học xem nhiều nhất</span>
+      </h3>
+      <a href="/user/courses" title="Tất cả các lộ trình học tập" class="all-course mc-btn btn-style-1">Xem tất cả</a>
+      <div class="module-body">
+        <div class="owl-carousel owl-theme" style="display: block; opacity: 1;">
+          {{#each courseView}}
+          <div class="item" style="width: auto;">
+            <div class="mc-item mc-item-1">
+              <div class="image-heading">
+                <a href="/user/courses/{{id}}" title="{{name}}"><img style="max-height: 180px;" title="{{name}}"
+                    src="../../public/img/{{image}}" alt="Xay dung khoa hoc"></a>
+              </div>
+              <div class="meta-categories">
+                <a href="/user/courses/{{id}}" title="{{name}}">{{name}}</a>
+              </div>
+              <div class="content-item">
+                <div class="image-author">
+                  <a href="#" title="Giảng viên: Phạm Đình Long">...</a>
+                </div>
+                <h4><a href="#" title="{{name}}">{{name}}</a></h4>
+                <div class="name-author">
+                  <span>Bởi
+                    <a href="#" title="Giảng viên: Phạm Đình Long">Phạm Đình Long</a>
+                  </span>
+                </div>
+              </div>
+              <div class="ft-item">
+                <div class="rating">
+                  <span class="fa fa-star checked"></span>
+                  <span class="fa fa-star checked"></span>
+                  <span class="fa fa-star checked"></span>
+                  <span class="fa fa-star"></span>
+                  <span class="fa fa-star"></span>
+                </div>
+                <div class="view-info">
+                  <i class="fa fa-users" aria-hidden="true"></i>{{view}}
+                </div>
+                <div class="price">
+                  <span>{{price}} $</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          {{/each}}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{{!-- Khoa hoc moi nhat --}}
+<section id="mc-section-4" class="mc-section-3 section">
+  <div class="container">
+    <div class="module so-deals">
+      <h3 class="modtitle">
+        <span>Khoa học mới nhất</span>
+      </h3>
+      <a href="/user/courses" title="Tất cả các lộ trình học tập" class="all-course mc-btn btn-style-1">Xem tất cả</a>
+      <div class="module-body">
+        <div class="owl-carousel owl-theme" style="display: block; opacity: 1;">
+          {{#each coursesTop10}}
+          <div class="item" style="width: auto;">
+            <div class="mc-item mc-item-1">
+              <div class="image-heading">
+                <a href="/user/courses/{{id}}" title="{{name}}"><img style="max-height: 180px;" title="{{name}}"
+                    src="../../public/img/{{image}}" alt="Xay dung khoa hoc"></a>
+              </div>
+              <div class="meta-categories">
+                <a href="/user/courses/{{id}}" title="{{name}}">{{name}}</a>
+              </div>
+              <div class="content-item">
+                <div class="image-author">
+                  <a href="#" title="Giảng viên: Phạm Đình Long">...</a>
+                </div>
+                <h4><a href="#" title="{{name}}">{{name}}</a></h4>
+                <div class="name-author">
+                  <span>Bởi
+                    <a href="#" title="Giảng viên: Phạm Đình Long">Phạm Đình Long</a>
+                  </span>
+                </div>
+              </div>
+              <div class="ft-item">
+                <div class="rating">
+                  <span class="fa fa-star checked"></span>
+                  <span class="fa fa-star checked"></span>
+                  <span class="fa fa-star checked"></span>
+                  <span class="fa fa-star"></span>
+                  <span class="fa fa-star"></span>
+                </div>
+                <div class="view-info">
+                  <i class="fa fa-users" aria-hidden="true"></i>{{view}}
+                </div>
+                <div class="price">
+                  <span>{{price}} $</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          {{/each}}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{{!-- linh vuc tieu bieu --}}
+<section id="mc-section-4" class="mc-section-3 section">
+  <div class="container">
+    <div class="module so-deals">
+      <h3 class="modtitle">
+        <span>Lĩnh vực đăng kí nhiều nhất</span>
+      </h3>
+      <a href="/user/coursesRoute" title="Tất cả các lộ trình học tập" class="all-course mc-btn btn-style-1">Xem tất
+        cả</a>
+      <div class="module-body">
+        <div class="owl-carousel owl-theme" style="display: block; opacity: 1;">
+          <!-- <div class="owl-wrapper-outer">
             <div class="owl-wrapper" style="width: 5508px;left: 0px;display: block;"> -->
-            <!-- angular -->
-            {{#each route}}
-            <div class="item" style="width: auto;">
-              <div class="learning-path mc-item mc-item-1">
-                <div class="image-heading">
-                  <a href="#" title="{{name}}"><img style="max-height: 180px;" title="{{name}}"
-                      src="../../public/img/{{image}}" alt="Lo trinh hoc angular"></a>
+          <!-- angular -->
+          {{#each route}}
+          <div class="item" style="width: auto;">
+            <div class="learning-path mc-item mc-item-1">
+              <div class="image-heading">
+                <a href="#" title="{{name}}"><img style="max-height: 180px;" title="{{name}}"
+                    src="../../public/img/{{image}}" alt="Lo trinh hoc angular"></a>
 
-                </div>
-                <div class="content-item">
-                  <h4 href="#" title="{{name}}">{{name}}</h4>
-                </div>
+              </div>
+              <div class="content-item">
+                <h4 href="#" title="{{name}}">{{name}}</h4>
               </div>
             </div>
-            {{/each}}
           </div>
+          {{/each}}
         </div>
       </div>
     </div>
-  </section>
-{{!-- khoa hoc tieu bieu --}}
-  <section id="mc-section-4" class="mc-section-3 section">
-    <div class="container">
-      <div class="module so-deals">
-        <h3 class="modtitle">
-          <span>Khoa học tiêu biểu</span>
-        </h3>
-        <a href="/user/courses" title="Tất cả các lộ trình học tập" class="all-course mc-btn btn-style-1">Xem tất cả</a>
-        <div class="module-body">
-          <div class="owl-carousel owl-theme" style="display: block; opacity: 1;">
-            {{#each courses}}
-            <div class="item" style="width: auto;">
-              <div class="mc-item mc-item-1">
-                <div class="image-heading">
-                  <a href="/user/courses/{{id}}" title="{{name}}"><img style="max-height: 180px;" title="{{name}}"
-                      src="../../public/img/{{image}}" alt="Xay dung khoa hoc"></a>
-                </div>
-                <div class="meta-categories">
-                  <a href="/user/courses/{{id}}" title="{{name}}">{{name}}</a>
-                </div>
-                <div class="content-item">
-                  <div class="image-author">
-                    <a href="#" title="Giảng viên: Phạm Đình Long">...</a>
-                  </div>
-                  <h4><a href="#" title="{{name}}">{{name}}</a></h4>
-                  <div class="name-author">
-                    <span>Bởi
-                      <a href="#" title="Giảng viên: Phạm Đình Long">Phạm Đình Long</a>
-                    </span>
-                  </div>
-                </div>
-                <div class="ft-item">
-                  <div class="rating">
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star"></span>
-                    <span class="fa fa-star"></span>
-                  </div>
-                  <div class="view-info">
-                    <i class="fa fa-users" aria-hidden="true"></i>16
-                  </div>
-                  <div class="price">
-                    <span>{{price}} $</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-            {{/each}}
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-  <!-- Footer -->
+  </div>
+</section>
+<!-- Footer -->
 {{> footer}}
