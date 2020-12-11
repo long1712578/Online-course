@@ -69,11 +69,14 @@ router.get('/courses', async(req,res)=>{
 }
 });
 
-router.post('/courses/search',async(req,res)=>{
-    const cat=parseInt(req.query.category)||0;
+router.post('/courses',async(req,res)=>{
+    //const cat=parseInt(req.query.category)||0;
+    const cat=req;
+    const page=parseInt(req.query.page)||1;
+    console.log(cat);
     const rowsCat=await modelCategory.getCategoryAll();
     let keyWord = req.body.keyWord;
-    console.log(keyWord);
+    
     if(cat===0){
         const rows=await modelCourses.getCoursesSearch(page,keyWord);
         const pages=[];
