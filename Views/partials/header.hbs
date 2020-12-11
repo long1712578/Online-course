@@ -5,10 +5,11 @@
     </button>
     <!-- Collection of nav links, forms, and other content for toggling -->
     <div id="navbarCollapse" class="collapse navbar-collapse justify-content-start">
-      <form class="navbar-form form-inline">
+      <form class="navbar-form form-inline" action="/user/courses/search" method = "post">
         <div class="input-group search-box">
-          <input type="text" id="search" class="form-control" placeholder="Search here...">
-          <span class="input-group-addon"><i class="material-icons">&#xE8B6;</i></span>
+          <input type="text" id="search" class="form-control" name="keyWord" placeholder="Search here...">
+          
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit"><i class="material-icons">&#xE8B6;</i></button>
         </div>
       </form>
       <div class="navbar-nav ml-auto">

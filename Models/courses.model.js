@@ -38,6 +38,25 @@ module.exports={
             rourses: rows,
         };
     },
+    getCoursesSearch: async(page,keyWord)=>{
+        //Tinh tong san pham
+        
+        let sqlFTS=`SELECT count(*) AS total from ${tbCourse} where match
+            (name,describe) against ("${keyWord}" with query expansion)`;
+        const rs= await db.load(sqlFTS);
+        //Tong trang
+        const totalPage=rs[0].total;
+        const pageTotal=Math.floor(totalPage/ pageSize)+1;
+        const offset=(page-1)*pageSize;
+
+        const sql = `SELECT * from ${tbCourse} where match
+            (name,describe) against ("${keyWord}" with query expansion)`;
+        const rows = await db.load(sql);
+        return {
+            pageTotal:pageTotal,
+            rourses: rows,
+        };
+    },
     getCoursesById: async(id)=>{
         const sql=`SELECT *FROM ${tbCourse} WHERE id=${id}`;
         const rows=await db.load(sql);
