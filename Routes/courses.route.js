@@ -70,14 +70,13 @@ router.get('/courses', async(req,res)=>{
 });
 
 router.post('/courses',async(req,res)=>{
-    //const cat=parseInt(req.query.category)||0;
-    const cat=req;
+    const cat=parseInt(req.query.category)||0;
+    //const cat=req;
     const page=parseInt(req.query.page)||1;
-    console.log(cat);
+   
     const rowsCat=await modelCategory.getCategoryAll();
     let keyWord = req.body.keyWord;
     
-    if(cat===0){
         const rows=await modelCourses.getCoursesSearch(page,keyWord);
         const pages=[];
     for (let i=0; i< rows.pageTotal;i++){
@@ -99,30 +98,6 @@ router.post('/courses',async(req,res)=>{
         
         // empty:rows.length===0
     });
-    }
-    // --------
-    if(cat===1 || cat===2){
-        const rows=await modelCourses.getCoursesCatSearch(cat,page,keyWord)
-        const pages=[];
-    for (let i=0; i< rows.pageTotal;i++){
-        pages[i]= {value: i+1, active: (i+1)===page,cat:cat};
-    }
-    const navs={};
-    if(page>1){
-        navs.prev= page-1;
-    }
-    if(page<rows.pageTotal){
-        navs.next=page+1;
-    }
-    //Phan trang
-    res.render('users/courses',{
-        courses:rows.rourses,
-        category:rowsCat,
-        pages:pages,
-        navs: navs,
-        // empty:rows.length===0
-    }); 
-}
 })
 
 module.exports=router;

@@ -551,5 +551,14 @@ form {
 	background-color: #926dde !important;
 }
 #cart-badge{
-	top:-45px;
+	top:-32px;
+}
+.mc-item div{
+	padding-left: 15px;
+}
+.col-sm-6{
+	margin-top: 5px;
+}
+.mc-item a img{
+	width: 100%;
 }

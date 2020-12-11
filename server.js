@@ -19,6 +19,7 @@ app.engine('.hbs',express_handlebars({
 }));
 app.set('view engine', '.hbs');
 
+
 app.use(body_parser.json());
 app.use(body_parser.urlencoded({
     extended: true
@@ -87,11 +88,7 @@ app.get("/admin/chart",function(req,res){
         layout:"main_admin",
     });
 });
-// app.get("/admin/charts",function(req,res){
-//     res.render('admin/charts',{
-//         layout:"main_admin",
-//     });
-// });
+
 app.use((req, res, next) => {
     next(http_errors(404));
 })
