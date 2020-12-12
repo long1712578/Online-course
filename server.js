@@ -3,20 +3,17 @@ const express = require('express');
 const express_handlebars = require('express-handlebars');
 const http_errors = require('http-errors');
 const body_parser = require('body-parser');
-//const express_session = require('express-session');
+const express_handlebars_sections = require('express-handlebars-sections');
 
 const app=express();
 
 app.engine('.hbs',express_handlebars({
     extname: '.hbs',
     helpers:{
-        section:function(name, options){
-            if(!this._sections){this._sections = {}};
-            this._sections[name] = options.fn(this);
-            return null;
+        section:express_handlebars_sections(),
         }
     },
-}));
+));
 app.set('view engine', '.hbs');
 
 
