@@ -55,7 +55,14 @@ router.post('/signIn', async (req,res)=>{
   // req.session.authUser = user;
 
   // let url = req.session.retUrl || '/';
-  res.redirect('/');
+  if(user.type===1){
+    res.redirect('/user');
+  }else if(user.type===2){
+    res.redirect('/teacher')
+  }else{
+    res.redirect('/admin/index')
+  }
+ 
 })
 
 router.get('/is-available', async function (req, res) {
