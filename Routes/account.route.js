@@ -34,6 +34,29 @@ router.post('/signUp', async function (req, res) {
 router.get('/signIn', async function (req, res) {
   res.render('account/signIn');
 })
+router.post('/signIn', async (req,res)=>{
+ 
+  const user = await userModel.getUserByUserName(req.body.username);
+  
+  if (user === null) {
+    return res.render('account/signIn', {
+      err_message: 'Invalid username or password.'
+    });
+  }
+
+  const ret = bcrypt.compareSync(req.body.password, user.Password);
+  if (ret === false) {
+    return res.render('account/signIn', {
+      err_message: 'Invalid username or password.'
+    });
+  }
+
+  // req.session.isAuth = true;
+  // req.session.authUser = user;
+
+  // let url = req.session.retUrl || '/';
+  res.redirect('/');
+})
 
 router.get('/is-available', async function (req, res) {
   const username = req.query.user;
