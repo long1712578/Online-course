@@ -26,7 +26,7 @@ router.post('/signUp', async function (req, res) {
     level:req.body.level
     
   }
-
+  
   await userModel.add(user);
   res.render('account/signIn');
 })
@@ -51,12 +51,12 @@ router.post('/signIn', async (req,res)=>{
     });
   }
 
-  // req.session.isAuth = true;
-  // req.session.authUser = user;
+  req.session.isAuth=true;
+  req.session.authUser=user;
 
   // let url = req.session.retUrl || '/';
   if(user.type===1){
-    res.redirect('/user');
+    res.redirect('/user/home');
   }else if(user.type===2){
     res.redirect('/teacher')
   }else{
@@ -73,5 +73,8 @@ router.get('/is-available', async function (req, res) {
   }
 
   res.json(false);
+})
+router.get('/profile',async (req,res)=>{
+  res.render('account/profile');
 })
 module.exports=router;
