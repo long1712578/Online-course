@@ -18,6 +18,8 @@ module.exports=(app)=>{
     app.use('/user',require('../Routes/routeCourse.route'));
     //Giao vien view user
     app.use('/user',require('../Routes/tearcher.user.router'));
+    //Giỏ hàng
+    app.use('/user',require('../Routes/cart.route'));
     //Gioi thieu
     app.get("/user/document",function(req,res){
         res.render('users/document');
@@ -29,14 +31,9 @@ module.exports=(app)=>{
     });
     //Giao vien
     app.use('/teacher',require('../Routes/teacher.route'));
-    //Dang nhap
-    app.get("/signIn",function(req,res){
-        res.render('account/signIn');
-    });
-    //Dang ki
-    app.get("/signUp",function(req,res){
-        res.render('account/signUp');
-    });
+    
+    //Tài khoản
+    app.use('/',require('../Routes/account.route'));
     //admin
     //Dang ki
     app.get("/admin/index",function(req,res){

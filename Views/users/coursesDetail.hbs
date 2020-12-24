@@ -1,3 +1,12 @@
+{{#section 'js'}}
+<script>
+  $('.addItem').on('click', function () {
+    const id = $(this).data('id');
+    $('#txtProId').val(id);
+    $('#frmAddItem').submit();
+  });
+</script>
+{{/section}}
 {{> header}}
 <!-- -Content-->
 <section class="content">
@@ -15,6 +24,10 @@
             </li>
             {{/Detail}}
         </ul>
+        <form action="/user/cart/add" method="POST" id="frmAddItem">
+            <input type="hidden" name="id" id="txtProId">
+            {{!-- <input type="hidden" name="quantity" id="txtQ"> --}}
+        </form>
         <div class="row">
             <div class="col-md-5">
                 <div class="sidebar-course-intro">
@@ -22,18 +35,22 @@
                         {{#Detail}}
                         <div class="inner">
                             <div class="embed-responsive embed-responsive-16by9">
-            
+
                                 <iframe class="embed-responsive-item" width="560" height="315" src="{{PathVideo}}"
                                     frameborder="0"
                                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                                     allowfullscreen></iframe>
                             </div>
                         </div>
-                        
+
                         <div class="price">
                             <span class="from">Học phí: </span>
                             <span class="amount">{{price}}</span>
                         </div>
+                        {{!-- <button type="button" class="btn btn-success" id="register"> <i
+                                class="fa fa-user-plus"></i>Đăng kí</button> --}}
+                        <a data-id="{{IdCourse}}" class="btn btn-success addItem" href="javascript:;" role="button" id="register"><i
+                                class="fa fa-user-plus"></i>Đăng kí</a>
                         {{/Detail}}
                     </div>
                 </div>

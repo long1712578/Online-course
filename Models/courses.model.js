@@ -16,9 +16,10 @@ module.exports={
         const offset=(page-1)*pageSize;
         const sql = `SELECT * FROM ${tbCourse} LIMiT ${pageSize} OFFSET ${offset}`;
         const rows = await db.load(sql);
+        //const
         return {
             pageTotal:pageTotal,
-            rourses: rows,
+            rourses: rows
         };
     },
     getCoursesCatAll: async(cat,page)=>{

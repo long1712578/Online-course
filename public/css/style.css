@@ -306,10 +306,11 @@ form {
     transform: perspective(1px) translateZ(0);
 }
 
-.mc-item-2:hover {
-    -ms-transform: scale(1.1,1.1); /* IE 9 */
-  transform: scale(1.1,1.1); /* Standard syntax */
-}
+/* .mc-item-2:hover {
+    -ms-transform: scale(1.1,1.1); 
+  	transform: scale(1.1,1.1); 
+} */
+
 .categories-content .content .mc-item {
     margin: 15px 0;
     min-height: 365px;
@@ -410,6 +411,13 @@ form {
 		color: #666;
 		margin: 15px 20px 5px;
 	}
+	.video-course-intro #register {
+		display: inline-block;
+		font-family: 'Roboto', sans-serif;
+		font-size: 20px;
+		color: #666;
+		margin: 15px 10px 30px 25px;
+	}
 	.producttab .tabsslider {
 		margin-bottom: 30px;
 		padding: 0;
@@ -499,9 +507,9 @@ form {
 		-ms-transform: scale(1.1,1.1); 
 		transform: scale(1.1,1.1);
 	}
-	.content-item h4 a{
+	.content-item h5 a{
 		color: #333;
-		font-size: 18px;
+		font-size: 16px;
 		text-align: center;
 	}
 	.tit-section {
@@ -550,15 +558,26 @@ form {
 .list-group-item.color{
 	background-color: #926dde !important;
 }
-#cart-badge{
-	top:-32px;
-}
-.mc-item div{
+
+/* .mc-item div{
 	padding-left: 15px;
-}
+} */
 .col-sm-6{
-	margin-top: 5px;
+	margin-top: 30px;
 }
 .mc-item a img{
 	width: 100%;
+}
+.nav-shop__circle{
+	font-size:9px;display:inline-block;
+	background:#384aeb;color:#fff;padding:0px 5px;
+	border-radius:50%;position:absolute;;right:-35px;
+	top:-35px !important;
+}
+.mc-item .ft-item .price{
+	/* display: inline-block; */
+	font-family: 'Roboto', sans-serif;
+	font-size: 15px;
+	color: #666;
+	float: right;
 }
