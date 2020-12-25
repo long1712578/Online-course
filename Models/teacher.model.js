@@ -9,4 +9,9 @@ module.exports={
         const rows = await db.load(sql);
         return rows;
     },
+    getTeacherById: async(id)=>{
+        const sql = `SELECT * FROM ${tbTeacher} WHERE type=2 and Id=${id}`;
+        const rows = await db.load(sql);
+        return rows;
+    },
 }

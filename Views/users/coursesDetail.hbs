@@ -1,11 +1,25 @@
 {{#section 'js'}}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.3.2/jquery.rateyo.min.js"></script>
 <script>
-  $('.addItem').on('click', function () {
-    const id = $(this).data('id');
-    $('#txtProId').val(id);
-    $('#frmAddItem').submit();
-  });
+    $('.addItem').on('click', function () {
+        const id = $(this).data('id');
+        $('#txtProId').val(id);
+        $('#frmAddItem').submit();
+    });
+
+
+    $(function () {
+        $(".rateyo").rateYo().on("rateyo.change", function (e, data) {
+            var rating = data.rating;
+            $(this).parent().find('.score').text('Điểm :' + $(this).attr('data-rateyo-score'));
+            $(this).parent().find('.result').text('xếp hạng :' + rating);
+            $(this).parent().find('input[name=rating]').val(rating);
+        });
+    });
 </script>
+{{/section}}
+{{#section 'css'}}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.3.2/jquery.rateyo.min.css">
 {{/section}}
 {{> header}}
 <!-- -Content-->
@@ -49,8 +63,8 @@
                         </div>
                         {{!-- <button type="button" class="btn btn-success" id="register"> <i
                                 class="fa fa-user-plus"></i>Đăng kí</button> --}}
-                        <a data-id="{{IdCourse}}" class="btn btn-success addItem" href="javascript:;" role="button" id="register"><i
-                                class="fa fa-user-plus"></i>Đăng kí</a>
+                        <a data-id="{{IdCourse}}" class="btn btn-success addItem" href="javascript:;" role="button"
+                            id="register"><i class="fa fa-user-plus"></i>Đăng kí</a>
                         {{/Detail}}
                     </div>
                 </div>
@@ -115,12 +129,20 @@
                             </div>
 
                             <div class="tab-pane fade" id="review">
-                                <h4 class="sm black bold">Đánh giá</h4>
-                                <p>Khoá học này mình giới thiệu cho bạn về Angular</p>
-                                <p>Khoá học này mình giới thiệu cho bạn về Angular</p>
-                                <p>Khoá học này mình giới thiệu cho bạn về Angular</p>
-                                <p>Khoá học này mình giới thiệu cho bạn về Angular</p>
-                                <p>&nbsp;</p>
+                                {{#Detail}}
+                                <form action="/user/course-rating" method="POST">
+                                    <div class="rateyo" data-rateyo-rating="2.4" data-rateyo-num-stars="5"
+                                        data-rateyo-score="1"></div>
+                                    <span class='score'>0</span>
+                                    <span class='result'>0</span>
+                                    <input type="hidden" name="rating">
+                                    <input type="hidden" value="{{IdCourse}}" name="course"> 
+                                    
+                                    <p>&nbsp;</p>
+                                    <button class="btn btn-primary"type="submit" style="margin-top: 20px; float:right">
+                                    <i class="fa fa-star"></i> Đánh giá</button>
+                                </form>
+                                {{/Detail}}
                             </div>
                         </div>
                     </div>

@@ -73,7 +73,7 @@
                   <option value="1">Dưới 1.000.000</option>
                   <option value="2">1.000.000-2.000.000</option>
                   <option value="3">Trên 2.000.000</option>
-                  
+
                 </select>
               </form>
             </div>
@@ -83,24 +83,24 @@
         <!-- -content product -->
         <div class="content">
           <div class="row">
-            {{#each courses}}
+            {{#each courseStar}}
             <div class="col-sm-6 col-md-4">
               <div class="card h-100">
                 <div class="mc-item mc-item-2">
                   <div class="image-heading">
-                    <a href="/user/courses/{{id}}" title="{{name}}"><img style="max-height: 180px;" title="{{name}}"
-                        src="../../public/img/{{this.image}}" alt="Xay dung khoa hoc"></a>
+                    <a href="/user/courses/{{courses.id}}" title="{{courses.name}}"><img style="max-height: 180px;" title="{{courses.name}}"
+                        src="../../public/img/{{courses.image}}" alt="Xay dung khoa hoc"></a>
                   </div>
 
                   <div class="card-body">
                     <div class="meta-categories">
-                      <a href="#" title="Hoc lap trinh web">{{name}}</a>
+                      <a href="#" title="Hoc lap trinh web">{{courses.name}}</a>
                     </div>
                     <div class="content-item">
                       <div class="image-author">
                         <a href="#" title="Giảng viên: Phạm Đình Long">...</a>
                       </div>
-                      <h5><a href="/user/courses/{{id}}" title="Xây dung trang web asp.net">Xây dựng trang {{name}}</a>
+                      <h5><a href="/user/courses/{{courses.id}}" title="Xây dung trang web asp.net">Xây dựng trang {{courses.name}}</a>
                       </h5>
                       <div class="name-author">
                         <span>Bởi
@@ -110,19 +110,19 @@
                     </div>
                     <div class="ft-item">
                       <div class="rating">
-                        {{#if rating}}
+                        {{#each star}}
                         <span class="fa fa-star checked"></span>
-                        {{/if}}
+                        {{/each}}
 
 
                       </div>
 
                       <div class="view-info">
-                        <i class="fa fa-users" aria-hidden="true"></i>16
+                        <i class="fa fa-users" aria-hidden="true"></i>{{courses.view}}
                       </div>
                       <div class="price">
                         <i class="fa fa-dollar"></i>
-                        <span>{{price}}</span>
+                        <span>{{courses.price}}</span>
                       </div>
 
                     </div>

@@ -1,54 +1,38 @@
 {{> header}}
-<!-- -----------Content------------ -->
 <section class="content">
     <div class="container">
         <ul class="breadcrumb">
             <li class="breadcrumb-item">
-                <a href="./TrangChu.html" title="Trang chủ"><i class="fa fa-home"></i></a>
+                <a href="/" title="Trang chủ"><i class="fa fa-home"></i></a>
             </li>
             <li class="breadcrumb-item">
-                <a href="./GiangVien.html" title="Khoá học">&nbsp; Giảng viên</a>
+                <a href="/user/contact-history" title="Hộp thoại" style="color: blueviolet;">&nbsp; Hộp thoại</a>
+            </li>
+            <li class="breadcrumb-item">
+                <a href="/user/contact" title="Hướng dẫn khoá học">&nbsp; Nhắn tin</a>
             </li>
         </ul>
-
+        
         <div class="row">
-            <div class="col-md-3">
-                <aside class="sidebar-categories">
-                    <div class="module">
-                        <h3 class="modtitle">
-                            <span>Danh mục bài viết</span>
-                        </h3>
-                        <ul class="list-group">
-                            <li class="list-group-item"><a href="#" title="Khoá học đề xuất">Giới thiệu</a>
-                            </li>
-                            <li class="list-group-item"><a href="#" title="Khoá học yêu thích">ASP dotnet</a></li>
-                            <li class="list-group-item"><a href="#" title="Khoá học hot">JQuery</a></li>
-                            <li class="list-group-item"><a href="#" title="Khoá học free">Mysql</a></li>
-                        </ul>
-                    </div>
-                </aside>
-            </div>
-            <div class="col-md-9">
+            <div class="col-md-12">
                 <div class="blog-list-content">
-                    {{#each teacher}}
+                    {{#each contact}}
                     <div class="post">
                         <div class="post-media">
                             <div class="image-thumb">
-                                <img src="../../public/img/{{image}}" style="max-width: 100%;" title="{{FullName}}" alt="{{FullName}}">
+                                <img src="../../public/img/hinh.jpg" style="max-width: 100%; border-radius: 90%;" title="user" alt="user">
                             </div>
                         </div>
                         <div class="post-body">
-                            <div class="post-title">
-                                <h3 class="md">
-                                    <a href="/user/teacher/{{Id}}" title="{{FullName}}">{{FullName}}</a>
-                                </h3>
-                            </div>
                             <div class="post-content">
-                                <p>{{level}}</p>
+                               
+                                <p> <label><strong>Tên: </strong> </label>&nbsp;{{name}}</p>
+                                <label><strong>Nội dung: </strong> </label>
+                                <textarea  class="form-control md-textarea" rows="2" >{{content}}</textarea>
+                               
+                                <p> <label><strong>Email: </strong> </label>&nbsp;{{email}}</p>
                             </div>
-                            <div class="post-link">
-                                <a href="/user/teacher/{{Id}}" title="Phạm Đình Long"><i class="fa fa-play-circle-o"></i> Xem thêm</a>
-                            </div>
+                            <h6 style="float: right;">{{commanDate}}</h6>
                         </div>
                     </div>
                     {{/each}}

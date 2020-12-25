@@ -2,18 +2,15 @@ module.exports=(app)=>{
     app.get('/',(req,res)=>{
         res.redirect('/user/home')
     });
+    app.get('/user',(req,res)=>{
+        res.redirect('/user/home')
+    });
     //Trang chu
     app.use('/user',require('../Routes/home.route'));
     //Lien lac
-    app.get("/user/contact",function(req,res){
-        res.render('users/contact');
-    });
+    app.use('/user',require('../Routes/contact.route'));
     //Khoahoc
     app.use('/user',require('../Routes/courses.route'));
-    //Khoa hoc chi tiet angular
-    app.get("/coursesDetailAngular",function(req,res){
-        res.render('users/coursesDetailAngular');
-    });
     //Lo trinh cua user
     app.use('/user',require('../Routes/routeCourse.route'));
     //Giao vien view user

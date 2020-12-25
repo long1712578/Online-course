@@ -10,6 +10,9 @@ router.get('/home', async(req,res)=>{
     const mCategory =await modelCategory.getCategoryAll();
     const mCourseTOP10=await modelCourses.getCoursesTopTen();
     const mCourseView= await modelCourses.getCoursesViewTen();
+    let coursesStar=[];
+    let courseTop10Star=[];
+    let courViewStar=[];
     mCourses.rourses.forEach(element => {
         
         
@@ -17,18 +20,33 @@ router.get('/home', async(req,res)=>{
         for(let i=0;i<element.rating;i++){
             stars.push({value:i});
         }
-        //console.log("stars: ", stars);
+        coursesStar.push({star:stars,courses:element});
+    }); 
 
-    });
-    //console.log("star: ",mCourses.rourses[0]);
-    
+    mCourseTOP10.forEach(element => {
+        stars=[];
+        for(let i=0;i<element.rating;i++){
+            stars.push({value:i});
+        }
+        courseTop10Star.push({star:stars,courses:element});
+    }); 
+
+    mCourseView.forEach(element => {
+        
+        
+        stars=[];
+        for(let i=0;i<element.rating;i++){
+            stars.push({value:i});
+        }
+        courViewStar.push({star:stars,courses:element});
+        
+    }); 
     res.render('users/home',{
-        courses:mCourses.rourses,
+        coursesStar:coursesStar,
         route: mRout,
         category: mCategory,
-        coursesTop10:mCourseTOP10,
-        courseView: mCourseView,
-        
+        courseTop10Star:courseTop10Star,
+        courViewStar:courViewStar,
         // empty:rows.length===0
     });
 })

@@ -2,6 +2,7 @@ const mysql =require('mysql');
 const db=require('../utils/db');
 const tbRoute='route';
 const tbCourse='course';
+const tbCourseRating='ratingcourse';
 const pageSize=6;
 
 
@@ -103,4 +104,19 @@ module.exports={
         const rows=await db.load(sql);
         return rows;
     },
+    increaseView: async(id)=>{
+        const sql=`update ${tbCourse} set view=view+1 where id=${id};`
+        const rows=await db.load(sql);
+    },
+    addRating: async(entity)=>{
+        return db.add(entity,tbCourseRating);
+    },
+    updateRating: async(id)=>{
+        const sql=`update ${tbCourse}
+        set rating = (
+        select avg(rating) from ${tbCourseRating}  where courseId=${id})
+        where id= ${id};`
+        const result=await db.load(sql);
+    }
+
 }

@@ -15,52 +15,53 @@
         <div class="col-6 mt-3">
             <h5><b>Hồ sơ</b></h5>
             <hr>
-            <form class="mt-4" role="form" action="/buyer/profile" method="post">
+            {{#myUser}}
+            <form class="mt-4" role="form" action="/profile" method="post">
                 <div class="form-group">
                     <label class="col-lg-3 col-form-label form-control-label">Họ tên</label>
                     <div class="col-lg-10">
-                        <input name="fullname" class="form-control" type="text" value="{{user.ho_ten}}">
+                        <input name="fullname" class="form-control" type="text" value="{{FullName}}">
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="col-lg-3 col-form-label form-control-label">Email</label>
                     <div class="col-lg-10">
-                        <input name="email" class="form-control" type="email" value="{{user.email}}">
+                        <input name="email" class="form-control" type="email" value="{{email}}">
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="col-lg-3 col-form-label form-control-label">Số điện thoại</label>
                     <div class="col-lg-10">
-                        <input name="phoneNumber" class="form-control" type="text" value="{{user.so_dien_thoai}}">
+                        <input name="phoneNumber" class="form-control" type="text" value="{{phone}}">
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="col-lg-3 col-form-label form-control-label">Giới tính</label>
                     <div class="col-lg-10">
-                        <select name="gender" class="form-control">
-                            <option {{#if user.isMale}}selected="selected"{{/if}} value='1'>Nam</option>
-                            <option {{#if user.isFemale}}selected="selected"{{/if}} value='2'>Nữ</option>
-                            <option {{#if user.isOther}}selected="selected"{{/if}} value='3'>Khác</option>
+                        <select name="gender" class="form-control" value="{{gender}}">
+                            <option value='1'>Nam</option>
+                            <option value='2'>Nữ</option>
+                            <option value='3'>Khác</option>
                         </select>
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="col-lg-3 col-form-label form-control-label">Date of birth</label>
                     <div class="col-lg-10">
-                        <input name="dob" class="form-control" type="date" value="{{user.ngay_sinh_view}}"
+                        <input name="dob" class="form-control" type="date" value="{{dob}}"
                             placeholder="Street">
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="col-lg-3 col-form-label form-control-label">Địa chỉ</label>
                     <div class="col-lg-10">
-                        <input name="address" class="form-control" type="text" value="{{user.dia_chi}}">
+                        <input name="address" class="form-control" type="text" value="{{address}}">
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="col-lg-3 col-form-label form-control-label">Tên đăng nhập</label>
                     <div class="col-lg-10">
-                        <input name="username" class="form-control" type="text" value="{{user.ten_dang_nhap}}">
+                        <input name="username" class="form-control" type="text" value="{{UserName}}">
                     </div>
                 </div>
 
@@ -76,11 +77,12 @@
 
                     </div>
                     <div class="col-lg-10 text-right">
-                        <a class="btn btn-secondary" href='/'>Hủy</a>
+                        <a class="btn btn-secondary" href='/profile'>Hủy</a>
                         <input type="submit" class="btn btn-primary" value="Lưu thay đổi">
                     </div>
                 </div>
             </form>
+            {{/myUser}}
         </div>
         <div class="col-3">
 

@@ -581,3 +581,40 @@ form {
 	color: #666;
 	float: right;
 }
+.row {
+    margin-right: -15px;
+    margin-left: -15px;
+}
+.row.col-md-12.blog-single-content.post.post-single {
+    padding-bottom: 0;
+}
+.row.col-md-12.blog-single-content.post {
+    overflow: hidden;
+    border-bottom: 1px solid #d4d4d4;
+    margin-bottom: 38px;
+}
+.image-thumb-trainer {
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    border-radius: 6px;
+    width: 300px;
+    height: 300px;
+    overflow: hidden;
+    margin-right: 30px;
+    margin-top: 10px;
+}
+.image-thumb-trainer.f1{
+	float: left;
+}
+.image-thumb-trainer.f1 img {
+	height: 200px;
+    vertical-align: middle;
+	border: 0;
+	
+}
+h6 {
+    font-size: 15px;
+}
+.author-info.author-content p title {
+    display: none;
+}
