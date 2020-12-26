@@ -61,10 +61,10 @@
                             <span class="from">Học phí: </span>
                             <span class="amount">{{price}}</span>
                         </div>
-                        {{!-- <button type="button" class="btn btn-success" id="register"> <i
-                                class="fa fa-user-plus"></i>Đăng kí</button> --}}
+                        {{#if ../isAuth}}
                         <a data-id="{{IdCourse}}" class="btn btn-success addItem" href="javascript:;" role="button"
                             id="register"><i class="fa fa-user-plus"></i>Đăng kí</a>
+                        {{/if}}
                         {{/Detail}}
                     </div>
                 </div>

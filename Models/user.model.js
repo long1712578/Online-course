@@ -16,9 +16,6 @@ module.exports={
         return row[0];
     },
     updateProfile: async(userId,FullName, email, phone, gender, dob, address, UserName,Password)=>{
-        // let condition=`Id=${userId}`
-        // let entity=`FullName='${FullName}', email='${email}', phone='${phone}', 
-        // gender='${gender}', dob='${dob}', address='${address}', UserName='${UserName}', Password='${Password}'`;
          const sql=`update ${tbUser} set 
         FullName='${FullName}', email='${email}', phone='${phone}', 
         gender='${gender}', dob='${dob}', address='${address}', UserName='${UserName}', Password='${Password}'

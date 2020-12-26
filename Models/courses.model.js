@@ -4,10 +4,83 @@ const tbRoute='route';
 const tbCourse='course';
 const tbCourseRating='ratingcourse';
 const pageSize=6;
-
+ 
 
 module.exports={
-    getCoursesAll: async(page)=>{
+    getCoursesAll: async(page,condition)=>{
+        //Tinh tong san pham
+        let sql1= `SELECT count(*) AS total FROM ${tbCourse}`;
+        let rs= await db.load(sql1);
+        //Tong trang
+        const totalPage=rs[0].total;
+        const pageTotal=Math.floor(totalPage/ pageSize)+1;
+        const offset=(page-1)*pageSize;
+        let sql = `SELECT * FROM ${tbCourse} ${condition}  LIMiT ${pageSize} OFFSET ${offset}`;
+        let rows = await db.load(sql);
+       
+        //const
+        return {
+            pageTotal:pageTotal,
+            rourses: rows
+        };
+    },
+
+    getCoursesPriceUnderOneMillion: async(page)=>{
+        //Tinh tong san pham
+        let sql1= `SELECT count(*) AS total FROM ${tbCourse} where price <1000000`;
+        const rs= await db.load(sql1);
+        //Tong trang
+        const totalPage=rs[0].total;
+        const pageTotal=Math.floor(totalPage/ pageSize)+1;
+        const offset=(page-1)*pageSize;
+        let sql = `SELECT * FROM ${tbCourse} where price <1000000  LIMiT ${pageSize} OFFSET ${offset}`;
+        let rows = await db.load(sql);
+       
+        //const
+        return {
+            pageTotal:pageTotal,
+            rourses: rows
+        };
+    },
+
+    getCoursesPriceOneToTwoMillion: async(page)=>{
+        //Tinh tong san pham
+        let sql1= `SELECT count(*) AS total FROM ${tbCourse} where price >=1000000  and price<=2000000`;
+        const rs= await db.load(sql1);
+        //Tong trang
+        const totalPage=rs[0].total;
+        const pageTotal=Math.floor(totalPage/ pageSize)+1;
+        const offset=(page-1)*pageSize;
+        let sql = `SELECT * FROM ${tbCourse} where price >=1000000  and price<=2000000 LIMiT ${pageSize} OFFSET ${offset}`;
+        let rows = await db.load(sql);
+       
+        //const
+        return {
+            pageTotal:pageTotal,
+            rourses: rows
+        };
+    },
+
+    getCoursesPriceOnTwoMillion: async(page)=>{
+        //Tinh tong san pham
+        let sql1= `SELECT count(*) AS total FROM ${tbCourse} where price >2000000`;
+        const rs= await db.load(sql1);
+        //Tong trang
+        const totalPage=rs[0].total;
+        const pageTotal=Math.floor(totalPage/ pageSize)+1;
+        const offset=(page-1)*pageSize;
+        let sql = `SELECT * FROM ${tbCourse} where price >2000000  LIMiT ${pageSize} OFFSET ${offset}`;
+        let rows = await db.load(sql);
+       
+        //const
+        return {
+            pageTotal:pageTotal,
+            rourses: rows
+        };
+    },
+
+
+    getCoursesPriceDESC: async(page)=>{
         //Tinh tong san pham
         let sql1= `SELECT count(*) AS total FROM ${tbCourse}`;
         const rs= await db.load(sql1);
@@ -15,14 +88,70 @@ module.exports={
         const totalPage=rs[0].total;
         const pageTotal=Math.floor(totalPage/ pageSize)+1;
         const offset=(page-1)*pageSize;
-        const sql = `SELECT * FROM ${tbCourse} LIMiT ${pageSize} OFFSET ${offset}`;
-        const rows = await db.load(sql);
+        let sql = `SELECT * FROM ${tbCourse} order by price desc LIMiT ${pageSize} OFFSET ${offset}`;
+        let rows = await db.load(sql);
+       
         //const
         return {
             pageTotal:pageTotal,
             rourses: rows
         };
     },
+
+    getCoursesPriceASC: async(page)=>{
+        //Tinh tong san pham
+        let sql1= `SELECT count(*) AS total FROM ${tbCourse}`;
+        const rs= await db.load(sql1);
+        //Tong trang
+        const totalPage=rs[0].total;
+        const pageTotal=Math.floor(totalPage/ pageSize)+1;
+        const offset=(page-1)*pageSize;
+        let sql = `SELECT * FROM ${tbCourse} order by price asc LIMiT ${pageSize} OFFSET ${offset}`;
+        let rows = await db.load(sql);
+        
+        //const
+        return {
+            pageTotal:pageTotal,
+            rourses: rows
+        };
+    },
+
+    getCoursesRateASC: async(page)=>{
+        //Tinh tong san pham
+        let sql1= `SELECT count(*) AS total FROM ${tbCourse}`;
+        const rs= await db.load(sql1);
+        //Tong trang
+        const totalPage=rs[0].total;
+        const pageTotal=Math.floor(totalPage/ pageSize)+1;
+        const offset=(page-1)*pageSize;
+        let sql = `SELECT * FROM ${tbCourse} order by rating asc LIMiT ${pageSize} OFFSET ${offset}`;
+        let rows = await db.load(sql);
+        
+        //const
+        return {
+            pageTotal:pageTotal,
+            rourses: rows
+        };
+    },
+
+    getCoursesRateDesc: async(page)=>{
+        //Tinh tong san pham
+        let sql1= `SELECT count(*) AS total FROM ${tbCourse}`;
+        const rs= await db.load(sql1);
+        //Tong trang
+        const totalPage=rs[0].total;
+        const pageTotal=Math.floor(totalPage/ pageSize)+1;
+        const offset=(page-1)*pageSize;
+        let sql = `SELECT * FROM ${tbCourse} order by rating desc LIMiT ${pageSize} OFFSET ${offset}`;
+        let rows = await db.load(sql);
+        
+        //const
+        return {
+            pageTotal:pageTotal,
+            rourses: rows
+        };
+    },
+    
     getCoursesCatAll: async(cat,page)=>{
         //Tinh tong san pham
         let sql1= `SELECT count(*) AS total FROM ${tbCourse} where idCategory=${cat}`;
@@ -52,7 +181,7 @@ module.exports={
         const offset=(page-1)*pageSize;
 
         const sql = `SELECT * from ${tbCourse} where match
-            (name,described) against ("${keyWord}" with query expansion)`;
+            (name,described) against ("${keyWord}" with query expansion) LIMiT ${pageSize} OFFSET ${offset}`;
         const rows = await db.load(sql);
         return {
             pageTotal:pageTotal,
@@ -71,7 +200,7 @@ module.exports={
         const offset=(page-1)*pageSize;
 
         const sql = `SELECT * from ${tbCourse} where idCategory=${cat} and match
-            (name,described) against ("${keyWord}" with query expansion)`;
+            (name,described) against ("${keyWord}" with query expansion) LIMiT ${pageSize} OFFSET ${offset} `;
         const rows = await db.load(sql);
         return {
             pageTotal:pageTotal,

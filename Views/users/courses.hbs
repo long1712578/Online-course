@@ -12,31 +12,6 @@
     </ul>
     <div class="row">
       <div class="col-md-3 col-md-pull-9">
-        {{!-- <section style="margin-left: 20px; font-size: 18px;" class="mb-4">
-          <!-- <div class="card-header bg-primary text-white text-uppercase"></div> -->
-          <h5 class="font-weight-bold mb-3"><i class="fa fa-money"></i> Giá </h5>
-
-          <div class="form-check pl-0 mb-3">
-            <input type="radio" class="form-check-input" id="under25" name="materialExampleRadios">
-            <label class="form-check-label small text-uppercase card-link-secondary" for="under25">Dưới 1.000.000
-              đ</label>
-          </div>
-          <div class="form-check pl-0 mb-3">
-            <input type="radio" class="form-check-input" id="2550" name="materialExampleRadios">
-            <label class="form-check-label small text-uppercase card-link-secondary" for="2550">1.000.000 đ - 1.500.000
-              đ</label>
-          </div>
-          <div class="form-check pl-0 mb-3">
-            <input type="radio" class="form-check-input" id="50100" name="materialExampleRadios">
-            <label class="form-check-label small text-uppercase card-link-secondary" for="50100">1.500.000 đ - 2.500.000
-              đ</label>
-          </div>
-          <div class="form-check pl-0 mb-3">
-            <input type="radio" class="form-check-input" id="100200" name="materialExampleRadios">
-            <label class="form-check-label small text-uppercase card-link-secondary" for="100200">Trên 2.500.000
-              đ</label>
-          </div>
-        </section> --}}
         <aside class="sidebar-categories">
 
 
@@ -58,9 +33,9 @@
         <div class="product-filter filters-panel">
           <div class="short-by-show form-inline text-left">
             <div class="form-group short-by">
-              <form action="" method="">
+              <form  action="/user/courses" method="POST">
                 {{!-- <label class="control-label" for="input-sort">Sắp xếp theo: </label> --}}
-                <select id="input-sort" class="form-control" name="level">
+                <select id="inputsort" class="form-control" name="level" >
                   <option value="0" selected="selected">Sắp xếp</option>
                   <option value="1">Giá cao đến thấp</option>
                   <option value="2">Giá thấp đến cao</option>
@@ -68,13 +43,14 @@
                   <option value="4">Đánh giá tăng dần</option>
                 </select>
 
-                <select id="input-sort" class="form-control" name="price">
+                <select id="input-filter" class="form-control" name="price">
                   <option value="0" selected="selected">Giá tiền</option>
                   <option value="1">Dưới 1.000.000</option>
                   <option value="2">1.000.000-2.000.000</option>
                   <option value="3">Trên 2.000.000</option>
 
                 </select>
+                 <input  type="submit" name="submit" value="Submit">
               </form>
             </div>
           </div>
