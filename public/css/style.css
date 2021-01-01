@@ -228,6 +228,7 @@ body {
     margin: 0;
 }
 
+
 .mc-item .ft-item .view-info, .mc-item .ft-item .comment-info {
     display: inline-block;
     font-family: 'Roboto', sans-serif;
@@ -494,6 +495,7 @@ form {
 		height: auto;
 		border-radius: 2rem;
 	}
+	
 	.container.row.col-sm-9.card.card-body.form-signin.form-label-group input{
 		height: auto;
 		border-radius: 2rem;
@@ -509,7 +511,7 @@ form {
 	}
 	.content-item h5 a{
 		color: #333;
-		font-size: 16px;
+		font-size: 14px;
 		text-align: center;
 	}
 	.tit-section {
@@ -575,11 +577,12 @@ form {
 	top:-35px !important;
 }
 .mc-item .ft-item .price{
-	/* display: inline-block; */
+	font-weight: 800;
 	font-family: 'Roboto', sans-serif;
-	font-size: 15px;
-	color: #666;
+	font-size: 16px;
+	color: rgb(228, 22, 22);
 	float: right;
+	margin-right: 45px;
 }
 .row {
     margin-right: -15px;
@@ -617,4 +620,7 @@ h6 {
 }
 .author-info.author-content p title {
     display: none;
+}
+.card-content-margin{
+	margin-left: 15px;
 }

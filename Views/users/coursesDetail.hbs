@@ -50,16 +50,18 @@
                         <div class="inner">
                             <div class="embed-responsive embed-responsive-16by9">
 
-                                <iframe class="embed-responsive-item" width="560" height="315" src="{{PathVideo}}"
-                                    frameborder="0"
+                                {{!-- <iframe class="embed-responsive-item" width="560" height="315"
+                                    src="../../public/video{{PathVideo}}" frameborder="0"
                                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                                    allowfullscreen></iframe>
+                                    allowfullscreen></iframe> --}}
+                                <video src="../../public/video/video2.mp4" controls>
+                                </video>
                             </div>
                         </div>
 
                         <div class="price">
                             <span class="from">Học phí: </span>
-                            <span class="amount">{{price}}</span>
+                            <span class="amount">{{format price}} đ</span>
                         </div>
                         {{#if ../isAuth}}
                         <a data-id="{{IdCourse}}" class="btn btn-success addItem" href="javascript:;" role="button"
@@ -82,20 +84,31 @@
                                 <li class="nav-item">
                                     <a href="#teacher" role="tab" data-toggle="tab">Giảng viên</a>
                                 </li>
+                                {{#if check}}
                                 <li class="nav-item">
                                     <a href="#outline" role="tab" data-toggle="tab">Video</a>
                                 </li>
                                 <li class="nav-item">
                                     <a href="#review" role="tab" data-toggle="tab">Đánh giá</a>
                                 </li>
+                                {{/if}}
+
                             </ul>
                         </div>
 
                         <div class="tab-content">
                             {{#Detail}}
                             <div class="tab-pane fade in active show" id="introduction">
-                                <h4 class="sm black bold">Giới thiệu</h4>
-                                <p>{{NameVideo}}</p>
+                                <h5 class="sm black bold" style="font-weight: 500; text-align: center;">Giới thiệu</h5>
+                                <p><strong>Tên khoá học:</strong> {{NameVideo}}</p>
+                                <p><strong>Mô tả khoá học:</strong> {{describeCourse}}</p>
+                                {{#with ../point}}
+                                <p><strong>Điểm đánh giá:</strong> {{format pointRate}} | &nbsp;<strong>Số lượng đánh
+                                        giá: </strong>{{count}} </p>
+                                {{/with}}
+                                {{#with ../countRegister}}
+                                <p><strong>Số đăng kí:</strong> {{count}}</p>
+                                {{/with}}
                                 <p>&nbsp;</p>
                             </div>
 
@@ -136,11 +149,11 @@
                                     <span class='score'>0</span>
                                     <span class='result'>0</span>
                                     <input type="hidden" name="rating">
-                                    <input type="hidden" value="{{IdCourse}}" name="course"> 
-                                    
+                                    <input type="hidden" value="{{IdCourse}}" name="course">
+
                                     <p>&nbsp;</p>
-                                    <button class="btn btn-primary"type="submit" style="margin-top: 20px; float:right">
-                                    <i class="fa fa-star"></i> Đánh giá</button>
+                                    <button class="btn btn-primary" type="submit" style="margin-top: 20px; float:right">
+                                        <i class="fa fa-star"></i> Đánh giá</button>
                                 </form>
                                 {{/Detail}}
                             </div>
@@ -148,9 +161,65 @@
                     </div>
                 </div>
             </div>
+
         </div>
     </div>
 </section>
+{{!-- Khoa hoc lien quan --}}
+<section id="mc-section-4" class="mc-section-3 section">
+    <div class="container">
+        <div class="module so-deals">
+            <h3 class="modtitle">
+                <span>Khoá học liên quan</span>
+            </h3>
+            <div class="module-body">
+                <div class="owl-carousel owl-theme" style="display: block; opacity: 1;">
+                    {{#each courseStar}}
+                    <div class="item" style="width: auto;">
+                        <div class="card h-100">
+                            <div class="mc-item mc-item-1">
+                                <div class="image-heading">
+                                    <a href="/user/courses/{{courses.id}}" title="{{courses.name}}"><img
+                                            style="max-height: 180px;" title="{{courses.name}}"
+                                            src="../../public/img/{{courses.image}}" alt="Xay dung khoa hoc"></a>
+                                </div>
+                                <div class="meta-categories">
+                                    <a href="/user/courses/{{courses.id}}" title="{{courses.name}}">{{courses.name}}</a>
+                                </div>
+                                <div class="content-item">
+                                    <div class="image-author">
+                                        <a href="#" title="Giảng viên: Phạm Đình Long">...</a>
+                                    </div>
+                                    <h4><a href="#" title="{{courses.name}}">{{courses.name}}</a></h4>
+                                    <div class="name-author">
+                                        <span>Bởi
+                                            <a href="#" title="Giảng viên: Phạm Đình Long">Phạm Đình
+                                                Long</a>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="ft-item">
+                                    <div class="rating">
+                                        Đánh giá:
+                                        {{#each star}}
+                                        <span class="fa fa-star checked"></span>
+                                        {{/each}}
 
-
+                                    </div>
+                                    <div class="view-info">
+                                        <i class="fa fa-users" aria-hidden="true"></i>{{courses.view}}
+                                    </div>
+                                    <div class="price">
+                                        <span>{{format courses.price}} đ</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {{/each}}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 {{> footer}}

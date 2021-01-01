@@ -4,7 +4,8 @@ const express_handlebars = require('express-handlebars');
 const http_errors = require('http-errors');
 const body_parser = require('body-parser');
 const express_handlebars_sections = require('express-handlebars-sections');
-var session = require('express-session')
+var session = require('express-session');
+var numeral = require('numeral');
 
 const app=express();
 
@@ -12,6 +13,9 @@ app.engine('.hbs',express_handlebars({
     extname: '.hbs',
     helpers:{
         section:express_handlebars_sections(),
+        format(val) {
+            return numeral(val).format('0,0');
+          }
         }
     },
 ));

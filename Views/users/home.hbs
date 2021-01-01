@@ -4,14 +4,7 @@
 <div class="container">
   <div class="row py-2">
     <div class="col-md-3">
-
-      {{!-- <div class="card-header bg-primary text-white text-uppercase">
-        <i class="fa fa-list"></i> Danh mục</div>
-        {{#each this.category}}
-      <ul class="list-group category_block">
-        <li class="list-group-item"><a href="/user/courses?category={{id}}">{{name}}</a></li>
-      </ul>
-      {{/each }} --}}
+      <img style="height: 500px; width: 275px;" src="../../public/img/quangcao.jpg">
     </div>
     <!-- </div> -->
     <div class="col-md-9">
@@ -67,49 +60,53 @@
       <div class="module-body">
         <div class="owl-carousel owl-theme" style="display: block; opacity: 1;">
           {{#each coursesStar}}
-          
+
           <div class="item" style="width: auto;">
             <div class="card h-100">
               <div class="mc-item mc-item-1">
                 <div class="image-heading">
-                  <a href="/user/courses/{{courses.id}}" title="{{courses.name}}"><img style="max-height: 180px;" title="{{courses.name}}"
-                      src="../../public/img/{{courses.image}}" alt="Xay dung khoa hoc"></a>
+                  <a href="/user/courses/{{courses.id}}" title="{{courses.name}}"><img style="max-height: 180px;"
+                      title="{{courses.name}}" src="../../public/img/{{courses.image}}" alt="Xay dung khoa hoc"></a>
                 </div>
-                <div class="meta-categories">
-                  <a href="/user/courses/{{courses.id}}" title="{{courses.name}}">{{courses.name}}</a>
+                <div class="card-content-margin">
+                  <div class="meta-categories">
+                    <a href="/user/courses/{{courses.id}}" title="{{courses.name}}">{{courses.name}}</a>
+                  </div>
+                  <div class="content-item">
+                    <div class="image-author">
+                      <a href="#" title="Giảng viên: Phạm Đình Long">...</a>
+                    </div>
+                    <h4><a href="#" title="{{courses.name}}">{{courses.name}}</a></h4>
+                    <div class="name-author">
+                      <span>Bởi
+                        <a href="/user/teacher/{{courses.idTeacher}}"
+                          title="Giảng viên: {{courses.FullName}}">{{courses.FullName}}</a>
+                      </span>
+                    </div>
+                  </div>
+                  <div class="ft-item">
+                    <div class="rating">
+
+                      Đánh giá:
+                      {{#each star}}
+                      <span class="fa fa-star checked"></span>
+                      {{/each}}
+
+                    </div>
+                    <div class="view-info">
+                      <i class="fa fa-users" aria-hidden="true"></i>{{courses.view}}
+                    </div>
+                    <div class="price">
+                      <span>{{format courses.price}} đ</span>
+                    </div>
+                  </div>
                 </div>
-                <div class="content-item">
-                  <div class="image-author">
-                    <a href="#" title="Giảng viên: Phạm Đình Long">...</a>
-                  </div>
-                  <h4><a href="#" title="{{courses.name}}">{{courses.name}}</a></h4>
-                  <div class="name-author">
-                    <span>Bởi
-                      <a href="#" title="Giảng viên: Phạm Đình Long">Phạm Đình Long</a>
-                    </span>
-                  </div>
-                </div>
-                <div class="ft-item">
-                  <div class="rating">
-                    
-                    Đánh giá:
-                   {{#each star}}
-                    <span class="fa fa-star checked"></span>
-                   {{/each}}
-                    
-                  </div>
-                  <div class="view-info">
-                    <i class="fa fa-users" aria-hidden="true"></i>{{courses.view}}
-                  </div>
-                  <div class="price">
-                    <span>{{courses.price}} $</span>
-                  </div>
-                </div>
+
               </div>
             </div>
 
           </div>
-         
+
           {{/each}}
         </div>
       </div>
@@ -132,36 +129,39 @@ Khoa hoc duoc xem nhieu nhat -->
             <div class="card h-100">
               <div class="mc-item mc-item-1">
                 <div class="image-heading">
-                  <a href="/user/courses/{{courses.id}}" title="{{courses.name}}"><img style="max-height: 180px;" title="{{courses.name}}"
-                      src="../../public/img/{{courses.image}}" alt="Xay dung khoa hoc"></a>
+                  <a href="/user/courses/{{courses.id}}" title="{{courses.name}}"><img style="max-height: 180px;"
+                      title="{{courses.name}}" src="../../public/img/{{courses.image}}" alt="Xay dung khoa hoc"></a>
                 </div>
-                <div class="meta-categories">
-                  <a href="/user/courses/{{courses.id}}" title="{{courses.name}}">{{courses.name}}</a>
-                </div>
-                <div class="content-item">
-                  <div class="image-author">
-                    <a href="#" title="Giảng viên: Phạm Đình Long">...</a>
+                <div class="card-content-margin">
+                  <div class="meta-categories">
+                    <a href="/user/courses/{{courses.id}}" title="{{courses.name}}">{{courses.name}}</a>
                   </div>
-                  <h4><a href="#" title="{{courses.name}}">{{courses.name}}</a></h4>
-                  <div class="name-author">
-                    <span>Bởi
-                      <a href="#" title="Giảng viên: Phạm Đình Long">Phạm Đình Long</a>
-                    </span>
+                  <div class="content-item">
+                    <div class="image-author">
+                      <a href="#" title="Giảng viên: Phạm Đình Long">...</a>
+                    </div>
+                    <h4><a href="#" title="{{courses.name}}">{{courses.name}}</a></h4>
+                    <div class="name-author">
+                      <span>Bởi
+                        <a href="/user/teacher/{{courses.idTeacher}}"
+                          title="Giảng viên: {{courses.FullName}}">{{courses.FullName}}</a>
+                      </span>
+                    </div>
                   </div>
-                </div>
-                <div class="ft-item">
-                  <div class="rating">
-                    Đánh giá:
-                    {{#each star}}
-                    <span class="fa fa-star checked"></span>
-                   {{/each}}
+                  <div class="ft-item">
+                    <div class="rating">
+                      Đánh giá:
+                      {{#each star}}
+                      <span class="fa fa-star checked"></span>
+                      {{/each}}
 
-                  </div>
-                  <div class="view-info">
-                    <i class="fa fa-users" aria-hidden="true"></i>{{courses.view}}
-                  </div>
-                  <div class="price">
-                    <span>{{courses.price}} $</span>
+                    </div>
+                    <div class="view-info">
+                      <i class="fa fa-users" aria-hidden="true"></i>{{courses.view}}
+                    </div>
+                    <div class="price">
+                      <span>{{format courses.price}} đ</span>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -188,36 +188,39 @@ Khoa hoc duoc xem nhieu nhat -->
             <div class="card h-100">
               <div class="mc-item mc-item-1">
                 <div class="image-heading">
-                  <a href="/user/courses/{{courses.id}}" title="{{courses.name}}"><img style="max-height: 180px;" title="{{courses.name}}"
-                      src="../../public/img/{{courses.image}}" alt="Xay dung khoa hoc"></a>
+                  <a href="/user/courses/{{courses.id}}" title="{{courses.name}}"><img style="max-height: 180px;"
+                      title="{{courses.name}}" src="../../public/img/{{courses.image}}" alt="Xay dung khoa hoc"></a>
                 </div>
-                <div class="meta-categories">
-                  <a href="/user/courses/{{courses.id}}" title="{{courses.name}}">{{courses.name}}</a>
-                </div>
-                <div class="content-item">
-                  <div class="image-author">
-                    <a href="#" title="Giảng viên: Phạm Đình Long">...</a>
+                <div class="card-content-margin">
+                  <div class="meta-categories">
+                    <a href="/user/courses/{{courses.id}}" title="{{courses.name}}">{{courses.name}}</a>
                   </div>
-                  <h4><a href="#" title="{{courses.name}}">{{courses.name}}</a></h4>
-                  <div class="name-author">
-                    <span>Bởi
-                      <a href="#" title="Giảng viên: Phạm Đình Long">Phạm Đình Long</a>
-                    </span>
+                  <div class="content-item">
+                    <div class="image-author">
+                      <a href="#" title="Giảng viên: Phạm Đình Long">...</a>
+                    </div>
+                    <h4><a href="#" title="{{courses.name}}">{{courses.name}}</a></h4>
+                    <div class="name-author">
+                      <span>Bởi
+                        <a href="/user/teacher/{{courses.idTeacher}}"
+                          title="Giảng viên: {{courses.FullName}}">{{courses.FullName}}</a>
+                      </span>
+                    </div>
                   </div>
-                </div>
-                <div class="ft-item">
-                  Đánh giá:
-                  <div class="rating">
-                    {{#each star}}
-                    <span class="fa fa-star checked"></span>
-                   {{/each}}
+                  <div class="ft-item">
+                    Đánh giá:
+                    <div class="rating">
+                      {{#each star}}
+                      <span class="fa fa-star checked"></span>
+                      {{/each}}
 
-                  </div>
-                  <div class="view-info">
-                    <i class="fa fa-users" aria-hidden="true"></i>{{courses.view}}
-                  </div>
-                  <div class="price">
-                    <span>{{courses.price}} $</span>
+                    </div>
+                    <div class="view-info">
+                      <i class="fa fa-users" aria-hidden="true"></i> &nbsp;{{courses.view}}
+                    </div>
+                    <div class="price">
+                      <span>{{format courses.price}} đ</span>
+                    </div>
                   </div>
                 </div>
 
@@ -249,7 +252,7 @@ Khoa hoc duoc xem nhieu nhat -->
             <div class="card h-100">
               <div class="learning-path mc-item mc-item-1">
                 <div class="image-heading">
-                  <a href="#" title="{{name}}"><img style="max-height: 180px;" title="{{name}}"
+                  <a href="/user/coursesRoute/{{id}}" title="{{name}}"><img style="max-height: 180px;" title="{{name}}"
                       src="../../public/img/{{image}}" alt="Lo trinh hoc angular"></a>
 
                 </div>

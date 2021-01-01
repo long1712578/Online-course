@@ -64,15 +64,16 @@
               <div class="card h-100">
                 <div class="mc-item mc-item-2">
                   <div class="image-heading">
-                    <a href="/user/courses/{{courses.id}}" title="{{courses.name}}"><img style="max-height: 180px;" title="{{courses.name}}"
+                    <a href="/user/courses/{{courses.id}}" title="{{courses.name}}"><img style="height: 180px;" title="{{courses.name}}"
                         src="../../public/img/{{courses.image}}" alt="Xay dung khoa hoc"></a>
                   </div>
 
-                  <div class="card-body">
+                  <div class="card-body" id="cardMagin">
                     <div class="meta-categories">
                       <a href="#" title="Hoc lap trinh web">{{courses.name}}</a>
                     </div>
-                    <div class="content-item">
+
+                    <div class="content-item" style="height: 100px;">
                       <div class="image-author">
                         <a href="#" title="Giảng viên: Phạm Đình Long">...</a>
                       </div>
@@ -80,25 +81,23 @@
                       </h5>
                       <div class="name-author">
                         <span>Bởi
-                          <a href="#" title="Giảng viên: Phạm Đình Long">Phạm Đình Long</a>
+                          <a href="/user/teacher/{{courses.idTeacher}}" title="Giảng viên: {{courses.FullName}}">{{courses.FullName}}</a>
                         </span>
                       </div>
                     </div>
-                    <div class="ft-item">
-                      <div class="rating">
+
+                    <div class="ft-item" >
+                      <div class="rating" style="height: 20px;">
                         {{#each star}}
                         <span class="fa fa-star checked"></span>
                         {{/each}}
-
-
                       </div>
 
                       <div class="view-info">
-                        <i class="fa fa-users" aria-hidden="true"></i>{{courses.view}}
+                        <i class="fa fa-eye" aria-hidden="true"></i> &nbsp;{{courses.view}}
                       </div>
                       <div class="price">
-                        <i class="fa fa-dollar"></i>
-                        <span>{{courses.price}}</span>
+                        <span>{{format courses.price}} đ</span>
                       </div>
 
                     </div>

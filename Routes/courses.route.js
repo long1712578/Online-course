@@ -1,24 +1,59 @@
 const express = require('express');
 const modelCourses = require('../Models/courses.model');
+const modelOrder=require('../Models/order.model');
 const modelCategory = require('../Models/category.model');
 const modelVideo = require('../Models/video.model');
 const { getVideoDeatilAll } = require('../Models/video.model');
 const db = require('../utils/db');
+const { getCoursesRelate } = require('../Models/courses.model');
 const router = express.Router();
 
 router.get('/courses/:id', async (req, res) => {
     const id = parseInt(req.params.id);
+    
     const video = parseInt(req.query.video) || 1;
     const checkUser = req.session.isAuth;
+    const courseStar=[];
+    let userId=-1;
+    let check=false;
     if (checkUser === true) {
         //TangView len 1
         await modelCourses.increaseView(id);
+        userId=req.session.authUser.Id
     }
     const courseDetail = await getVideoDeatilAll(id, video);
+    const point= await modelCourses.getCountAndPoint(id);
+    const countRegister=await modelOrder.getCountRegisterById(id);
+    
+    if(courseDetail[0]+''==='undefined'){
+        res.redirect(req.headers.referer);
+    }
+    //const nameCourse= courseDetail[0].NameCourse;
+    
+    const courseRelate=await getCoursesRelate(courseDetail[0].NameCourse);
     const coursesList = await modelVideo.getVideoDeatilList(id);
+    
+    const orderList = await modelOrder.getCoursesUserByIdUser(userId);
+    orderList.forEach(element=>{
+        console.log(element);
+        if(element.productId===id){
+            check=true;
+        }
+    })
+    courseRelate.courses.forEach(element => {
+        stars = [];
+        for (let i = 0; i < element.rating; i++) {
+            stars.push({ value: i });
+        }
+        courseStar.push({ star: stars, courses: element });
+    });
     res.render('users/coursesDetail', {
         Detail: courseDetail,
         List: coursesList,
+        courseStar: courseStar,
+        point: point,
+        countRegister:countRegister,
+        check:check,
     });
 });
 
@@ -120,13 +155,12 @@ router.post('/courses', async (req, res) => {
      }
      if(value1>0|| req.body.price!=='NaN'){
         if(value1===1){
-            console.log("a");
+            
             rows = await modelCourses.getCoursesPriceUnderOneMillion(page);
         }else if(value1===2){
-            console.log("b");
+           
             rows=await modelCourses.getCoursesPriceOneToTwoMillion(page)
         }else if(value1===3){
-            console.log("c");
             rows=await modelCourses.getCoursesPriceOnTwoMillion(page);
         }
      }

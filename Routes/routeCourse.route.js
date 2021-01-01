@@ -12,10 +12,18 @@ router.get('/coursesRoute', async(req,res)=>{
 })
 router.get('/coursesRoute/:id', async(req,res)=>{
     const id= parseInt(req.params.id);
+    let courseStar=[];
     const rows=await modelCourse.getCoursesByRouteId(id);
+    rows.forEach(element => {
+        stars = [];
+        for (let i = 0; i < element.rating; i++) {
+            stars.push({ value: i });
+        }
+        courseStar.push({ star: stars, courses: element });
+    });
+   
     res.render('users/courses',{
-        courses:rows,
-        // empty:rows.length===0
+        courseStar: courseStar,
     });
 })
 module.exports=router;
