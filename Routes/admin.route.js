@@ -2,6 +2,7 @@ const express = require('express');
 const modelCourse=require('../Models/courses.model');
 const modelField=require('../Models/routeCourse.model');
 const modelTeacher=require('../Models/teacher.model');
+const modelUser=require('../Models/user.model');
 const { route } = require('./courses.route');
 const router = express.Router();
 
@@ -108,6 +109,53 @@ router.post('/teacher-edit',async(req,res)=>{
 
     await modelTeacher.updateTeacher(id,name,email,phone,level);
     res.redirect('/admin/teacher')
+});
+
+router.get('/user',async (req,res)=>{
+    const page = parseInt(req.query.page) || 1;
+    const user= await modelUser.getUser(page)
+    const pages = [];
+            for (let i = 0; i < user.pageTotal; i++) {
+                pages[i] = { value: i + 1, active: (i + 1) === page};
+            }
+            const navs = {};
+            if (page > 1) {
+                navs.prev = page - 1;
+            }
+            if (page < user.pageTotal) {
+                navs.next = page + 1;
+            }
+    res.render('admin/user',{
+        layout:"main_admin",
+        users:user.users,
+        pages:pages,
+        navs:navs
+    });
+});
+router.get('/user/delete/:id',async(req,res)=>{
+    const id=parseInt(req.params.id);
+    await modelUser.delete(id);
+    res.redirect('/admin/user');
+});
+
+router.get('/user-edit/:id',async(req,res)=>{
+    const id=parseInt(req.params.id);
+    const user=await modelUser.getUsersById(id);
+    res.render('admin/update-user',{
+        layout:"main_admin",
+        user:user
+    })
+});
+
+router.post('/user-edit',async(req,res)=>{
+    let id=req.body.id;
+    let name=req.body.name;
+    let email=req.body.email;
+    let phone=req.body.phone;
+    let level=req.body.level;
+
+    await modelTeacher.updateTeacher(id,name,email,phone,level);
+    res.redirect('/admin/user')
 });
 
 
