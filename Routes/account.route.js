@@ -63,7 +63,7 @@ router.post('/signIn', async (req,res)=>{
   }else if(user.type===2){
     res.redirect('/teacher')
   }else{
-    res.redirect('/admin/index')
+    res.redirect('/admin/dashboad')
   }
  
 })

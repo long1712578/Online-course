@@ -33,25 +33,6 @@ module.exports=(app)=>{
     app.use('/',require('../Routes/account.route'));
     //admin
     //Dang ki
-    app.get("/admin/index",function(req,res){
-        res.render('admin/index',{
-            layout:"main_admin",
-        });
-    });
-    app.get("/admin/course",function(req,res){
-        res.render('admin/course',{
-            layout:"main_admin",
-        });
-    });
-    app.get("/admin/user",function(req,res){
-        res.render('admin/user',{
-            layout:"main_admin",
-        });
-    });
-    app.get("/admin/chart",function(req,res){
-        res.render('admin/chart',{
-            layout:"main_admin",
-        });
-    });
+   app.use('/admin',require('../Routes/admin.route'));
     
 }
