@@ -34,7 +34,8 @@
                     <div class="post">
                         <div class="post-media">
                             <div class="image-thumb">
-                                <img src="../../public/img/{{image}}" style="max-width: 100%;" title="{{FullName}}" alt="{{FullName}}">
+                                <img src="../../public/img/{{image}}" style="max-width: 100%;" title="{{FullName}}"
+                                    alt="{{FullName}}">
                             </div>
                         </div>
                         <div class="post-body">
@@ -47,7 +48,8 @@
                                 <p>{{level}}</p>
                             </div>
                             <div class="post-link">
-                                <a href="/user/teacher/{{Id}}" title="Phạm Đình Long"><i class="fa fa-play-circle-o"></i> Xem thêm</a>
+                                <a href="/user/teacher/{{Id}}" title="Phạm Đình Long"><i
+                                        class="fa fa-play-circle-o"></i> Xem thêm</a>
                             </div>
                         </div>
                     </div>
@@ -58,22 +60,47 @@
                 <div class="row d-flex justify-content-center">
                     <nav aria-label="Page navigation example">
                         <ul class="pagination">
-                            <li class="page-item  {{#if previous.isDisabled}}disabled{{/if}}">
-                                <a class="page-link" href="/buyer/{{previous.CatID}}/{{previous.pageNumber}}"
-                                    aria-label="Previous">
+                            {{#if navs.prev}}
+                            <li class="page-item">
+                                <a class="page-link" href="?page={{ navs.prev}}" aria-label="Previous">
                                     <span aria-hidden="true">&laquo;</span>
                                 </a>
                             </li>
-                            {{#each pagination}}
-                            <li class="page-item {{#if this.isActive}}active{{/if}}"><a class="page-link"
-                                    href="/buyer/{{this.CatID}}/{{this.pageNumber}}">{{this.pageNumber}}</a>
+                            {{else}}
+                            <li class="page-item disabled">
+                                <a class="page-link" href="/user/teacher?page={{value}}" tabindex="-1" aria-disabled="true">
+                                    <span aria-hidden="true">&laquo;</span>
+                                </a>
                             </li>
+                            {{/if}}
+                            {{#each pages}}
+                            {{#if active}}
+                            <li class="page-item active" aria-current="page">
+                                <a class="page-link" href="javascript:;">
+                                    {{ value }} <span class="sr-only">(current)</span>
+                                </a>
+                            </li>
+                            {{else}}
+                            <li class="page-item">
+                                <a class="page-link" href="/user/teacher?page={{value}}">
+                                    {{value}}
+                                </a>
+                            </li>
+                            {{/if}}
                             {{/each}}
-                            <li class="page-item {{#if next.isDisabled}}disabled{{/if}}">
-                                <a class="page-link" href="/buyer/{{next.CatID}}/{{next.pageNumber}}" aria-label="Next">
+                            {{#if navs.next}}
+                            <li class="page-item">
+                                <a class="page-link" href="?page={{ navs.next}}" aria-label="Next">
                                     <span aria-hidden="true">&raquo;</span>
                                 </a>
                             </li>
+                            {{else}}
+                            <li class="page-item disabled">
+                                <a class="page-link" href="#" tabindex="-1" aria-disabled="true">
+                                    <span aria-hidden="true">&raquo;</span>
+                                </a>
+                            </li>
+                            {{/if}}
                         </ul>
                     </nav>
                 </div>

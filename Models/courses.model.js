@@ -80,7 +80,6 @@ module.exports={
         };
     },
 
-
     getCoursesPriceDESC: async(page)=>{
         //Tinh tong san pham
         let sql1= `SELECT count(*) AS total FROM ${tbCourse}`;
@@ -267,6 +266,9 @@ module.exports={
         FROM ${tbCourse}`;
         const row = await db.load(sql);
         return row[0];
+    },
+    deleteCourse: async(id)=>{
+        const sql = `DELETE FROM ${tbCourse} WHERE id=${id};`;
+        await db.load(sql);
     }
-
 }

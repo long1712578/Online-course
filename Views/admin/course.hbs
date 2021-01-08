@@ -1,59 +1,110 @@
-  <!-- Page Wrapper -->
-    <div id="wrapper">
+<!-- Page Wrapper -->
+<div id="wrapper">
 
-        <!-- Sidebar -->
-        {{> sidebar_admin}}
-        <!-- End of Sidebar -->
+    <!-- Sidebar -->
+    {{> sidebar_admin}}
+    <!-- End of Sidebar -->
 
-        <!-- Content Wrapper -->
-        <div id="content-wrapper" class="d-flex flex-column">
+    <!-- Content Wrapper -->
+    <div id="content-wrapper" class="d-flex flex-column">
 
-            <!-- Main Content -->
-            <div id="content">
+        <!-- Main Content -->
+        <div id="content">
 
-                <!-- Topbar -->
-                {{> topbar_admin}}
-                <!-- End of Topbar -->
+            <!-- Topbar -->
+            {{> topbar_admin}}
+            <!-- End of Topbar -->
 
-                <!-- Begin Page Content -->
-                <div class="container-fluid">
+            <!-- Begin Page Content -->
+            <div class="container-fluid">
 
-                   {{!-- ------content---------- --}}
-                   <!-- Database -->
-                    <div class="card shadow mb-4">
-                        <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">Data</h6>
-                        </div>
-                        <div class="card-body">
-                            <div class="table-responsive">
-                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                                    <thead>
-                                        <tr>
-                                            <th>Tên khóa học</th>
-                                            <th>Hình ảnh</th>
-                                            <th>Giá</th>
-                                            <th>Ngày bắt đầu</th>
-                                            <th>Hoạt động</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>Tiger Nixon</td>
-                                            <td>System Architect</td>
-                                            <td>Edinburgh</td>
-                                            <td>61</td>
-                                            <td>2011/04/25</td>
-                                        </tr>
-                                        
-                                </table>
-                            </div>
+                {{!-- ------content---------- --}}
+                <!-- Database -->
+                <div class="card shadow mb-4">
+                    <div class="card-header py-3">
+                        <h6 class="m-0 font-weight-bold text-primary">Data</h6>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                <thead>
+                                    <tr>
+                                        <th>Tên khóa học</th>
+                                        <th>Hình ảnh</th>
+                                        <th>Giá</th>
+                                        <th>Ngày bắt đầu</th>
+                                        <th>Hoạt động</th>
+                                    </tr>
+                                </thead>
+                                {{#each courses}}
+                                <tbody>
+                                    <tr>
+                                        <td>{{name}}</td>
+                                        <td><img style="height: 80px;" src="../../public/img/{{image}}"></td>
+                                        <td>{{format price}} VNĐ</td>
+                                        <td>{{dateCourse}}</td>
+                                        <td>
+                                            <a class="btn btn-danger" href="/admin/course/delete/{{id}}"><i class="fas fa-trash"></i></a>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                                {{/each}}
+                            </table>
                         </div>
                     </div>
-                   {{!-- ----------end content-------- --}}
-                    
-                </div>
 
-                <!-- End of Main Content -->
+                    {{!-- pading --}}
+                    <nav aria-label="Page navigation example">
+                        <ul class="pagination">
+                            {{#if navs.prev}}
+                            <li class="page-item">
+                                <a class="page-link" href="?page={{ navs.prev}}" aria-label="Previous">
+                                    <span aria-hidden="true">&laquo;</span>
+                                </a>
+                            </li>
+                            {{else}}
+                            <li class="page-item disabled">
+                                <a class="page-link" href="/admin/course?page={{value}}" tabindex="-1" aria-disabled="true">
+                                    <span aria-hidden="true">&laquo;</span>
+                                </a>
+                            </li>
+                            {{/if}}
+                            {{#each pages}}
+                            {{#if active}}
+                            <li class="page-item active" aria-current="page">
+                                <a class="page-link" href="javascript:;">
+                                    {{ value }} <span class="sr-only">(current)</span>
+                                </a>
+                            </li>
+                            {{else}}
+                            <li class="page-item">
+                                <a class="page-link" href="/admin/course?page={{value}}">
+                                    {{value}}
+                                </a>
+                            </li>
+                            {{/if}}
+                            {{/each}}
+                            {{#if navs.next}}
+                            <li class="page-item">
+                                <a class="page-link" href="?page={{ navs.next}}" aria-label="Next">
+                                    <span aria-hidden="true">&raquo;</span>
+                                </a>
+                            </li>
+                            {{else}}
+                            <li class="page-item disabled">
+                                <a class="page-link" href="#" tabindex="-1" aria-disabled="true">
+                                    <span aria-hidden="true">&raquo;</span>
+                                </a>
+                            </li>
+                            {{/if}}
+                        </ul>
+                    </nav>
+                </div>
+                {{!-- ----------end content-------- --}}
+
+            </div>
+
+            <!-- End of Main Content -->
 
             <!-- Footer -->
             {{> footer_admin}}
@@ -89,5 +140,3 @@
             </div>
         </div>
     </div>
-
-   

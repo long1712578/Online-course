@@ -12,6 +12,7 @@ router.post('/signUp', async function (req, res) {
   const hash = bcrypt.hashSync(req.body.password, 10);
   const dob = moment(req.body.DOB).format('YYYY-MM-DD');
   const gender=parseInt(req.body.gender);
+  const active=0;
   const user = {
     UserName: req.body.username,
     Password: hash,
@@ -24,7 +25,8 @@ router.post('/signUp', async function (req, res) {
     type: req.body.typeAccount,
     image: req.body.image,
     describe:req.body.describe,
-    level:req.body.level
+    level:req.body.level,
+    isActive:active
     
   }
   

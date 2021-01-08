@@ -18,7 +18,90 @@
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
 
-                   <p>Tearcher</p>
+                   <!-- Database -->
+                <div class="card shadow mb-4">
+                    <div class="card-header py-3">
+                        <h6 class="m-0 font-weight-bold text-primary">Data</h6>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                <thead>
+                                    <tr>
+                                        <th>Tên giáo viên</th>
+                                        <th>Hình ảnh</th>
+                                        <th>Email</th>
+                                        <th>Giới tính</th>
+                                        <th>Hoạt động</th>
+                                    </tr>
+                                </thead>
+                                {{#each courses}}
+                                <tbody>
+                                    <tr>
+                                        <td>{{name}}</td>
+                                        <td><img style="height: 80px;" src="../../public/img/{{image}}"></td>
+                                        <td>{{email}} VNĐ</td>
+                                        <td>{{gender}}</td>
+                                        <td>
+                                            <a class="btn btn-danger" href="/admin/course/delete/{{id}}"><i class="fas fa-trash"></i></a>
+                                            <a class="btn btn-primary" href="/admin/course/add/{{id}}"><i class="fas fa-user-plus"></i></a>
+                                            <a class="btn btn-warning" href="/admin/course/edit/{{id}}"><i class="fas fa-user-edit"></i></a>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                                {{/each}}
+                            </table>
+                        </div>
+                    </div>
+
+                    {{!-- pading --}}
+                    <nav aria-label="Page navigation example">
+                        <ul class="pagination">
+                            {{#if navs.prev}}
+                            <li class="page-item">
+                                <a class="page-link" href="?page={{ navs.prev}}" aria-label="Previous">
+                                    <span aria-hidden="true">&laquo;</span>
+                                </a>
+                            </li>
+                            {{else}}
+                            <li class="page-item disabled">
+                                <a class="page-link" href="/admin/teacher?page={{value}}" tabindex="-1" aria-disabled="true">
+                                    <span aria-hidden="true">&laquo;</span>
+                                </a>
+                            </li>
+                            {{/if}}
+                            {{#each pages}}
+                            {{#if active}}
+                            <li class="page-item active" aria-current="page">
+                                <a class="page-link" href="javascript:;">
+                                    {{ value }} <span class="sr-only">(current)</span>
+                                </a>
+                            </li>
+                            {{else}}
+                            <li class="page-item">
+                                <a class="page-link" href="/admin/teacher?page={{value}}">
+                                    {{value}}
+                                </a>
+                            </li>
+                            {{/if}}
+                            {{/each}}
+                            {{#if navs.next}}
+                            <li class="page-item">
+                                <a class="page-link" href="?page={{ navs.next}}" aria-label="Next">
+                                    <span aria-hidden="true">&raquo;</span>
+                                </a>
+                            </li>
+                            {{else}}
+                            <li class="page-item disabled">
+                                <a class="page-link" href="#" tabindex="-1" aria-disabled="true">
+                                    <span aria-hidden="true">&raquo;</span>
+                                </a>
+                            </li>
+                            {{/if}}
+                        </ul>
+                    </nav>
+                </div>
+                {{!-- ----------end content-------- --}}
                     
                 </div>
 

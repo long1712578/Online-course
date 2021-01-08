@@ -206,6 +206,6 @@ router.post('/course-rating', async (req, res) => {
     await modelCourses.addRating(rating);
     await modelCourses.updateRating(req.body.course);
     res.redirect(req.headers.referer);
-})
+});
 
 module.exports = router;
