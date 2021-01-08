@@ -34,7 +34,7 @@
                                         <th>Hoạt động</th>
                                     </tr>
                                 </thead>
-                                {{#each teachers}}
+                                {{#each users}}
                                 <tbody>
                                     <tr>
                                         <td>{{FullName}}</td>
@@ -42,12 +42,8 @@
                                         <td>{{phone}}</td>
                                         
                                         <td>
-                                            <a class="btn btn-danger" href="/admin/teacher/delete/{{Id}}"><i class="fas fa-trash">&nbsp;Xóa</i></a>
-                                            <a class="btn btn-warning" href="/admin/teacher-edit/{{Id}}"><i class="fas fa-user-edit"></i>&nbsp;Sửa</a>
-                                            {{#if isActive}}
-                                            {{else}}
-                                            <a class="btn btn-primary" href="/admin/teacher/add/{{Id}}"><i class="fas fa-chalkboard-teacher"></i>&nbsp;Duyệt</a>
-                                            {{/if}}
+                                            <a class="btn btn-danger" href="/admin/user/delete/{{Id}}"><i class="fas fa-trash">&nbsp;Xóa</i></a>
+                                            <a class="btn btn-warning" href="/admin/user-edit/{{Id}}"><i class="fas fa-user-edit"></i>&nbsp;Sửa</a>
                                         </td>
                                     </tr>
                                 </tbody>

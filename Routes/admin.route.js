@@ -60,22 +60,54 @@ router.get('/chart',async (req,res)=>{
 
 router.get('/teacher',async (req,res)=>{
     const page = parseInt(req.query.page) || 1;
-    const condition='';
-    const courses= await modelTeacher.getTeacherAll();
+    const teacher= await modelTeacher.getTeacher(page);
     const pages = [];
-            for (let i = 0; i < courses.pageTotal; i++) {
+            for (let i = 0; i < teacher.pageTotal; i++) {
                 pages[i] = { value: i + 1, active: (i + 1) === page};
             }
             const navs = {};
             if (page > 1) {
                 navs.prev = page - 1;
             }
-            if (page < courses.pageTotal) {
+            if (page < teacher.pageTotal) {
                 navs.next = page + 1;
             }
     res.render('admin/teacher',{
         layout:"main_admin",
+        teachers:teacher.teacher,
+        pages:pages,
+        navs:navs
     });
+});
+router.get('/teacher/delete/:id',async(req,res)=>{
+    const id=parseInt(req.params.id);
+    await modelTeacher.deleteTeacher(id);
+    res.redirect('/admin/teacher');
+});
+router.get('/teacher/add/:id',async(req,res)=>{
+    const id=parseInt(req.params.id);
+    await modelTeacher.reviewTeacher(id);
+    res.redirect('/admin/teacher');
+});
+
+router.get('/teacher-edit/:id',async(req,res)=>{
+    const id=parseInt(req.params.id);
+    const teacher=await modelTeacher.getTeacherById(id);
+    res.render('admin/update-teacher',{
+        layout:"main_admin",
+        teacher:teacher[0]
+    })
+});
+
+router.post('/teacher-edit',async(req,res)=>{
+    let id=req.body.id;
+    let name=req.body.name;
+    let email=req.body.email;
+    let phone=req.body.phone;
+    let level=req.body.level;
+
+    await modelTeacher.updateTeacher(id,name,email,phone,level);
+    res.redirect('/admin/teacher')
 });
 
 
