@@ -1,4 +1,5 @@
 const express = require('express');
+const session = require('express-session');
 const modelCourse=require('../Models/courses.model');
 const modelField=require('../Models/routeCourse.model');
 const modelTeacher=require('../Models/teacher.model');
@@ -10,6 +11,7 @@ router.get('/dashboad',async (req,res)=>{
     const course=await modelCourse.quantityCourses();
     const field=await modelField.quantityField();
     const teacher=await modelTeacher.quantityTeacher();
+    console.log("session",req.session.authUser);
     res.render('admin/index',{
         layout:"main_admin",
         quantityCourses:course.quantityCourses,
@@ -157,6 +159,12 @@ router.post('/user-edit',async(req,res)=>{
     await modelTeacher.updateTeacher(id,name,email,phone,level);
     res.redirect('/admin/user')
 });
+
+router.post('/logout', async function (req, res) {
+    req.session.isAuth = false;
+    req.session.authUser = null;
+    res.redirect('/');
+  })
 
 
 

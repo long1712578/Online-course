@@ -3,9 +3,10 @@ const modelTeacher=require('../Models/teacher.model');
 const router=express.Router();
 
 router.get('/', async(req,res)=>{
-    const rows=await modelTeacher.getTeacherAll();
+    
+    //const rows=await modelTeacher.getTeacherAll();
     res.render('teacher/index',{
-        teacher:rows,
+        // teacher:rows,
         // empty:rows.length===0
     });
 })

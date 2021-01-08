@@ -5,7 +5,9 @@
                 <div class="sidebar-brand-icon rotate-n-15">
                     <i class="fas fa-laugh-wink"></i>
                 </div>
-                <div class="sidebar-brand-text mx-3">SB Admin <sup>2</sup></div>
+                <div class="sidebar-brand-text mx-3"><img style="height: 30px; width:30px; border-radius: 90%;"
+                    src="../../public/img/hinh1.jpg" class="avatar" alt="Avatar">Admin: &nbsp;<strong>Huy</strong></div>
+                 
             </a>
 
             <!-- Divider -->
@@ -57,10 +59,13 @@
             <hr class="sidebar-divider d-none d-md-block">
 
             <li class="nav-item">
-                <a class="nav-link" href="/logout">
-                    <i class="fas fa-sign-out-alt"></i>
-                    <span>Đăng xuất</span></a>
+                <form id="frmLogout" action="/admin/logout" method="POST"></form>
+                    <a href="javascript: $('#frmLogout').submit();" class="dropdown-item">
+                         <i class="fas fa-sign-out-alt"></i>
+                    <span>Đăng xuất</span></a></a>
+                </form>
             </li>
+            
             
 
             
