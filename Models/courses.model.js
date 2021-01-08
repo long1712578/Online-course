@@ -261,6 +261,12 @@ module.exports={
         const sql = `select count(courseId)as count, avg(rating) as pointRate from ${tbCourseRating}  where courseId=${id}`;
         const rows = await db.load(sql);
         return rows[0];
+    },
+    quantityCourses: async()=>{
+        const sql = `SELECT count(id) as quantityCourses
+        FROM ${tbCourse}`;
+        const row = await db.load(sql);
+        return row[0];
     }
 
 }

@@ -1,10 +1,18 @@
 const express = require('express');
-const db = require('../utils/db');
+const modelCourse=require('../Models/courses.model');
+const modelField=require('../Models/routeCourse.model');
+const modelTeacher=require('../Models/teacher.model');
 const router = express.Router();
 
 router.get('/dashboad',async (req,res)=>{
+    const row=await modelCourse.quantityCourses();
+    const field=await modelField.quantityField();
+    const teacher=await modelTeacher.quantityTeacher();
     res.render('admin/index',{
         layout:"main_admin",
+        quantityCourses:row.quantityCourses,
+        quantityField:field.quantityField,
+        quantityTeacher:teacher.quantityTeacher,
     });
 });
 

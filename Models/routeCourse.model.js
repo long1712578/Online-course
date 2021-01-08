@@ -9,4 +9,10 @@ module.exports={
         const rows = await db.load(sql);
         return rows;
     },
+    quantityField: async()=>{
+        const sql = `SELECT count(id) as quantityField
+        FROM ${tbRoute}`;
+        const rows = await db.load(sql);
+        return rows[0];
+    }
 }

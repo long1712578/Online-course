@@ -14,4 +14,10 @@ module.exports={
         const rows = await db.load(sql);
         return rows;
     },
+    quantityTeacher: async()=>{
+        const sql = `SELECT count(id) as quantityTeacher
+        FROM ${tbTeacher} where type=2;`;
+        const rows = await db.load(sql);
+        return rows[0];
+    }
 }
