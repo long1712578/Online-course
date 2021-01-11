@@ -1,0 +1,138 @@
+{{#section 'css'}}
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round">
+    <link rel="stylesheet" href="../assets/bootstrap-4.5.3-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../assets/OwlCarousel2-2.3.4/dist/assets/owl.carousel.min.css" />
+    <link rel="stylesheet" href="../assets/OwlCarousel2-2.3.4/dist/assets/owl.theme.default.min.css" />
+    <link rel="stylesheet" href="../style.css">
+{{/section}}
+    
+
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-3 col-md-7 col-lg-5 mx-auto">
+                <img class="mt-5 rounded" src="../public/img/background_signup.png">
+            </div>
+            <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
+                <div class="card card-signin my-5">
+                    <div class="card-body">
+                        <a href="/">
+                            <img class="rounded mx-auto d-block mb-1" src="../public/img/king.jpg" width="40" height="40"
+                                alt="brand icon">
+                        </a>
+                        <h5 class="card-title text-center">Tham gia Courses online</br><b>Tạo tài khoản</b></h5>
+    
+                        <form class="form-signin" action="/signUp" method="post" id="frmRegister">
+                            <div class="form-label-group">
+                                <input name="username" type="text" id="inputUsername" class="form-control"
+                                    placeholder="Tên đăng nhập" required autofocus>
+                                <label for="inputUsername">Tên đăng nhập</label>
+                            </div>
+                            <div class="form-label-group">
+                                <input name="password" type="password" id="inputPassword" class="form-control"
+                                    placeholder="Mật khẩu" required>
+                                <label for="inputPassword">Mật khẩu</label>
+                            </div>
+                            <div class="form-label-group">
+                                <input name="fullname" type="text" id="inputFullname" class="form-control"
+                                    placeholder="Họ tên" required>
+                                <label for="inputFullname">Họ tên</label>
+                            </div>
+                            <div class="form-label-group">
+                                <input name="email" type="email" id="inputEmail" class="form-control" placeholder="Email"
+                                    required>
+                                <label for="inputEmail">Email</label>
+                            </div>
+                            <div class="form-label-group">
+                                <input name="address" type="text" id="inputAddress" class="form-control"
+                                    placeholder="Địa chỉ" required>
+                                <label for="inputAddress">Địa chỉ</label>
+                            </div>
+                            <div class="form-label-group">
+                                <input name="phoneNumber" type="phone" id="inputPhoneNumber" class="form-control"
+                                    placeholder="Số điện thoại" required>
+                                <label for="inputPhoneNumber">Số điện thoại</label>
+                            </div>
+                            <div class="form-label-group">
+                                <input name="image" type="text" id="inputImage" class="form-control"
+                                    placeholder="Hình ảnh" required>
+                                <label for="inputImage">Hình ảnh</label>
+                            </div>
+                            <div class="form-label-group">
+                                <input name="describe" type="text" id="inputDescribe" class="form-control"
+                                    placeholder="Mô tả" required>
+                                <label for="inputDescribe">Mô tả</label>
+                            </div>
+                            <div class="form-label-group">
+                                <input name="level" type="text" id="inputLevel" class="form-control"
+                                    placeholder="Level" required>
+                                <label for="inputLevel">Level</label>
+                            </div>
+                            <div class="form-label-group">
+                                <input name="DOB" type="date" id="inputDOB" class="form-control" placeholder="Ngày sinh"
+                                    required>
+                                <label for="inputDOB">Ngày sinh</label>
+                            </div>
+                            <div class="form-label-group">
+                                <select name="gender" id="inputGender" class="form-control">
+                                    <option value= '0'>Giới tính</option>
+                                    <option value= '1'>Nam</option>
+                                    <option value= '2'>Nữ</option>
+                                    <option value= '3'>Khác</option>
+                                </select>
+                            </div>
+                            <div class="form-label-group">
+                                <select name="typeAccount" id="inputTypeAccount" class="form-control">
+                                    <option value= '0'>Loại tài khoản</option>
+                                    <option value= '1'>Người dùng</option>
+                                    <option value= '2'>Giáo viên</option>
+                                    <option value= '3'>Quản trị viện</option>
+                                </select>
+                            </div>
+                           
+                            <button class="btn btn-lg btn-primary btn-block text-uppercase mt-3"
+                                type="submit">Đăng kí</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{{#section 'js'}}
+    {{!-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script> --}}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+    <script>
+  $('#frmRegister').on('submit', function (e) {
+    e.preventDefault();
+
+    const username = $('#inputUsername').val();
+    if (username.length === 0) {
+      alert('Invalid data.');
+      return;
+    }
+
+    $.getJSON(`/is-available?user=${username}`, function (data) {
+      if (data === true) {
+        $('#frmRegister').off('submit').submit();
+      } else {
+        alert('Invalid data.');
+      }
+    })
+  });
+
+  $('#inputDOB').datetimepicker({
+    format: 'd/m/Y',
+    timepicker: false,
+    mask: true,
+  });
+</script>
+{{/section}}
+    

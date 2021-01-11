@@ -1,0 +1,70 @@
+{{> header}}
+<section class="content">
+    <div class="container">
+        <ul class="breadcrumb">
+            <li class="breadcrumb-item">
+                <a href="/" title="Trang chủ"><i class="fa fa-home"></i></a>
+            </li>
+            <li class="breadcrumb-item">
+                <a href="/user/contact-history" title="Hộp thoại">&nbsp; Hộp thoại</a>
+            </li>
+            <li class="breadcrumb-item">
+                <a href="/user/contact" title="Hướng dẫn khoá học" style="color: blueviolet;">&nbsp; Nhắn tin</a>
+            </li>
+        </ul>
+        
+        <div class="row">
+            <div class="col-lg-5 mb-4">
+                <!--Form with header-->
+                <div class="card">
+
+                    <div class="card-body">
+                        <!--Header-->
+                        <div class="form-header blue accent-1" style="background-color:#82b1ff; height: 80px;">
+                            <h3 style="line-height: 80px; text-align: center;"><i class="fa fa-envelope"></i> Viết thư
+                                gửi:</h3>
+                        </div>
+
+                        <p style="text-align: center;">Chào người dùng, hãy gửi cho chúng tôi các nhận xét về dịch vụ</p>
+                        <br>
+                        <form action="/user/contact" method="POST">
+                            <!--Body-->
+                            <div class="md-form">
+                                <i class="fa fa-user prefix grey-text"></i>
+                                <input type="text" id="form-name" class="form-control" name="name">
+                                <label for="form-name">Tên</label>
+                            </div>
+
+                            <div class="md-form">
+                                <i class="fa fa-envelope prefix grey-text"></i>
+                                <input type="text" id="form-email" class="form-control" name="email">
+                                <label for="form-email">Email</label>
+                            </div>
+
+
+                            <div class="md-form">
+                                <i class="fa fa-pencil"></i>
+                                <textarea id="form-text" class="form-control md-textarea" rows="3" name="content"></textarea>
+                                <label for="form-text">Nội dung</label>
+                            </div>
+
+                            <div class="text-center mt-4">
+                                <button class="btn btn-primary" type="submit">Gửi</button>
+                            </div>
+                        </form>
+
+                    </div>
+
+                </div>
+            </div>
+            <div class="col-lg-7">
+                <!--The div element for the map -->
+                <div id="map-container-google-1" class="z-depth-1-half map-container" style="height: 500px">
+                    <iframe src="https://maps.google.com/maps?q=manhatan&t=&z=13&ie=UTF8&iwloc=&output=embed"
+                        frameborder="0" style="border:0" allowfullscreen></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{{> footer}}

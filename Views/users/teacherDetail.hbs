@@ -1,0 +1,47 @@
+
+ {{> header}}
+    <!---Content--->
+    <section class="content">
+        <div class="container">
+            <ul class="breadcrumb">
+                <li class="breadcrumb-item">
+                    <a href="/user/home" title="Trang chủ"><i class="fa fa-home"></i></a>
+                </li>
+                <li class="breadcrumb-item">
+                    <a href="/user/teacher" title="Giáo viên"> Giáo viên</a>
+                </li>
+                <li class="breadcrumb-item">
+                    <a href="/user/teacherDeail" title="Thông tin chi tiết giáo viên"> Chi tiết giáo viên</a>
+                </li>
+            </ul>
+
+            <div class="row">
+                {{#teacherDetail}}
+                <div class="col-md-12">
+                   <div class="blog-single-content">
+                       <div class="post post-single">
+                           <div class="image-thumb-trainer f1">
+                               <img src="../../public/img/{{image}}" title="{{FullName}}" alt="{{FullName}}">
+                           </div>
+                           <div class="author-info">
+                               <h6 class="author-title">Giới thiệu giáo viên</h6>
+                               <div class="author-content">
+                                   <p><title></title></p>
+                                   <p>Họ tên: {{FullName}}</p>
+                                   <p>Ngày sinh: {{../dob}}</p>
+                                   <p>Level: {{level}}</p>
+                                   <p>Mô tả: {{describe}}</p>
+                                   <p>Số điện thoại:{{phone}}</p>
+                                   <p>Email: {{email}}</p>
+                                   <p></p>
+                               </div>
+                           </div>
+                       </div>
+                   </div>
+                </div>
+                {{/teacherDetail}}
+            </div>
+        </div>
+    </section>
+
+{{> footer}}

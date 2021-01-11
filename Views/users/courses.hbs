@@ -1,0 +1,166 @@
+{{> header}}
+<!--Content-->
+<section class="content">
+  <div class="container">
+    <ul class="breadcrumb">
+      <li class="breadcrumb-item">
+        <a href="/home" title="Trang chủ"><i class="fa fa-home"></i></a>
+      </li>
+      <li class="breadcrumb-item">
+        <a href="/courses" title="Khoá học">&nbsp; Khoá học</a>
+      </li>
+    </ul>
+    <div class="row">
+      <div class="col-md-3 col-md-pull-9">
+        <aside class="sidebar-categories">
+
+
+          <div class="module">
+            <h3 class="modtitle">
+              <span>Danh mục</span>
+            </h3>
+            <ul class="list-group">
+              {{#each category}}
+              <li class="list-group-item"><a href="?category={{id}}" title="Lập trình web">{{name}}</a></li>
+              {{/each}}
+            </ul>
+          </div>
+        </aside>
+
+
+      </div>
+      <div class="col-md-9 col-md-push-3">
+        <div class="product-filter filters-panel">
+          <div class="short-by-show form-inline text-left">
+            <div class="form-group short-by">
+              <form  action="/user/courses" method="POST">
+                {{!-- <label class="control-label" for="input-sort">Sắp xếp theo: </label> --}}
+                <select id="inputsort" class="form-control" name="level" >
+                  <option value="0" selected="selected">Sắp xếp</option>
+                  <option value="1">Giá cao đến thấp</option>
+                  <option value="2">Giá thấp đến cao</option>
+                  <option value="3">Đánh giá giảm dần</option>
+                  <option value="4">Đánh giá tăng dần</option>
+                </select>
+
+                <select id="input-filter" class="form-control" name="price">
+                  <option value="0" selected="selected">Giá tiền</option>
+                  <option value="1">Dưới 1.000.000</option>
+                  <option value="2">1.000.000-2.000.000</option>
+                  <option value="3">Trên 2.000.000</option>
+
+                </select>
+                 <input  type="submit" name="submit" value="Submit">
+              </form>
+            </div>
+          </div>
+        </div>
+
+        <!-- -content product -->
+        <div class="content">
+          <div class="row">
+            {{#each courseStar}}
+            <div class="col-sm-6 col-md-4">
+              <div class="card h-100">
+                <div class="mc-item mc-item-2">
+                  <div class="image-heading">
+                    <a href="/user/courses/{{courses.id}}" title="{{courses.name}}"><img style="height: 180px;" title="{{courses.name}}"
+                        src="../../public/img/{{courses.image}}" alt="Xay dung khoa hoc"></a>
+                  </div>
+
+                  <div class="card-body" id="cardMagin">
+                    <div class="meta-categories">
+                      <a href="#" title="Hoc lap trinh web">{{courses.name}}</a>
+                    </div>
+
+                    <div class="content-item" style="height: 100px;">
+                      <div class="image-author">
+                        <a href="#" title="Giảng viên: Phạm Đình Long">...</a>
+                      </div>
+                      <h5><a href="/user/courses/{{courses.id}}" title="Xây dung trang web asp.net">Xây dựng trang {{courses.name}}</a>
+                      </h5>
+                      <div class="name-author">
+                        <span>Bởi
+                          <a href="/user/teacher/{{courses.idTeacher}}" title="Giảng viên: {{courses.FullName}}">{{courses.FullName}}</a>
+                        </span>
+                      </div>
+                    </div>
+
+                    <div class="ft-item" >
+                      <div class="rating" style="height: 20px;">
+                        {{#each star}}
+                        <span class="fa fa-star checked"></span>
+                        {{/each}}
+                      </div>
+
+                      <div class="view-info">
+                        <i class="fa fa-eye" aria-hidden="true"></i> &nbsp;{{courses.view}}
+                      </div>
+                      <div class="price">
+                        <span>{{format courses.price}} đ</span>
+                      </div>
+
+                    </div>
+                  </div>
+
+
+                </div>
+              </div>
+            </div>
+            {{/each}}
+          </div>
+        </div>
+        {{!-- Pading product --}}
+
+        <nav aria-label="Page navigation example">
+          <ul class="pagination">
+            {{#if navs.prev}}
+            <li class="page-item">
+              <a class="page-link" href="?page={{ navs.prev}}" aria-label="Previous">
+                <span aria-hidden="true">&laquo;</span>
+              </a>
+            </li>
+            {{else}}
+            <li class="page-item disabled">
+              <a class="page-link" href="#" tabindex="-1" aria-disabled="true">
+                <span aria-hidden="true">&laquo;</span>
+              </a>
+            </li>
+            {{/if}}
+            {{#each pages}}
+            {{#if active}}
+            <li class="page-item active" aria-current="page">
+              <a class="page-link" href="javascript:;">
+                {{ value }} <span class="sr-only">(current)</span>
+              </a>
+            </li>
+            {{else}}
+            <li class="page-item">
+              <a class="page-link" href="/user/courses?category={{cat}}&page={{value}}">
+                {{value}}
+              </a>
+            </li>
+            {{/if}}
+            {{/each}}
+            {{#if navs.next}}
+            <li class="page-item">
+              <a class="page-link" href="?page={{ navs.next}}" aria-label="Next">
+                <span aria-hidden="true">&raquo;</span>
+              </a>
+            </li>
+            {{else}}
+            <li class="page-item disabled">
+              <a class="page-link" href="#" tabindex="-1" aria-disabled="true">
+                <span aria-hidden="true">&raquo;</span>
+              </a>
+            </li>
+            {{/if}}
+          </ul>
+        </nav>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+{{> footer}}

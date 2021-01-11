@@ -1,0 +1,225 @@
+{{#section 'js'}}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.3.2/jquery.rateyo.min.js"></script>
+<script>
+    $('.addItem').on('click', function () {
+        const id = $(this).data('id');
+        $('#txtProId').val(id);
+        $('#frmAddItem').submit();
+    });
+
+
+    $(function () {
+        $(".rateyo").rateYo().on("rateyo.change", function (e, data) {
+            var rating = data.rating;
+            $(this).parent().find('.score').text('Điểm :' + $(this).attr('data-rateyo-score'));
+            $(this).parent().find('.result').text('xếp hạng :' + rating);
+            $(this).parent().find('input[name=rating]').val(rating);
+        });
+    });
+</script>
+{{/section}}
+{{#section 'css'}}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.3.2/jquery.rateyo.min.css">
+{{/section}}
+{{> header}}
+<!-- -Content-->
+<section class="content">
+    <div class="container">
+        <ul class="breadcrumb">
+            <li class="breadcrumb-item">
+                <a href="/home" title="Trang chủ"><i class="fa fa-home"></i></a>
+            </li>
+            <li class="breadcrumb-item">
+                <a href="/courses" title="Khoá học">&nbsp; Khoá học</a>
+            </li>
+            {{#Detail}}
+            <li class="breadcrumb-item">
+                <a href="#" title="Chi tiết khoá học">&nbsp; {{NameCourse}}</a>
+            </li>
+            {{/Detail}}
+        </ul>
+        <form action="/user/cart/add" method="POST" id="frmAddItem">
+            <input type="hidden" name="id" id="txtProId">
+            {{!-- <input type="hidden" name="quantity" id="txtQ"> --}}
+        </form>
+        <div class="row">
+            <div class="col-md-5">
+                <div class="sidebar-course-intro">
+                    <div class="video-course-intro">
+                        {{#Detail}}
+                        <div class="inner">
+                            <div class="embed-responsive embed-responsive-16by9">
+
+                                {{!-- <iframe class="embed-responsive-item" width="560" height="315"
+                                    src="../../public/video{{PathVideo}}" frameborder="0"
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                    allowfullscreen></iframe> --}}
+                                <video src="../../public/video/video2.mp4" controls>
+                                </video>
+                            </div>
+                        </div>
+
+                        <div class="price">
+                            <span class="from">Học phí: </span>
+                            <span class="amount">{{format price}} đ</span>
+                        </div>
+                        {{#if ../isAuth}}
+                        <a data-id="{{IdCourse}}" class="btn btn-success addItem" href="javascript:;" role="button"
+                            id="register"><i class="fa fa-user-plus"></i>Đăng kí</a>
+                        {{/if}}
+                        {{/Detail}}
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-7">
+                <div class="producttab">
+                    <div class="tabsslider">
+                        <div class="nav-tabs-wrap">
+                            <ul class="nav nav-tabs" role="tablist">
+                                <li class="nav-item">
+                                    <a href="#introduction" role="tab" data-toggle="tab">
+                                        Nội dung
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="#teacher" role="tab" data-toggle="tab">Giảng viên</a>
+                                </li>
+                                {{#if check}}
+                                <li class="nav-item">
+                                    <a href="#outline" role="tab" data-toggle="tab">Video</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="#review" role="tab" data-toggle="tab">Đánh giá</a>
+                                </li>
+                                {{/if}}
+
+                            </ul>
+                        </div>
+
+                        <div class="tab-content">
+                            {{#Detail}}
+                            <div class="tab-pane fade in active show" id="introduction">
+                                <h5 class="sm black bold" style="font-weight: 500; text-align: center;">Giới thiệu</h5>
+                                <p><strong>Tên khoá học:</strong> {{NameVideo}}</p>
+                                <p><strong>Mô tả khoá học:</strong> {{describeCourse}}</p>
+                                {{#with ../point}}
+                                <p><strong>Điểm đánh giá:</strong> {{format pointRate}} | &nbsp;<strong>Số lượng đánh
+                                        giá: </strong>{{count}} </p>
+                                {{/with}}
+                                {{#with ../countRegister}}
+                                <p><strong>Số đăng kí:</strong> {{count}}</p>
+                                {{/with}}
+                                <p>&nbsp;</p>
+                            </div>
+
+                            <div class="tab-pane fade" id="teacher">
+                                <h5 class="sm black bold">Giảng viên: {{Fullname}}</h5>
+                                <p>Nghề nghiêp: {{LevelTeacher}}</p>
+                                <p>Sinh năm: 1999</p>
+                                <p>Kinh nghiệm: 6 Tháng làm dev</p>
+                                <p>Giới thiệu: {{DescribeTeacher}}</p>
+                                <p>&nbsp;</p>
+                            </div>
+                            {{/Detail}}
+
+                            <div class="tab-pane fade" id="outline">
+                                <h5 class="tit-section sxm">Nội dung khoá học</h5>
+
+                                <ul class="section-list">
+                                    {{#each List}}
+                                    <li>
+
+                                        <div class="list-body">
+                                            <p>
+                                                <a href="?video={{this.STT}}" title="{{this.NameVideo}}">
+                                                    {{this.NameVideo}}</a>
+                                            </p>
+                                        </div>
+                                    </li>
+                                    {{/each}}
+                                </ul>
+                                <p>&nbsp;</p>
+                            </div>
+
+                            <div class="tab-pane fade" id="review">
+                                {{#Detail}}
+                                <form action="/user/course-rating" method="POST">
+                                    <div class="rateyo" data-rateyo-rating="2.4" data-rateyo-num-stars="5"
+                                        data-rateyo-score="1"></div>
+                                    <span class='score'>0</span>
+                                    <span class='result'>0</span>
+                                    <input type="hidden" name="rating">
+                                    <input type="hidden" value="{{IdCourse}}" name="course">
+
+                                    <p>&nbsp;</p>
+                                    <button class="btn btn-primary" type="submit" style="margin-top: 20px; float:right">
+                                        <i class="fa fa-star"></i> Đánh giá</button>
+                                </form>
+                                {{/Detail}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+{{!-- Khoa hoc lien quan --}}
+<section id="mc-section-4" class="mc-section-3 section">
+    <div class="container">
+        <div class="module so-deals">
+            <h3 class="modtitle">
+                <span>Khoá học liên quan</span>
+            </h3>
+            <div class="module-body">
+                <div class="owl-carousel owl-theme" style="display: block; opacity: 1;">
+                    {{#each courseStar}}
+                    <div class="item" style="width: auto;">
+                        <div class="card h-100">
+                            <div class="mc-item mc-item-1">
+                                <div class="image-heading">
+                                    <a href="/user/courses/{{courses.id}}" title="{{courses.name}}"><img
+                                            style="max-height: 180px;" title="{{courses.name}}"
+                                            src="../../public/img/{{courses.image}}" alt="Xay dung khoa hoc"></a>
+                                </div>
+                                <div class="meta-categories">
+                                    <a href="/user/courses/{{courses.id}}" title="{{courses.name}}">{{courses.name}}</a>
+                                </div>
+                                <div class="content-item">
+                                    <div class="image-author">
+                                        <a href="#" title="Giảng viên: Phạm Đình Long">...</a>
+                                    </div>
+                                    <h4><a href="#" title="{{courses.name}}">{{courses.name}}</a></h4>
+                                    <div class="name-author">
+                                        <span>Bởi
+                                            <a href="#" title="Giảng viên: Phạm Đình Long">Phạm Đình
+                                                Long</a>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="ft-item">
+                                    <div class="rating">
+                                        Đánh giá:
+                                        {{#each star}}
+                                        <span class="fa fa-star checked"></span>
+                                        {{/each}}
+
+                                    </div>
+                                    <div class="view-info">
+                                        <i class="fa fa-users" aria-hidden="true"></i>{{courses.view}}
+                                    </div>
+                                    <div class="price">
+                                        <span>{{format courses.price}} đ</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {{/each}}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{{> footer}}

@@ -1,0 +1,70 @@
+{{> header}}
+<section class="content">
+    <div class="container">
+        <ul class="breadcrumb">
+            <li class="breadcrumb-item">
+                <a href="/" title="Trang chủ"><i class="fa fa-home"></i></a>
+            </li>
+            <li class="breadcrumb-item">
+                <a href="/user/contact-history" title="Hộp thoại" style="color: blueviolet;">&nbsp; Hộp thoại</a>
+            </li>
+            <li class="breadcrumb-item">
+                <a href="/user/contact" title="Hướng dẫn khoá học">&nbsp; Nhắn tin</a>
+            </li>
+        </ul>
+        
+        <div class="row">
+            <div class="col-md-12">
+                <div class="blog-list-content">
+                    {{#each contact}}
+                    <div class="post">
+                        <div class="post-media">
+                            <div class="image-thumb">
+                                <img src="../../public/img/hinh.jpg" style="max-width: 100%; border-radius: 90%;" title="user" alt="user">
+                            </div>
+                        </div>
+                        <div class="post-body">
+                            <div class="post-content">
+                               
+                                <p> <label><strong>Tên: </strong> </label>&nbsp;{{name}}</p>
+                                <label><strong>Nội dung: </strong> </label>
+                                <textarea  class="form-control md-textarea" rows="2" >{{content}}</textarea>
+                               
+                                <p> <label><strong>Email: </strong> </label>&nbsp;{{email}}</p>
+                            </div>
+                            <h6 style="float: right;">{{commanDate}}</h6>
+                        </div>
+                    </div>
+                    {{/each}}
+                </div>
+                {{!-- Pading product --}}
+
+                <div class="row d-flex justify-content-center">
+                    <nav aria-label="Page navigation example">
+                        <ul class="pagination">
+                            <li class="page-item  {{#if previous.isDisabled}}disabled{{/if}}">
+                                <a class="page-link" href="/buyer/{{previous.CatID}}/{{previous.pageNumber}}"
+                                    aria-label="Previous">
+                                    <span aria-hidden="true">&laquo;</span>
+                                </a>
+                            </li>
+                            {{#each pagination}}
+                            <li class="page-item {{#if this.isActive}}active{{/if}}"><a class="page-link"
+                                    href="/buyer/{{this.CatID}}/{{this.pageNumber}}">{{this.pageNumber}}</a>
+                            </li>
+                            {{/each}}
+                            <li class="page-item {{#if next.isDisabled}}disabled{{/if}}">
+                                <a class="page-link" href="/buyer/{{next.CatID}}/{{next.pageNumber}}" aria-label="Next">
+                                    <span aria-hidden="true">&raquo;</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+</section>
+{{> footer}}
