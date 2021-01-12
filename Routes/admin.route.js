@@ -71,6 +71,29 @@ router.get('/category',async (req,res)=>{
     });
 });
 
+router.get('/category-add', async(req,res)=>{
+    res.render('admin/add-category',{
+        layout:"main_admin"
+    })
+})
+
+router.get('/category-edit/:id',async(req,res)=>{
+    const id=parseInt(req.params.id);
+    const category=await modelField.getRouteByID(id);
+    res.render('admin/update-category',{
+        layout:"main_admin",
+        category:category[0]
+    })
+});
+
+router.post('/category-edit',async(req,res)=>{
+    let name=req.body.name;
+    let image=req.body.image;
+
+    await modelField.updateCategory(id,name,image);
+    res.redirect('/admin/category')
+});
+
 router.get('/chart',async (req,res)=>{
     res.render('admin/chart',{
         layout:"main_admin",

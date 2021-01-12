@@ -24,5 +24,16 @@ module.exports={
         FROM ${tbRoute}`;
         const rows = await db.load(sql);
         return rows[0];
+    },
+    getRouteByID: async(id)=>{
+        const sql = `SELECT * FROM ${tbRoute} WHERE Id=${id} `;
+        const rows = await db.load(sql);
+        return rows;
+    },
+    updateCategory: async(id,name,image)=>{
+        const sql=`UPDATE ${tbRoute}
+        SET id='${id}', name='${name}',image='${image}'
+        WHERE Id=${id}`;
+        await db.load(sql);
     }
 }

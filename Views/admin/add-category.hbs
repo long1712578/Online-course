@@ -1,0 +1,50 @@
+<!-- Page Wrapper -->
+<div id="wrapper">
+
+    <!-- Sidebar -->
+    {{> sidebar_admin}}
+    <!-- End of Sidebar -->
+
+    <!-- Content Wrapper -->
+    <div id="content-wrapper" class="d-flex flex-column">
+
+        <!-- Main Content -->
+        <div id="content">
+
+            <!-- Topbar -->
+            {{> topbar_admin}}
+            <!-- End of Topbar -->
+
+            <!-- Begin Page Content -->
+            <div class="container-fluid">
+               
+                <form method="POST" action="/admin/category-add">
+               
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Tên lĩnh vực</label>
+                        <input type="text" class="form-control" id="exampleInputName" name="name" 
+                            placeholder="Nhập lĩnh vực...">
+
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">Hình ảnh</label>
+                        <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Nhập tên hình ảnh..." name="image">
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">Thêm</button>
+                </form>
+              
+
+            </div>
+
+            <!-- End of Main Content -->
+
+            <!-- Footer -->
+            {{> footer_admin}}
+            <!-- End of Footer -->
+
+        </div>
+        <!-- End of Content Wrapper -->
+
+    </div>
+    <!-- End of Page Wrapper -->
