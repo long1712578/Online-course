@@ -8,9 +8,14 @@ const router=express.Router();
 
 router.get('/cart', async(req,res)=>{
     const items=[];
+    var count=0;
+    var priceTotal=0;
     for(const ci of req.session.cart){
         const course=await modelCourses.getCoursesById(ci.id);
-        //console.log("course: ",course);
+        //Tong khoa hoc
+        count+=1;
+        //Tong tien
+        priceTotal+=course[0].price;
         items.push({
             ...ci,
             ...course,
@@ -18,17 +23,17 @@ router.get('/cart', async(req,res)=>{
         })
         
     }
-    //console.log("item: ",items);
     res.render('users/cart',{
         items:items,
+        priceTotal: priceTotal,
         empty:req.session.cart.length === 0
     });
 });
 
 router.post('/cart/add', function (req, res) {
+  
     const item = {
-      id: +req.body.id,
-      quantity: 1
+      id: +req.body.id
     };
 
     modelCart.add(req.session.cart, item);

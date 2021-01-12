@@ -22,16 +22,18 @@
       <a href="/user/contact" class="nav-item nav-link"><i class="fa fa-envelope"></i><span>Liên lạc</span></a>
       <a href="/user/help" class="nav-item nav-link"><i class="fa fa-bell"></i><span>Hướng dẫn</span></a>
         {{#if isAuth}}
+        
         <a class="nav-item nav-link" href="/user/cart" aria-disabled="true">
 
-          <i class=" fa fa-shopping-cart"></i><span class="nav-shop__circle">3</span>
+          <i class=" fa fa-shopping-cart"></i>
           <span>Giỏ hàng</span>
         </a>
         {{/if}}
         <div class="nav-item dropdown">
           {{#if isAuth}}
+          {{#with authUser}}
           <a href="#" data-toggle="dropdown" class="nav-item nav-link dropdown-toggle user-action"><img
-              src="../../public/img/hinh1.jpg" class="avatar" alt="Avatar"> LongPham <b class="caret"></b></a>
+              src="../../public/img/{{image}}" class="avatar" alt="Avatar"> {{UserName}} <b class="caret"></b></a>
           <div class="dropdown-menu">
             <a href="/profile" class="dropdown-item"><i class="fa fa-user-o"></i> Thông tin cá nhân</a>
             <div class="divider dropdown-divider"></div>
@@ -39,11 +41,11 @@
             <a href="javascript: $('#frmLogout').submit();" class="dropdown-item"><i class="material-icons">&#xE8AC;</i> Đăng xuất </a>
             </form>
           </div>
-
+          {{/with}}
           {{else}}
 
           <a href="#" data-toggle="dropdown" class="nav-item nav-link dropdown-toggle user-action"><img
-              src="../../public/img/hinh1.jpg" class="avatar" alt="Avatar"> LongPham <b class="caret"></b></a>
+              src="../../public/img/hinh.jpg" class="avatar" alt="Avatar"> Hello <b class="caret"></b></a>
           <div class="dropdown-menu">
             <a href="/signIn" class="dropdown-item"><i class="fa fa-user-o"></i> Đăng nhập</a>
             <div class="divider dropdown-divider"></div>

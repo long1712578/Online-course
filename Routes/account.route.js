@@ -3,6 +3,9 @@ const bcrypt = require('bcryptjs');
 const moment = require('moment');
 const router = express.Router();
 const userModel=require('../Models/user.model');
+const modelOrder=require('../Models/order.model');
+const modelOrderDetail=require('../Models/order-detail.model');
+const modelCourseLike=require('../Models/courseLike.model');
 const { add } = require('../utils/db');
 router.get('/signUp', async function (req, res) {
     res.render('account/signUp');
@@ -88,12 +91,17 @@ router.post('/logout', async function (req, res) {
 
 router.get('/profile',async (req,res)=>{
   if(req.session.isAuth===false){
-    res.redirect('/signIn')
+    res.redirect('/signIn');
+    return 0;
   }
   const userId= req.session.authUser.Id;
   const rows= await userModel.getUserById(userId);
+  const course=await modelOrder.getListOrderByIdUser(userId);
+  const courseLike=await modelCourseLike.getLikeByUserId(userId);
   res.render('account/profile',{
     myUser: rows,
+    courses: course,
+    courseLike:courseLike
   });
 })
 router.post('/profile', async(req,res)=>{
@@ -114,5 +122,10 @@ router.post('/profile', async(req,res)=>{
 
   await userModel.updateProfile(userId,FullName, Email, phone, Gender, dob, Address, UserName,Password);
   res.redirect('/profile');
-})
+}),
+router.get('/profile-delete/:id',async(req,res)=>{
+  const id=parseInt(req.params.id);
+  await modelOrderDetail.delete(id);
+  res.redirect('/profile');
+});
 module.exports=router;

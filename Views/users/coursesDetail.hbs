@@ -3,8 +3,16 @@
 <script>
     $('.addItem').on('click', function () {
         const id = $(this).data('id');
+        const price = $(this).data('price');
+        const value={id,price};
         $('#txtProId').val(id);
         $('#frmAddItem').submit();
+    });
+
+    $('.addItemLike').on('click', function () {
+        const id = $(this).data('id');
+        $('#txtProLikeId').val(id);
+        $('#frmLikeItem').submit();
     });
 
 
@@ -42,6 +50,9 @@
             <input type="hidden" name="id" id="txtProId">
             {{!-- <input type="hidden" name="quantity" id="txtQ"> --}}
         </form>
+         <form action="/user/course/like" method="POST" id="frmLikeItem">
+            <input type="hidden" name="id" id="txtProLikeId">
+        </form>
         <div class="row">
             <div class="col-md-5">
                 <div class="sidebar-course-intro">
@@ -59,8 +70,11 @@
                             <span class="amount">{{format price}} đ</span>
                         </div>
                         {{#if ../isAuth}}
-                        <a data-id="{{IdCourse}}" class="btn btn-success addItem" href="javascript:;" role="button"
+                        <a data-id="{{IdCourse}}" data-price={{price}} class="btn btn-success addItem" href="javascript:;" role="button"
                             id="register"><i class="fa fa-user-plus"></i>Đăng kí</a>
+                        
+                        <a data-id="{{IdCourse}}"  class="btn btn-danger addItemLike" href="javascript:;" role="button"
+                            id="register"><i class="fa fa-heart"></i>Like</a>
                         {{/if}}
                         {{/Detail}}
                     </div>

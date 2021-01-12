@@ -1,6 +1,8 @@
 module.exports = {
     add(cart, item) {
+      
       cart.push(item);
+
     },
   
     del(cart, id) {
@@ -15,7 +17,16 @@ module.exports = {
     getNumberOfItems(cart) {
       let ret = 0;
       for (ci of cart) {
-        ret += ci.quantity;
+        ret += 1;
+      }
+  
+      return ret;
+    },
+
+    getPriceOfItems(cart) {
+      let ret = 0;
+      for (ci of cart) {
+        ret += ci.price;
       }
   
       return ret;

@@ -3,6 +3,7 @@ const modelCourses = require('../Models/courses.model');
 const modelOrder=require('../Models/order.model');
 const modelCategory = require('../Models/category.model');
 const modelVideo = require('../Models/video.model');
+const modelLike=require('../Models/courseLike.model');
 const { getVideoDeatilAll } = require('../Models/video.model');
 const db = require('../utils/db');
 const { getCoursesRelate } = require('../Models/courses.model');
@@ -191,6 +192,24 @@ router.post('/courses', async (req, res) => {
         navs: navs,
     });
 });
+
+router.post('/course/like',async(req,res)=>{
+    const userId = req.session.authUser.Id;
+    if (userId === 'undefined') {
+        res.redirect('/signIn')
+    }
+    const like={
+        courseId: req.body.id,
+        userId: userId
+    }
+    await modelLike.add(like);
+    res.redirect(req.headers.referer);
+}),
+router.get('/course-like/delete/:id',async(req,res)=>{
+    const id=req.params.id;
+    await modelLike.delete(id);
+    res.redirect(req.headers.referer);
+})
 
 
 router.post('/course-rating', async (req, res) => {
