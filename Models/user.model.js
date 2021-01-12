@@ -13,6 +13,10 @@ module.exports={
         const sql = `DELETE FROM ${tbUser} WHERE Id=${id};`;
         await db.load(sql);
     },
+    getUserEmail: async()=>{
+        const sql=`SELECT email FROM ${tbUser}`
+        return await db.load(sql);
+    },
     getUser: async(page)=>{
         let sql1= `SELECT count(*) AS total FROM ${tbUser} where type=1`;
         let rs= await db.load(sql1);
