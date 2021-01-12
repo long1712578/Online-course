@@ -7,6 +7,15 @@ const modelOrder=require('../Models/order.model');
 const modelOrderDetail=require('../Models/order-detail.model');
 const modelCourseLike=require('../Models/courseLike.model');
 const { add } = require('../utils/db');
+var nodemailer=require('nodemailer');
+var transporter = nodemailer.createTransport({
+  service: 'gmail',
+  auth: {
+    user: 'pdlong578@gmail.com',
+    pass: 'long1712578'
+  }
+});
+
 router.get('/signUp', async function (req, res) {
     res.render('account/signUp');
   })
@@ -30,8 +39,21 @@ router.post('/signUp', async function (req, res) {
     describe:req.body.describe,
     level:req.body.level,
     isActive:active
-    
   }
+  var mailOptions = {
+    from: 'pdlong578@gmail.com',
+    to: req.body.email,
+    subject: 'Register success!',
+    text: 'You had regiater account of my course online!'
+  };
+  console.log("mail",mailOptions);
+  transporter.sendMail(mailOptions, function(error, info){
+    if (error) {
+      console.log(error);
+    } else {
+      console.log('Email sent: ' + info.response);
+    }
+  });
   
   await userModel.add(user);
   res.render('account/signIn');
