@@ -1,7 +1,7 @@
 const mysql =require('mysql');
 const db=require('../utils/db');
 const tbRoute='route';
-const pageSize = 5;
+const pageSize = 6;
 
 module.exports={
     getRouteAll: async(page)=>{

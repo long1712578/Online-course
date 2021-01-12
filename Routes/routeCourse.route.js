@@ -4,9 +4,24 @@ const modelCourse=require('../Models/courses.model');
 const router=express.Router();
 
 router.get('/coursesRoute', async(req,res)=>{
-    const rows=await modelRoute.getRouteAll();
+    const page = parseInt(req.query.page) || 1;
+    const rows=await modelRoute.getRouteAll(page);
+    
+    const pages = [];
+            for (let i = 0; i < rows.pageTotal; i++) {
+                pages[i] = { value: i + 1, active: (i + 1) === page};
+            }
+            const navs = {};
+            if (page > 1) {
+                navs.prev = page - 1;
+            }
+            if (page < rows.pageTotal) {
+                navs.next = page + 1;
+            }
     res.render('users/coursesRoute',{
-        route:rows,
+        route:rows.category,
+        navs:navs,
+        pages:pages
         // empty:rows.length===0
     });
 })

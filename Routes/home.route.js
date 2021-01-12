@@ -6,7 +6,7 @@ const router=express.Router();
 
 router.get('/home', async(req,res)=>{
     const mCourses=await modelCourses.getCoursesAll(1);
-    const mRout=await modelRoute.getRouteAll();
+    const mRout=await modelRoute.getRouteAll(1);
     const mCategory =await modelCategory.getCategoryAll();
     const mCourseTOP10=await modelCourses.getCoursesTopTen();
     const mCourseView= await modelCourses.getCoursesViewTen();
@@ -43,7 +43,7 @@ router.get('/home', async(req,res)=>{
     }); 
     res.render('users/home',{
         coursesStar:coursesStar,
-        route: mRout,
+        route: mRout.category,
         category: mCategory,
         courseTop10Star:courseTop10Star,
         courViewStar:courViewStar,
