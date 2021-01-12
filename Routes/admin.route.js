@@ -50,8 +50,24 @@ router.get('/course/delete/:id',async(req,res)=>{
 });
 
 router.get('/category',async (req,res)=>{
+    const page = parseInt(req.query.page) || 1;
+    const category= await modelField.getRouteAll(page);
+    const pages = [];
+            for (let i = 0; i < category.pageTotal; i++) {
+                pages[i] = { value: i + 1, active: (i + 1) === page};
+            }
+            const navs = {};
+            if (page > 1) {
+                navs.prev = page - 1;
+            }
+            if (page < category.pageTotal) {
+                navs.next = page + 1;
+            }
     res.render('admin/category',{
         layout:"main_admin",
+        category: category.category,
+        pages:pages,
+        navs:navs
     });
 });
 
