@@ -1,6 +1,7 @@
 const mysql =require('mysql');
 const db=require('../utils/db');
 const tbRoute='route';
+const tbCourse='course';
 const pageSize = 6;
 
 module.exports={
@@ -30,10 +31,21 @@ module.exports={
         const rows = await db.load(sql);
         return rows;
     },
-    updateCategory: async(id,name,image)=>{
+    updateCategory: async(id,name)=>{
         const sql=`UPDATE ${tbRoute}
-        SET id='${id}', name='${name}',image='${image}'
-        WHERE Id=${id}`;
+        SET  name='${name}'
+        WHERE id=${id}`;
+        await db.load(sql);
+    },
+    add: async(entity)=>{
+        return db.add(entity,tbRoute);
+    },
+    count: async(id)=>{
+        const sql =`SELECT count(*) as count FROM ${tbRoute} as r inner join ${tbCourse} as c on r.id=c.idroute where r.id=${id}`;
+        return db.load(sql);
+    },
+    delete: async(id)=>{
+        const sql = `DELETE FROM ${tbRoute} WHERE id=${id};`;
         await db.load(sql);
     }
 }

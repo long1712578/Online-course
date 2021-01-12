@@ -4,8 +4,10 @@ const modelCourse=require('../Models/courses.model');
 const modelField=require('../Models/routeCourse.model');
 const modelTeacher=require('../Models/teacher.model');
 const modelUser=require('../Models/user.model');
+const modelRoute=require('../Models/routeCourse.model');
 const { route } = require('./courses.route');
 const router = express.Router();
+const alert =require('alert');
 
 router.get('/dashboad',async (req,res)=>{
     const course=await modelCourse.quantityCourses();
@@ -75,23 +77,48 @@ router.get('/category-add', async(req,res)=>{
     res.render('admin/add-category',{
         layout:"main_admin"
     })
+});
+router.post('/category-add', async(req,res)=>{
+    const name= req.body.name;
+    const image=req.body.image;
+
+    const entity={
+        name:name,
+        image:image
+    };
+    await modelRoute.add(entity);
+    res.redirect('/admin/category')
 })
 
-router.get('/category-edit/:id',async(req,res)=>{
+router.get('/category-update/:id',async(req,res)=>{
     const id=parseInt(req.params.id);
     const category=await modelField.getRouteByID(id);
-    res.render('admin/update-category',{
+    res.render('admin/category-update',{
         layout:"main_admin",
         category:category[0]
     })
 });
 
-router.post('/category-edit',async(req,res)=>{
+router.post('/category-update',async(req,res)=>{
     let name=req.body.name;
-    let image=req.body.image;
+    let id=req.body.id;
 
-    await modelField.updateCategory(id,name,image);
+    await modelField.updateCategory(id,name);
     res.redirect('/admin/category')
+});
+
+router.get('/category-delete/:id',async(req,res)=>{
+    const id=parseInt(req.params.id);
+    const rows=await modelRoute.count(id);
+    const count=+rows[0].count;
+    if(count>0){
+        alert("Oops! Something went wrong.");
+        res.redirect('/admin/category');
+        return;
+    }
+    await modelRoute.delete(id);
+    alert("Xoa thanh cong");
+    res.redirect('/admin/category');
 });
 
 router.get('/chart',async (req,res)=>{
