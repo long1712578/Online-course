@@ -20,16 +20,27 @@ router.get('/coursesRoute', async(req,res)=>{
             }
     res.render('users/coursesRoute',{
         route:rows.category,
-        navs:navs,
-        pages:pages
-        // empty:rows.length===0
+        pages:pages,
+        navs:navs
     });
 })
 router.get('/coursesRoute/:id', async(req,res)=>{
     const id= parseInt(req.params.id);
+    const page = parseInt(req.query.page) || 1;
     let courseStar=[];
-    const rows=await modelCourse.getCoursesByRouteId(id);
-    rows.forEach(element => {
+    const rows=await modelCourse.getCoursesByRouteId(id,page);
+    const pages = [];
+    for (let i = 0; i < rows.pageTotal; i++) {
+        pages[i] = { value: i + 1, active: (i + 1) === page};
+    }
+    const navs = {};
+    if (page > 1) {
+        navs.prev = page - 1;
+    }
+    if (page < rows.pageTotal) {
+        navs.next = page + 1;
+    }
+    rows.courses.forEach(element => {
         stars = [];
         for (let i = 0; i < element.rating; i++) {
             stars.push({ value: i });
@@ -39,6 +50,8 @@ router.get('/coursesRoute/:id', async(req,res)=>{
    
     res.render('users/courses',{
         courseStar: courseStar,
+        pages:pages,
+        navs:navs
     });
 })
 module.exports=router;

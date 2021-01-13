@@ -212,12 +212,23 @@ module.exports={
         const rows=await db.load(sql);
         return rows;
     },
-    getCoursesByRouteId: async(idRoute)=>{
+    getCoursesByRouteId: async(idRoute,page)=>{
+        const sqlFTS=`select count(*) as total
+        from (SELECT c.* FROM ${tbCourse} c inner join
+             ${tbRoute} r on r.id=c.idroute) kq where kq.idRoute=${idRoute}  `;
+        const rs= await db.load(sqlFTS);
+        //Tong trang
+        const totalPage=rs[0].total;
+        const pageTotal=Math.floor(totalPage/ pageSize)+1;
+        const offset=(page-1)*pageSize;
         const sql=`select *
         from (SELECT c.* FROM ${tbCourse} c inner join
-             ${tbRoute} r on r.id=c.idroute) kq where kq.idRoute=${idRoute} `;
+             ${tbRoute} r on r.id=c.idroute) kq where kq.idRoute=${idRoute} LIMiT ${pageSize} OFFSET ${offset} `;
         const rows=await db.load(sql);
-        return rows;
+        return {
+            courses: rows,
+            pageTotal: pageTotal
+        }
     },
     getCoursesTopTen: async()=>{
         const sql= `SELECT c.*, u.FullName as FullName FROM ${tbCourse}  as c INNER JOIN ${tbTeacher} as u ON c.idTeacher=u.Id
