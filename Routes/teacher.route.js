@@ -5,7 +5,30 @@ const bcrypt = require('bcryptjs');
 const moment = require('moment');
 const userModel=require('../Models/user.model');
 const courseModel=require('../Models/courses.model.js');
+const videoModel=require('../Models/video.model.js');
 const { add } = require('../utils/db');
+const multer=require('multer');
+
+let storage=multer.diskStorage({
+  destination:function (req,file,cb) {
+    cb(null,'./public/video')
+  },
+  filename:function (req,file,cb) {
+    cb(null,file.originalname)
+  }
+})
+var upload=multer({storage:storage});
+
+let storageImg=multer.diskStorage({
+  destination:function (req,file,cb) {
+    cb(null,'./public/img')
+  },
+  filename:function (req,file,cb) {
+    cb(null,file.originalname)
+  }
+})
+
+var uploadImg=multer({storage:storageImg});
 
 router.get('/', async(req,res)=>{
   if(req.session.authUser){
@@ -30,21 +53,22 @@ router.get('/createCourse', async(req,res)=>{
   }
 
 })
-router.post('/createCourse',async(req,res)=>{
+router.post('/createCourse',uploadImg.single('file'),async(req,res)=>{
   if(req.session.authUser){
+    console.log(console.log(req.file));
     let newCourse={};
     newCourse.name=req.body.nameCourse;
     newCourse.described=req.body.describe;
     newCourse.price=req.body.price;
     newCourse.rating=Math.round(Math.random()*5);
-    newCourse.image='nodejs.png';
+    newCourse.image=req.file.path;
     newCourse.idroute=Math.round(Math.random()*5);
     newCourse.idTeacher=req.session.authUser.Id;
     newCourse.idCategory=0;
     newCourse.dateCourse=moment(Date.now()).format('YYYY-MM-DD');
     newCourse.view=0;
     await courseModel.addCourseFromTeacher(newCourse);
-    res.send('da add thanh cong')
+    res.send('<h3>da add thanh cong</h3><br/><a href="/teacher">Click để quay lại trang chủ</a>')
   }else{
     res.render('teacher/login',{
         err_message: 'Please login to use this function'
@@ -129,8 +153,19 @@ router.post('/login',async(req,res)=>{
 router.get('/myCourse', async (req,res)=>{
   if(req.session.authUser){
     let myCourses=await courseModel.teacherGetCourse(req.session.authUser.Id);
-    console.log(myCourses);
-    res.send('dang xuli')
+    for (var i = 0; i < myCourses.length; i++) {
+      myCourses[i].lastupdate=Math.round(Math.random()*60);
+    }
+    let unfinishCourse=[];
+    let finishCourse=[];
+    for (var i = 0; i < myCourses.length; i++) {
+      if(myCourses[i].status!=1){
+        unfinishCourse.push(myCourses[i])
+      }else{
+        finishCourse.push(myCourses[i]);
+      }
+    }
+    res.render('teacher/myCourse',{UnfinishCourse:unfinishCourse,finishCourse:finishCourse})
   }else{
     res.render('teacher/login',{
         err_message: 'Please login to use this function'
@@ -142,6 +177,58 @@ router.get('/myProfile',(req,res)=>{
     res.render('teacher/myProfile',{
         profile:req.session.authUser
     });
+  }else{
+    res.render('teacher/login',{
+        err_message: 'Please login to use this function'
+    });
+  }
+})
+router.get('/course/:id',async(req,res)=>{
+  if(req.session.authUser){
+    let course=await courseModel.teacherGetCourseID(req.params.id);
+    let videos=await videoModel.getVideosFromCourse(req.params.id);
+    console.log(videos);
+    if(course.idTeacher==req.session.authUser.Id){
+      res.render('teacher/courseId',{course:course,videos:videos})
+    }else{
+      res.render('/teacher/home_gv')
+    }
+
+  }else{
+    res.render('teacher/login',{
+        err_message: 'Please login to use this function'
+    });
+  }
+});
+router.get('/addChuong/:idCourse',async(req,res)=>{
+  if(req.session.authUser){
+    let course=await courseModel.teacherGetCourseID(req.params.idCourse);;
+    if(course.idTeacher==req.session.authUser.Id){
+      res.render('teacher/addChuong',{course:course})
+    }else{
+      res.render('/teacher/home_gv')
+    }
+
+  }else{
+    res.render('teacher/login',{
+        err_message: 'Please login to use this function'
+    });
+  }
+})
+router.post('/addchuong',upload.single("video"),async (req,res)=>{
+  if(req.session.authUser){
+    //đưa thông tin vào database
+    let newChuong={};
+    newChuong.name=req.body.nameChuong;
+    newChuong.path=req.file.path;
+    newChuong.idCourses=req.body.idCourse;
+    if(req.body.Finish){
+      await courseModel.updateStatusCourse(1,req.body.idCourse);
+    }else{
+      await courseModel.updateStatusCourse(0,req.body.idCourse);
+    }
+    await videoModel.addChuongFromTeacher(newChuong);
+    res.send('upload thanh cong,<a href="/teacher">Click để quay lại trang chủ</a>');
   }else{
     res.render('teacher/login',{
         err_message: 'Please login to use this function'

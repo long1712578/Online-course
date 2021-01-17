@@ -4,7 +4,6 @@
     <meta charset="utf-8">
     <title></title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"><!-- icon -->
-
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/f93f74235e.js" crossorigin="anonymous"></script>
@@ -226,42 +225,15 @@
       </div>
     </nav>
   <!--content  -->
-  <div style="padding:30px;">
-    <div class="row">
-      <div class="col-sm-12 col-md-6" style="margin-top:15px">
-        <form action="/teacher/createCourse" method="post" enctype="multipart/form-data">
-          <div class="form-group">
-            <label for="tenKhoaHoc">Tên khóa học</label>
-            <input type="text" name="nameCourse" class="form-control" id="tenKhoaHoc" placeholder="Lập trình hướng đối tượng">
-          </div>
-          <div class="form-row">
-            <div class="form-group col-md-6">
-              <label for="hocPhi">Học phí (vnđ)</label>
-              <input type="text"  name="price"class="form-control" id="hocPhi" placeholder="100000">
-            </div>
-            <div class="form-group col-md-6">
-              <label for="khuyenMai">Khuyến mãi (%)</label>
-              <input type="text" name="khuyenmai"class="form-control" id="khuyenMai" placeholder="20">
-            </div>
-          </div>
-          <div class="form-group">
-            <label for="moTaNganGon">Mô tả ngắn gọn</label>
-            <input type="text" class="form-control" id="moTaNganGon"name="short-describe" placeholder="khóa học lập trình hướng đối tượng căn bản">
-          </div>
-          <div class="form-group">
-            <label for="moTaChiTiet">Mô tả chi tiết</label>
-            <textarea class="form-control" id="moTaChiTiet" name="describe" rows="3" placeholder="Lập trình hướng đối tượng (tiếng Anh: Object-oriented programming, viết tắt: OOP) là một mẫu hình lập trình dựa trên khái niệm 'công nghệ đối tượng', mà trong đó, đối tượng chứa đựng các dữ liệu, trên các trường, thường được gọi là các thuộc tính; và mã nguồn, được tổ chức thành các phương thức..."></textarea>
-          </div>
-          <div class="form-group">
-            <label for="anhKhoaHoc">Ảnh đại diện của khóa học</label>
-            <input type="file" name="file" class="form-control-file" id="anhKhoaHoc">
-          </div>
-          <button type="submit" class="btn btn-primary">Tạo</button>
-        </form>
-      </div>
-      <div class="col-sm-12 col-md-6" style="margin-top:15px">
-
-      </div>
+  <div class="card" style="width: 18rem;margin: 30px;">
+    <img class="card-img-top" src="..." alt="Card image cap">
+    <div class="card-body">
+      <h5 class="card-title">{{course.name}}</h5>
+      <p class="card-text">{{course.described}}</p>
+      {{#each videos}}
+        <p>Chương : {{name}}</p><br>
+      {{/each}}
+      <a href="/teacher/addChuong/{{course.id}}" class="btn btn-primary">Thêm chương</a>
     </div>
   </div>
   <!-- Site footer -->

@@ -31,4 +31,13 @@ where STT=${video}
         return rows;
     },
 
+    addChuongFromTeacher: async (video)=>{
+        return db.add(video,tbVideo)
+    },
+    getVideosFromCourse: async (courseID)=>{
+      const sql=`select * from ${tbVideo} where IdCourses=${courseID}`
+      const rows = await db.load(sql);
+      return rows;
+    }
+
 }

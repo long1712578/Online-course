@@ -303,82 +303,44 @@
     <div>
       <h2>Các khóa học chưa hoàn thành (chưa cập nhật đủ chương)</h2>
       <div class="ChuaHoanThanh">
-        <div class="card-deck">
-          <div class="card">
-            <img class="card-img-top" src="https://i.ytimg.com/vi/Nqqc2FHf9Ug/hqdefault.jpg?sqp=-oaymwEYCKgBEF5IVfKriqkDCwgBFQAAiEIYAXAB&rs=AOn4CLCnkDlXw61L9Gjf2EiNbHjUdjQ27Q" alt="Card image cap">
-            <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-              <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-            </div>
-            <div class="card-footer">
-              <small class="text-muted">Last updated 3 mins ago</small>
-            </div>
-          </div>
-          <div class="card">
-            <img class="card-img-top" src="https://i.ytimg.com/vi/Nqqc2FHf9Ug/hqdefault.jpg?sqp=-oaymwEYCKgBEF5IVfKriqkDCwgBFQAAiEIYAXAB&rs=AOn4CLCnkDlXw61L9Gjf2EiNbHjUdjQ27Q" alt="Card image cap">
-            <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-              <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
-            </div>
-            <div class="card-footer">
-              <small class="text-muted">Last updated 3 mins ago</small>
+        {{#each UnfinishCourse}}
+        <a href="/teacher/course/{{id}}" style="text-decoration:none; color:none;">
+          <div class="card-deck" style="margin-top:20px;">
+            <div class="card">
+              <img class="card-img-top" src="../{{image}}" alt="Card image cap">
+              <div class="card-body">
+                <h5 class="card-title">{{name}}</h5>
+                <p class="card-text">{{described}}</p>
+              </div>
+              <div class="card-footer">
+                <small class="text-muted">{{lastupdate}} minutes ago</small>
+              </div>
             </div>
           </div>
-          <div class="card">
-            <img class="card-img-top" src="https://i.ytimg.com/vi/Nqqc2FHf9Ug/hqdefault.jpg?sqp=-oaymwEYCKgBEF5IVfKriqkDCwgBFQAAiEIYAXAB&rs=AOn4CLCnkDlXw61L9Gjf2EiNbHjUdjQ27Q" alt="Card image cap">
-            <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-              <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
-            </div>
-            <div class="card-footer">
-              <small class="text-muted">Last updated 3 mins ago</small>
-            </div>
-          </div>
-        </div>
+        </a>
+        {{/each}}
       </div>
     </div>
     <div style="margin-top:50px;">
       <h2>Các khóa học đã hoàn thành</h2>
       <div class="DaHoanThanh">
          <div class="row" style="width:80%;">
-           <!-- DEMO 1 Item-->
-           <div class="col-lg-6 mb-3 mb-lg-0" style="margin-top:15px">
-             <div class="hover hover-1 text-white rounded"><img src="https://res.cloudinary.com/mhmd/image/upload/v1570786261/hoverSet-3_usk5ml.jpg" alt="">
-               <div class="hover-overlay"></div>
-               <div class="hover-1-content px-5 py-4">
-                 <h3 class="hover-1-title text-uppercase font-weight-bold mb-0"> <span class="font-weight-light">Image </span>Caption</h3>
-                 <p class="hover-1-description font-weight-light mb-0">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+           {{#each finishCourse}}
+           <a href="/teacher/course/{{id}}" style="text-decoration:none; color:none;">
+             <div class="card-deck" style="margin-top:20px;">
+               <div class="card">
+                 <img class="card-img-top" src="../{{image}}" alt="Card image cap">
+                 <div class="card-body">
+                   <h5 class="card-title">{{name}}</h5>
+                   <p class="card-text">{{described}}</p>
+                 </div>
+                 <div class="card-footer">
+                   <small class="text-muted">{{lastupdate}} minutes ago</small>
+                 </div>
                </div>
              </div>
-           </div>
-           <!-- DEMO 1 Item-->
-           <div class="col-lg-6"style="margin-top:15px">
-             <div class="hover hover-1 text-white rounded"><img src="https://res.cloudinary.com/mhmd/image/upload/v1570786257/hoverSet-4_fbtjks.jpg" alt="">
-               <div class="hover-overlay"></div>
-               <div class="hover-1-content px-5 py-4">
-                 <h3 class="hover-1-title text-uppercase font-weight-bold mb-0"> <span class="font-weight-light">Image </span>Caption</h3>
-                 <p class="hover-1-description font-weight-light mb-0">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-               </div>
-             </div>
-           </div>
-           <div class="col-lg-6"style="margin-top:15px">
-             <div class="hover hover-1 text-white rounded"><img src="https://res.cloudinary.com/mhmd/image/upload/v1570786257/hoverSet-4_fbtjks.jpg" alt="">
-               <div class="hover-overlay"></div>
-               <div class="hover-1-content px-5 py-4">
-                 <h3 class="hover-1-title text-uppercase font-weight-bold mb-0"> <span class="font-weight-light">Image </span>Caption</h3>
-                 <p class="hover-1-description font-weight-light mb-0">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-               </div>
-             </div>
-           </div>
-           <div class="col-lg-6"style="margin-top:15px">
-             <div class="hover hover-1 text-white rounded"><img src="https://res.cloudinary.com/mhmd/image/upload/v1570786257/hoverSet-4_fbtjks.jpg" alt="">
-               <div class="hover-overlay"></div>
-               <div class="hover-1-content px-5 py-4">
-                 <h3 class="hover-1-title text-uppercase font-weight-bold mb-0"> <span class="font-weight-light">Image </span>Caption</h3>
-                 <p class="hover-1-description font-weight-light mb-0">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-               </div>
-             </div>
-           </div>
+           </a>
+          {{/each}}
          </div>
       </div>
     </div>

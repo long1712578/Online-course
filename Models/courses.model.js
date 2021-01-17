@@ -268,7 +268,15 @@ module.exports={
     teacherGetCourse: async(idTeacher)=>{
       const sql = `select * from ${tbCourse}  where idTeacher=${idTeacher}`;
       const rows = await db.load(sql);
+      return rows;
+    },
+    teacherGetCourseID: async(idCourse)=>{
+      const sql=`select * from ${tbCourse}  where Id=${idCourse}`;
+      const rows = await db.load(sql);
       return rows[0];
+    },
+    updateStatusCourse: async (value,idCourse)=>{
+      const sql=`update ${tbCourse} set status='${value}' where id=${idCourse}`;
+     return await db.load(sql);
     }
-
 }

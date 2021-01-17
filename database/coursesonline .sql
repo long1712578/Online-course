@@ -80,6 +80,7 @@ CREATE TABLE `course` (
   `idTeacher` int(10) NOT NULL,
   `idCategory` int(10) NOT NULL,
   `dateCourse` date DEFAULT NULL,
+  `status` int(10) DEFAULT NULL,
   `view` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
