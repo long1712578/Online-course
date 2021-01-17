@@ -8,7 +8,6 @@ module.exports={
     getCoursesAdminAll: async()=>{
         let sql1= `SELECT * FROM ${tbCourse}`;
         const rs= await db.load(sql1);
-        
         return rs;
     },
   

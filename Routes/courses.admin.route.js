@@ -8,7 +8,6 @@ router.get('/course', async(req,res)=>{
     const rows=await modelCourses.getCoursesAdminAll();
 
 
-    console.log(rows);
     res.render('admin/course',{
         layout:"main_admin",
         courses: rows,

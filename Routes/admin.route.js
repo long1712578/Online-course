@@ -45,6 +45,29 @@ router.get('/course',async (req,res)=>{
     });
 });
 
+router.post('/course',async (req,res)=>{
+    const page = parseInt(req.query.page) || 1;
+    let keyWord = req.body.keyWord;
+    const courses= await modelCourse.getCoursesSearch(page,keyWord);
+    const pages = [];
+            for (let i = 0; i < courses.pageTotal; i++) {
+                pages[i] = { value: i + 1, active: (i + 1) === page};
+            }
+            const navs = {};
+            if (page > 1) {
+                navs.prev = page - 1;
+            }
+            if (page < courses.pageTotal) {
+                navs.next = page + 1;
+            }
+    res.render('admin/course',{
+        layout:"main_admin",
+        courses:courses.rourses,
+        pages:pages,
+        navs:navs
+    });
+});
+
 router.get('/course/delete/:id',async(req,res)=>{
     const id=parseInt(req.params.id);
     await modelCourse.deleteCourse(id);
