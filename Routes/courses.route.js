@@ -29,14 +29,13 @@ router.get('/courses/:id', async (req, res) => {
     if(courseDetail[0]+''==='undefined'){
         res.redirect(req.headers.referer);
     }
-    //const nameCourse= courseDetail[0].NameCourse;
     
+    const comment=await modelCourses.getComment(id);
     const courseRelate=await getCoursesRelate(courseDetail[0].NameCourse);
     const coursesList = await modelVideo.getVideoDeatilList(id);
     
     const orderList = await modelOrder.getCoursesUserByIdUser(userId);
     orderList.forEach(element=>{
-        console.log(element);
         if(element.productId===id){
             check=true;
         }
@@ -55,6 +54,7 @@ router.get('/courses/:id', async (req, res) => {
         point: point,
         countRegister:countRegister,
         check:check,
+        comment:comment
     });
 });
 
@@ -220,7 +220,8 @@ router.post('/course-rating', async (req, res) => {
     const rating = {
         courseId: req.body.course,
         rating: req.body.rating,
-        userId: userId
+        userId: userId,
+        comment: req.body.comment
     }
     await modelCourses.addRating(rating);
     await modelCourses.updateRating(req.body.course);

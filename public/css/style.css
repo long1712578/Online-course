@@ -813,3 +813,11 @@ h6 {
 	}
 
 }
+
+.user_name{
+    font-size:14px;
+    font-weight: bold;
+}
+.comments-list .media{
+    border-bottom: 2px dotted rgb(146, 146, 143);
+}

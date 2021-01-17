@@ -4,7 +4,7 @@
     $('.addItem').on('click', function () {
         const id = $(this).data('id');
         const price = $(this).data('price');
-        const value={id,price};
+        const value = { id, price };
         $('#txtProId').val(id);
         $('#frmAddItem').submit();
     });
@@ -50,7 +50,7 @@
             <input type="hidden" name="id" id="txtProId">
             {{!-- <input type="hidden" name="quantity" id="txtQ"> --}}
         </form>
-         <form action="/user/course/like" method="POST" id="frmLikeItem">
+        <form action="/user/course/like" method="POST" id="frmLikeItem">
             <input type="hidden" name="id" id="txtProLikeId">
         </form>
         <div class="row">
@@ -70,11 +70,12 @@
                             <span class="amount">{{format price}} đ</span>
                         </div>
                         {{#if ../isAuth}}
-                        <a style="color: #fff;" data-id="{{IdCourse}}" data-price={{price}} class="btn btn-success addItem" href="javascript:;" role="button"
-                            id="register"><i class="fa fa-user-plus"></i>Đăng kí</a>
-                        
-                        <a style="color: #fff;" data-id="{{IdCourse}}"  class="btn btn-danger addItemLike" href="javascript:;" role="button"
-                            id="register"><i class="fa fa-heart"></i>Like</a>
+                        <a style="color: #fff;" data-id="{{IdCourse}}" data-price={{price}}
+                            class="btn btn-success addItem" href="javascript:;" role="button" id="register"><i
+                                class="fa fa-user-plus"></i>Đăng kí</a>
+
+                        <a style="color: #fff;" data-id="{{IdCourse}}" class="btn btn-danger addItemLike"
+                            href="javascript:;" role="button" id="register"><i class="fa fa-heart"></i>Like</a>
                         {{/if}}
                         {{/Detail}}
                     </div>
@@ -159,9 +160,12 @@
                                     <span class='result'>0</span>
                                     <input type="hidden" name="rating">
                                     <input type="hidden" value="{{IdCourse}}" name="course">
-
+                                    <br />
+                                    <br />
+                                    <label>Nhận xét</label>
+                                    <textarea rows="2" type="text" name="comment"></textarea>
                                     <p>&nbsp;</p>
-                                    <button class="btn btn-primary" type="submit" style="margin-top: 20px; float:right">
+                                    <button class="btn btn-primary" type="submit" style="margin-top: 20px; float:left">
                                         <i class="fa fa-star"></i> Đánh giá</button>
                                 </form>
                                 {{/Detail}}
@@ -174,6 +178,29 @@
         </div>
     </div>
 </section>
+{{!-- Comment --}}
+<div class="container">
+    <div class="row" style="background-color: rgb(238, 238, 238)">
+        <div class="col-md-12">
+            <div class="page-header">
+                <h1 style="text-align: center;"> Nhận xét </h1>
+            </div>
+            <div class="comments-list">
+                {{#each comment}}
+                <div class="media">
+                    <a class="media-left" href="#">
+                        <img style="border-radius: 90%; height: 40px;" src="../../public/img/{{image}}">
+                    </a>
+                    <div class="media-body">
+                        <h4 class="media-heading user_name">  &nbsp;{{UserName}}</h4>
+                       &nbsp; &nbsp;{{comment}}
+                    </div>
+                </div>
+                {{/each}}
+            </div>
+        </div>
+    </div>
+</div>
 {{!-- Khoa hoc lien quan --}}
 <section id="mc-section-4" class="mc-section-3 section">
     <div class="container">

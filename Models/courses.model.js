@@ -256,6 +256,13 @@ module.exports={
         where id= ${id};`
         const result=await db.load(sql);
     },
+    getComment: async(id)=>{
+        const sql=`select r.comment,u.UserName,u.image
+         from ${tbCourseRating} as r inner join 
+         ${tbTeacher} as u on r.userId=u.Id where courseId=${id}`
+         const rows=await db.load(sql);
+         return rows;
+    },
     getCoursesRelate: async(keyWord)=>{
         //Tong trang
 
