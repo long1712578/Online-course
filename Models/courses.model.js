@@ -5,7 +5,7 @@ const tbCourse='course';
 const tbCourseRating='ratingcourse';
 const tbTeacher='user';
 const pageSize=6;
- 
+
 
 module.exports={
     getCoursesAll: async(page,condition)=>{
@@ -18,7 +18,7 @@ module.exports={
         const offset=(page-1)*pageSize;
         let sql = `select c.*, u.FullName as FullName from ${tbCourse} as c INNER JOIN ${tbTeacher} as u ON c.idTeacher=u.Id  LIMiT ${pageSize} OFFSET ${offset}`;
         let rows = await db.load(sql);
-       
+
         //const
         return {
             pageTotal:pageTotal,
@@ -36,7 +36,7 @@ module.exports={
         const offset=(page-1)*pageSize;
         let sql = `SELECT c.*, u.FullName as FullName FROM ${tbCourse}  as c INNER JOIN ${tbTeacher} as u ON c.idTeacher=u.Id  where price <1000000  LIMiT ${pageSize} OFFSET ${offset}`;
         let rows = await db.load(sql);
-       
+
         //const
         return {
             pageTotal:pageTotal,
@@ -54,7 +54,7 @@ module.exports={
         const offset=(page-1)*pageSize;
         let sql = `SELECT c.*, u.FullName as FullName FROM ${tbCourse}  as c INNER JOIN ${tbTeacher} as u ON c.idTeacher=u.Id where price >=1000000  and price<=2000000 LIMiT ${pageSize} OFFSET ${offset}`;
         let rows = await db.load(sql);
-       
+
         //const
         return {
             pageTotal:pageTotal,
@@ -72,13 +72,14 @@ module.exports={
         const offset=(page-1)*pageSize;
         let sql = `SELECT c.*, u.FullName as FullName FROM ${tbCourse}  as c INNER JOIN ${tbTeacher} as u ON c.idTeacher=u.Id where price >2000000  LIMiT ${pageSize} OFFSET ${offset}`;
         let rows = await db.load(sql);
-       
+
         //const
         return {
             pageTotal:pageTotal,
             rourses: rows
         };
     },
+
 
     getCoursesPriceDESC: async(page)=>{
         //Tinh tong san pham
@@ -90,7 +91,7 @@ module.exports={
         const offset=(page-1)*pageSize;
         let sql = `SELECT c.*, u.FullName as FullName FROM ${tbCourse}  as c INNER JOIN ${tbTeacher} as u ON c.idTeacher=u.Id order by price desc LIMiT ${pageSize} OFFSET ${offset}`;
         let rows = await db.load(sql);
-       
+
         //const
         return {
             pageTotal:pageTotal,
@@ -108,7 +109,7 @@ module.exports={
         const offset=(page-1)*pageSize;
         let sql = `SELECT c.*, u.FullName as FullName FROM ${tbCourse}  as c INNER JOIN ${tbTeacher} as u ON c.idTeacher=u.Id order by price asc LIMiT ${pageSize} OFFSET ${offset}`;
         let rows = await db.load(sql);
-        
+
         //const
         return {
             pageTotal:pageTotal,
@@ -126,7 +127,7 @@ module.exports={
         const offset=(page-1)*pageSize;
         let sql = `SELECT c.*, u.FullName as FullName FROM ${tbCourse}  as c INNER JOIN ${tbTeacher} as u ON c.idTeacher=u.Id order by rating asc LIMiT ${pageSize} OFFSET ${offset}`;
         let rows = await db.load(sql);
-        
+
         //const
         return {
             pageTotal:pageTotal,
@@ -144,22 +145,22 @@ module.exports={
         const offset=(page-1)*pageSize;
         let sql = `SELECT c.*, u.FullName as FullName FROM ${tbCourse}  as c INNER JOIN ${tbTeacher} as u ON c.idTeacher=u.Id order by rating desc LIMiT ${pageSize} OFFSET ${offset}`;
         let rows = await db.load(sql);
-        
+
         //const
         return {
             pageTotal:pageTotal,
             rourses: rows
         };
     },
-    
+
     getCoursesCatAll: async(cat,page)=>{
         //Tinh tong san pham
         let sql1= `SELECT count(*) AS total FROM ${tbCourse} where idCategory=${cat}`;
         const rs= await db.load(sql1);
-        
+
         //Tong trang
         const totalPage=rs[0].total;
-        
+
         const pageTotal=Math.floor(totalPage/ pageSize)+1;
         const offset=(page-1)*pageSize;
         const sql = `SELECT c.*, u.FullName as FullName FROM ${tbCourse}  as c INNER JOIN ${tbTeacher} as u ON c.idTeacher=u.Id WHERE idCategory=${cat} LIMiT ${pageSize} OFFSET ${offset}`;
@@ -171,7 +172,7 @@ module.exports={
     },
     getCoursesSearch: async(page,keyWord)=>{
         //Tinh tong san pham
-        
+
         let sqlFTS=`SELECT count(*) AS total from ${tbCourse} where match
             (name,described) against ("${keyWord}" with query expansion)`;
         const rs= await db.load(sqlFTS);
@@ -190,7 +191,7 @@ module.exports={
     },
     getCoursesCatSearch: async(cat,page,keyWord)=>{
         //Tinh tong san pham
-        
+
         let sqlFTS=`SELECT count(*) AS total from ${tbCourse} where idCategory=${cat} and match
             (name,described) against ("${keyWord}" with query expansion)`;
         const rs= await db.load(sqlFTS);
@@ -258,7 +259,7 @@ module.exports={
     },
     getComment: async(id)=>{
         const sql=`select r.comment,u.UserName,u.image
-         from ${tbCourseRating} as r inner join 
+         from ${tbCourseRating} as r inner join
          ${tbTeacher} as u on r.userId=u.Id where courseId=${id}`
          const rows=await db.load(sql);
          return rows;
@@ -279,14 +280,21 @@ module.exports={
         const rows = await db.load(sql);
         return rows[0];
     },
-    quantityCourses: async()=>{
-        const sql = `SELECT count(id) as quantityCourses
-        FROM ${tbCourse}`;
-        const row = await db.load(sql);
-        return row[0];
+    addCourseFromTeacher:  async(entity)=>{
+          return db.add(entity, tbCourse);
     },
-    deleteCourse: async(id)=>{
-        const sql = `DELETE FROM ${tbCourse} WHERE id=${id};`;
-        await db.load(sql);
+    teacherGetCourse: async(idTeacher)=>{
+      const sql = `select * from ${tbCourse}  where idTeacher=${idTeacher}`;
+      const rows = await db.load(sql);
+      return rows;
+    },
+    teacherGetCourseID: async(idCourse)=>{
+      const sql=`select * from ${tbCourse}  where Id=${idCourse}`;
+      const rows = await db.load(sql);
+      return rows[0];
+    },
+    updateStatusCourse: async (value,idCourse)=>{
+      const sql=`update ${tbCourse} set status='${value}' where id=${idCourse}`;
+     return await db.load(sql);
     }
 }
