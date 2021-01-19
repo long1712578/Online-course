@@ -300,6 +300,15 @@
 
   <!--content  -->
   <div style="padding:30px;">
+    <div style="margin-top:50px;">
+      {{#if message}}
+      <div class="alert alert-success alert-dismissible fade show" role="alert">
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+      </button>
+      {{message}}
+    </div>
+    {{/if}}
     <div>
       <h2>Các khóa học chưa hoàn thành (chưa cập nhật đủ chương)</h2>
       <div class="ChuaHoanThanh">
@@ -307,7 +316,7 @@
         <a href="/teacher/course/{{id}}" style="text-decoration:none; color:none;">
           <div class="card-deck" style="margin-top:20px;">
             <div class="card">
-              <img class="card-img-top" src="../{{image}}" alt="Card image cap">
+              <img class="card-img-top" src="../{{image}}" alt="Card image cap"  style="width:300px; height:300px;">
               <div class="card-body">
                 <h5 class="card-title">{{name}}</h5>
                 <p class="card-text">{{described}}</p>
@@ -321,7 +330,6 @@
         {{/each}}
       </div>
     </div>
-    <div style="margin-top:50px;">
       <h2>Các khóa học đã hoàn thành</h2>
       <div class="DaHoanThanh">
          <div class="row" style="width:80%;">
@@ -329,7 +337,7 @@
            <a href="/teacher/course/{{id}}" style="text-decoration:none; color:none;">
              <div class="card-deck" style="margin-top:20px;">
                <div class="card">
-                 <img class="card-img-top" src="../{{image}}" alt="Card image cap">
+                 <img class="card-img-top" src="../{{image}}" alt="Card image cap"  style="width:300px; height:300px;">
                  <div class="card-body">
                    <h5 class="card-title">{{name}}</h5>
                    <p class="card-text">{{described}}</p>
