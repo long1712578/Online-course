@@ -68,7 +68,7 @@ router.post('/createCourse',uploadImg.single('file'),async(req,res)=>{
     newCourse.dateCourse=moment(Date.now()).format('YYYY-MM-DD');
     newCourse.view=0;
     await courseModel.addCourseFromTeacher(newCourse);
-    res.send('<h3>da add thanh cong</h3><br/><a href="/teacher">Click để quay lại trang chủ</a>')
+    res.redirect('/teacher/myCourse')
   }else{
     res.render('teacher/login',{
         err_message: 'Please login to use this function'
@@ -174,7 +174,20 @@ router.get('/myCourse', async (req,res)=>{
 })
 router.get('/myProfile',(req,res)=>{
   if(req.session.authUser){
+
+      console.log(req.session.authUser);
     res.render('teacher/myProfile',{
+        profile:req.session.authUser
+    });
+  }else{
+    res.render('teacher/login',{
+        err_message: 'Please login to use this function'
+    });
+  }
+})
+router.get('/editMyProfile',(req,res)=>{
+  if(req.session.authUser){
+    res.render('teacher/editMyProfile',{
         profile:req.session.authUser
     });
   }else{
@@ -228,7 +241,20 @@ router.post('/addchuong',upload.single("video"),async (req,res)=>{
       await courseModel.updateStatusCourse(0,req.body.idCourse);
     }
     await videoModel.addChuongFromTeacher(newChuong);
-    res.send('upload thanh cong,<a href="/teacher">Click để quay lại trang chủ</a>');
+    let myCourses=await courseModel.teacherGetCourse(req.session.authUser.Id);
+    for (var i = 0; i < myCourses.length; i++) {
+      myCourses[i].lastupdate=Math.round(Math.random()*60);
+    }
+    let unfinishCourse=[];
+    let finishCourse=[];
+    for (var i = 0; i < myCourses.length; i++) {
+      if(myCourses[i].status!=1){
+        unfinishCourse.push(myCourses[i])
+      }else{
+        finishCourse.push(myCourses[i]);
+      }
+    }
+    res.render('teacher/myCourse',{UnfinishCourse:unfinishCourse,finishCourse:finishCourse,message:'Thêm Chương mới thành công'})
   }else{
     res.render('teacher/login',{
         err_message: 'Please login to use this function'
