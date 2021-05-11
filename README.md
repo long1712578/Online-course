@@ -1,1 +1,1 @@
-Trang web nhóm gồm 3 thành viên: Duy Vu - Hoang Huy - Đình Long
+Trang web nhóm gồm 3 thành viên: Duy Vũ - Hoàng Huy - Đình Long
